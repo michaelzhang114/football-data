@@ -584,14 +584,6 @@ function handleSubmit() {
 	displayGuesses();
 }
 
-displayGuesses();
-
-const mySubmitButton = document.getElementById("mySubmit");
-mySubmitButton.addEventListener("click", handleSubmit);
-
-initLocalStorage();
-//initVarsFromLocalStorage();
-
 function updateStorage() {
 	window.localStorage.setItem("guessesRemaining", globalGuessesRemaining);
 	window.localStorage.setItem("guesses", JSON.stringify(globalListOfGuesses));
@@ -636,3 +628,28 @@ function displayGuesses() {
 		"guessesRemaining"
 	)} guesses remaining`;
 }
+
+async function hitBackend() {
+	const myUrl = "http://localhost:5050/api";
+	try {
+		const response = await fetch(myUrl);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const responseData = await response.json();
+
+		console.log(responseData);
+	} catch (error) {
+		console.error("Error fetching data:", error.message);
+	}
+}
+
+hitBackend();
+
+displayGuesses();
+
+const mySubmitButton = document.getElementById("mySubmit");
+mySubmitButton.addEventListener("click", handleSubmit);
+
+initLocalStorage();
+//initVarsFromLocalStorage();

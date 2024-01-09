@@ -1,4 +1,5 @@
 const fs = require("fs");
+const axios = require("axios");
 
 const premID = 47;
 const baseUrl = "https://www.fotmob.com/api";
@@ -75,34 +76,26 @@ async function fetchAndWriteAllData() {
 
 		const listOfPlayerNames = players.map((p) => p.name);
 		writeToFile(
-			`${folderName}prem-players-simplified.json`,
+			`${folderName}prem-players-names.json`,
 			JSON.stringify(listOfPlayerNames)
 		);
 		console.log(
-			`Wrote ${listOfPlayerNames.length} players in prem-players-simplified.json`
+			`Wrote ${listOfPlayerNames.length} players in prem-players-names.json`
+		);
+
+		const listOfPlayerIDs = players.map((p) => p.id);
+		writeToFile(
+			`${folderName}prem-players-ids.json`,
+			JSON.stringify(listOfPlayerIDs)
+		);
+		console.log(
+			`Wrote ${listOfPlayerIDs.length} players in prem-players-ids.json`
 		);
 
 		// const playersSimplified = players.map((p) => p.id);
 		// console.log(playersSimplified);
 	} catch (error) {
 		console.error("Error w/ API:", error.message);
-	}
-}
-
-async function fetchCareerPath(playerID) {
-	try {
-		const myURL = playerUrl + `id=${playerID}`;
-		const response = await fetch(myURL);
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-		const responseData = await response.json();
-		const careerPath =
-			responseData.careerHistory.careerItems.senior.teamEntries;
-		//console.log(careerPath);
-		return careerPath;
-	} catch (error) {
-		console.error("Error fetching data:", error.message);
 	}
 }
 
@@ -122,41 +115,33 @@ function getFriendlyDate() {
 	return formattedDate;
 }
 
-function arrayEquals(a, b) {
-	return (
-		Array.isArray(a) &&
-		Array.isArray(b) &&
-		a.length === b.length &&
-		a.every((val, index) => val === b[index])
-	);
-}
+//fetchAndWriteAllData();
 
-fetchAndWriteAllData();
+async function downloadImage(url, id) {
+	try {
+		const response = await axios.get(`${url}${id}.png`, {
+			responseType: "arraybuffer",
+		});
 
-async function matchCareerPath(answerIDs, playerID) {
-	const myCareerPath = await fetchCareerPath(playerID);
-	const myClubsIDs = myCareerPath.map((c) => c.teamId);
-	if (arrayEquals(answerIDs, myClubsIDs)) {
-		return { verdict: "Correct!", schema: Array(answerIDs.length).fill(1) };
-	}
-
-	var outArray = [];
-	for (var i = 0; i < answerIDs.length; i++) {
-		if (myClubsIDs.includes(answerIDs[i])) {
-			outArray.push(1);
+		if (response.status === 200) {
+			const folderName = `./pics/`;
+			if (!fs.existsSync(folderName)) {
+				fs.mkdirSync(folderName);
+			}
+			const imageData = Buffer.from(response.data, "binary");
+			fs.writeFileSync(`${folderName}${id}.png`, imageData);
+			console.log(`Image ${id} downloaded successfully.`);
 		} else {
-			outArray.push(0);
+			console.error(
+				`Failed to download image ${id}. Status: ${response.status}`
+			);
 		}
+	} catch (error) {
+		console.error(`Error downloading image ${id}:`, error.message);
 	}
-	return { verdict: "Incorrect", schema: outArray };
-	// console.log(myClubs);
 }
 
-// matchCareerPath([9825, 8456, 10283], 576165).then(
-// 	// arsenal, man city, palmeiras
-// 	// gabriel jesus
-// 	function (value) {
-// 		console.log(value);
-// 	},
-// 	function (error) {}
-// );
+// Example usage
+const imageUrl = "https://images.fotmob.com/image_resources/playerimages/";
+const imageId = "688278"; // Replace with the actual image ID
+//downloadImage(imageUrl, imageId);
