@@ -1,6 +1,8 @@
 import { autocomplete } from "./autocomplete.js";
 
 var globalGuessesRemaining = 5;
+var globalListOfGuesses = [];
+var answer;
 
 const ALL_PLAYERS = [
 	"Adrian",
@@ -567,20 +569,70 @@ const ALL_PLAYERS = [
 
 autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
 
-function displayInput() {
+function handleSubmit() {
 	if (globalGuessesRemaining <= 0) {
 		return;
 	}
 	const userInput = document.getElementById("myInput").value;
-	console.log(userInput, globalGuessesRemaining);
-	const submissionsWrapper = document.getElementById("submissions-wrapper");
 
-	const myGuessDiv = document.createElement("div");
-	myGuessDiv.setAttribute("class", "guess");
-	myGuessDiv.textContent = `${userInput}`;
-	submissionsWrapper.append(myGuessDiv);
+	//update vars
 	globalGuessesRemaining--;
+	globalListOfGuesses.push(userInput);
+	//update storage
+	updateStorage();
+
+	displayGuesses();
 }
 
+displayGuesses();
+
 const mySubmitButton = document.getElementById("mySubmit");
-mySubmitButton.addEventListener("click", displayInput);
+mySubmitButton.addEventListener("click", handleSubmit);
+
+initLocalStorage();
+//initVarsFromLocalStorage();
+
+function updateStorage() {
+	window.localStorage.setItem("guessesRemaining", globalGuessesRemaining);
+	window.localStorage.setItem("guesses", JSON.stringify(globalListOfGuesses));
+}
+
+function initLocalStorage() {
+	const storedGuessesRemaining =
+		window.localStorage.getItem("guessesRemaining");
+	if (!storedGuessesRemaining) {
+		window.localStorage.setItem("guessesRemaining", globalGuessesRemaining);
+	} else {
+		globalGuessesRemaining = Number(storedGuessesRemaining);
+	}
+
+	const storedGuesses = window.localStorage.getItem("guesses");
+	if (!storedGuesses) {
+		window.localStorage.setItem("guessesRemaining", globalListOfGuesses);
+	} else {
+		globalListOfGuesses = JSON.parse(storedGuesses);
+	}
+
+	// const answer = window.localStorage.setItem("answer", "Kai Havertz");
+	// const guesses = window.localStorage.setItem("guesses", "");
+}
+
+function displayGuesses() {
+	const myArr = JSON.parse(window.localStorage.getItem("guesses"));
+	if (!myArr) return;
+
+	const submissionsWrapper = document.getElementById("submissions-wrapper");
+	submissionsWrapper.replaceChildren();
+
+	for (var i = 0; i < myArr.length; i++) {
+		const myGuessDiv = document.createElement("div");
+		myGuessDiv.setAttribute("class", "guess");
+		myGuessDiv.textContent = `${myArr[i]}`;
+		submissionsWrapper.append(myGuessDiv);
+	}
+
+	const guessesRemainingDiv = document.getElementById("guesses-remaining");
+	guessesRemainingDiv.textContent = `${window.localStorage.getItem(
+		"guessesRemaining"
+	)} guesses remaining`;
+}
