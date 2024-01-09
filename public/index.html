@@ -4,8 +4,48 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hello</title>
-		<p>hello hello</p>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<title>Footy Team Trace</title>
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<h1>FTT</h1>
+		</header>
+		<main>
+			<div id="career-path-wrapper">
+				<img class="club-logo" src="/club-logos/8178.png" alt="" />
+				<img class="club-logo" src="/club-logos/8455.png" alt="" />
+				<img class="club-logo" src="/club-logos/9825.png" alt="" />
+			</div>
+			<div id="search-wrapper">
+				<div id="guide-text">
+					I currently play in the Premier League...
+				</div>
+				<div id="search-bar">
+					<form autocomplete="off">
+						<div class="autocomplete">
+							<input
+								id="myInput"
+								type="text"
+								name="myGuess"
+								placeholder="Footballer"
+							/>
+						</div>
+						<button id="mySubmit" type="button">
+							<img
+								id="submit-icon"
+								src="/img/arrow-right.svg"
+								alt="Enter"
+							/>
+						</button>
+					</form>
+				</div>
+				<div id="guesses-remaining">5 guesses remaining</div>
+			</div>
+
+			<div id="submissions-wrapper"></div>
+		</main>
+		<script type="module" src="script.js"></script>
+		<script type="module" src="/public/autocomplete.js"></script>
+	</body>
 </html>

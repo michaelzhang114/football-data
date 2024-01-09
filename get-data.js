@@ -73,6 +73,15 @@ async function fetchAndWriteAllData() {
 		writeToFile(`${folderName}prem-players.json`, JSON.stringify(players));
 		console.log(`Wrote ${players.length} players in prem-players.json`);
 
+		const listOfPlayerNames = players.map((p) => p.name);
+		writeToFile(
+			`${folderName}prem-players-simplified.json`,
+			JSON.stringify(listOfPlayerNames)
+		);
+		console.log(
+			`Wrote ${listOfPlayerNames.length} players in prem-players-simplified.json`
+		);
+
 		// const playersSimplified = players.map((p) => p.id);
 		// console.log(playersSimplified);
 	} catch (error) {
@@ -122,9 +131,7 @@ function arrayEquals(a, b) {
 	);
 }
 
-//fetchAndWriteAllData();
-
-//Gabriel Jesus ID: 576165
+fetchAndWriteAllData();
 
 async function matchCareerPath(answerIDs, playerID) {
 	const myCareerPath = await fetchCareerPath(playerID);
@@ -145,12 +152,11 @@ async function matchCareerPath(answerIDs, playerID) {
 	// console.log(myClubs);
 }
 
-// arsenal, man city, palmeiras
-// gabriel jesus
-
-matchCareerPath([9825, 8456, 10283], 576165).then(
-	function (value) {
-		console.log(value);
-	},
-	function (error) {}
-);
+// matchCareerPath([9825, 8456, 10283], 576165).then(
+// 	// arsenal, man city, palmeiras
+// 	// gabriel jesus
+// 	function (value) {
+// 		console.log(value);
+// 	},
+// 	function (error) {}
+// );

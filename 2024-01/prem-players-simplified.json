@@ -1,8 +1,4 @@
-import { autocomplete } from "./autocomplete.js";
-
-var globalGuessesRemaining = 5;
-
-const ALL_PLAYERS = [
+[
 	"Adrian",
 	"Alisson Becker",
 	"Caoimhin Kelleher",
@@ -562,25 +558,5 @@ const ALL_PLAYERS = [
 	"Rhian Brewster",
 	"Cameron Archer",
 	"Daniel Jebbison",
-	"William Osula",
-];
-
-autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
-
-function displayInput() {
-	if (globalGuessesRemaining <= 0) {
-		return;
-	}
-	const userInput = document.getElementById("myInput").value;
-	console.log(userInput, globalGuessesRemaining);
-	const submissionsWrapper = document.getElementById("submissions-wrapper");
-
-	const myGuessDiv = document.createElement("div");
-	myGuessDiv.setAttribute("class", "guess");
-	myGuessDiv.textContent = `${userInput}`;
-	submissionsWrapper.append(myGuessDiv);
-	globalGuessesRemaining--;
-}
-
-const mySubmitButton = document.getElementById("mySubmit");
-mySubmitButton.addEventListener("click", displayInput);
+	"William Osula"
+]
