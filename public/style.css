@@ -1,4 +1,21 @@
 :root {
+	/* --text-color-dark: #094067;
+	--text-color-light: #fffffe;
+	--primary-color: #3da9fc;
+	--table-header-background-color: #094067;
+	--table-background-color: #d8eefe;
+	--color-neutral: hsl(200, 2%, 75%); */
+	--clr-heading: #2e2e2e;
+	--clr-paragraph: #4e4e4e;
+	--clr-label: #6e6e6e;
+
+	--clr-accent: hsl(214, 91%, 50%);
+	/* try keep the same s and l */
+
+	--ff-sans: "Plus Jakarta Sans", sans-serif;
+	--fw-light: 200;
+	--fw-regular: 400;
+	--fw-bold: 700;
 }
 
 * {
@@ -10,6 +27,12 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+html {
+	font-family: var(--ff-sans);
+	font-weight: var(--fw-regular);
+	line-height: 1.5;
 }
 
 #career-path-wrapper {
