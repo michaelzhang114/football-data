@@ -1,8 +1,10 @@
 import { autocomplete } from "./autocomplete.js";
 
+const BACKEND_DOMAIN = "http://localhost:5050/";
+
 var globalGuessesRemaining = 5;
 var globalListOfGuesses = [];
-var answer;
+var globalAnswer;
 
 const ALL_PLAYERS = [
 	"Adrian",
@@ -567,17 +569,89 @@ const ALL_PLAYERS = [
 	"William Osula",
 ];
 
-autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
+const fullPlayerData = [
+	{
+		id: 169756,
+		name: "Adrian",
+		ccode: "ESP",
+		cname: "Spain",
+		role: "goalkeepers",
+	},
+	{
+		id: 319784,
+		name: "Alisson Becker",
+		ccode: "BRA",
+		cname: "Brazil",
+		role: "goalkeepers",
+	},
+	{
+		id: 776689,
+		name: "Caoimhin Kelleher",
+		ccode: "IRL",
+		cname: "Ireland",
+		role: "goalkeepers",
+	},
+	{
+		id: 1068920,
+		name: "Vitezslav Jaros",
+		ccode: "CZE",
+		cname: "Czechia",
+		role: "goalkeepers",
+	},
+	{
+		id: 1117148,
+		name: "Marcelo",
+		ccode: "BRA",
+		cname: "Brazil",
+		role: "goalkeepers",
+	},
+	{
+		id: 576165,
+		name: "Gabriel Jesus",
+		ccode: "BRA",
+		cname: "Brazil",
+		isInjured: true,
+		role: "attackers",
+	},
+];
+// run get on all player data and all players
+
+function getIdByName(playerName) {
+	const player = fullPlayerData.find((player) => player.name === playerName);
+
+	// Check if the player with the given name is found
+	if (player) {
+		return player.id;
+	} else {
+		// Return a specific value (or handle the absence of the player as needed)
+		return null;
+	}
+}
 
 function handleSubmit() {
 	if (globalGuessesRemaining <= 0) {
 		return;
 	}
 	const userInput = document.getElementById("myInput").value;
+	const myGuesses = window.localStorage.getItem("guesses");
+
+	if (getIdByName(userInput) === globalAnswer) {
+		globalListOfGuesses.push({
+			name: userInput,
+			id: getIdByName(userInput),
+			output: "✅",
+		});
+	} else {
+		globalListOfGuesses.push({
+			name: userInput,
+			id: getIdByName(userInput),
+			output: "❌",
+		});
+	}
 
 	//update vars
 	globalGuessesRemaining--;
-	globalListOfGuesses.push(userInput);
+	// globalListOfGuesses.push({ name: userInput, id: getIdByName(userInput), output });
 	//update storage
 	updateStorage();
 
@@ -619,32 +693,59 @@ function displayGuesses() {
 	for (var i = 0; i < myArr.length; i++) {
 		const myGuessDiv = document.createElement("div");
 		myGuessDiv.setAttribute("class", "guess");
-		myGuessDiv.textContent = `${myArr[i]}`;
+		myGuessDiv.textContent = `${myArr[i].name} ${myArr[i].id} ${myArr[i].output}`;
 		submissionsWrapper.append(myGuessDiv);
 	}
 
 	const guessesRemainingDiv = document.getElementById("guesses-remaining");
 	guessesRemainingDiv.textContent = `${window.localStorage.getItem(
 		"guessesRemaining"
-	)} guesses remaining`;
+	)} guesses remaining!`;
 }
 
-async function hitBackend() {
-	const myUrl = "http://localhost:5050/api";
+async function displayLogos(logos) {
+	const baseUrl = `${BACKEND_DOMAIN}api/club-logos/`;
 	try {
-		const response = await fetch(myUrl);
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-		const responseData = await response.json();
+		const careerPathDiv = document.getElementById("career-path-wrapper");
 
-		console.log(responseData);
+		for (var i = 0; i < logos.length; i++) {
+			const myUrl = baseUrl + `${logos[i]}`;
+			const response = await fetch(myUrl);
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			const responseBlob = await response.blob();
+			const imgURL = URL.createObjectURL(responseBlob);
+			const imageElement = document.createElement("img");
+			imageElement.src = imgURL;
+			imageElement.setAttribute("class", "club-logo");
+
+			careerPathDiv.append(imageElement);
+		}
+
+		//console.log(responseData);
 	} catch (error) {
 		console.error("Error fetching data:", error.message);
 	}
 }
 
-hitBackend();
+async function initAnswer() {
+	const myUrl = `${BACKEND_DOMAIN}api/answer-id`;
+	try {
+		const response = await fetch(myUrl);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const responseJSON = await response.json();
+		globalAnswer = responseJSON.answerID;
+	} catch (error) {
+		console.error("Error fetching answer-id:", error.message);
+	}
+}
+
+autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
+
+displayLogos([8178, 8455, 9825, 9817]);
 
 displayGuesses();
 
@@ -653,3 +754,7 @@ mySubmitButton.addEventListener("click", handleSubmit);
 
 initLocalStorage();
 //initVarsFromLocalStorage();
+
+initAnswer().then(() => {
+	console.log(globalAnswer);
+});

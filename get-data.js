@@ -45,6 +45,23 @@ async function fetchPlayers(teamID) {
 	}
 }
 
+async function fetchCareerPath(playerID) {
+	try {
+		const myURL = playerUrl + `id=${playerID}`;
+		const response = await fetch(myURL);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const responseData = await response.json();
+		const careerPath =
+			responseData.careerHistory.careerItems.senior.teamEntries;
+		//console.log(careerPath);
+		return careerPath;
+	} catch (error) {
+		console.error("Error fetching data:", error.message);
+	}
+}
+
 async function fetchAndWriteAllData() {
 	try {
 		const currentDate = getFriendlyDate();
@@ -84,6 +101,8 @@ async function fetchAndWriteAllData() {
 		);
 
 		const listOfPlayerIDs = players.map((p) => p.id);
+		//downloadAllPlayerPics(listOfPlayerIDs);
+
 		writeToFile(
 			`${folderName}prem-players-ids.json`,
 			JSON.stringify(listOfPlayerIDs)
@@ -91,9 +110,6 @@ async function fetchAndWriteAllData() {
 		console.log(
 			`Wrote ${listOfPlayerIDs.length} players in prem-players-ids.json`
 		);
-
-		// const playersSimplified = players.map((p) => p.id);
-		// console.log(playersSimplified);
 	} catch (error) {
 		console.error("Error w/ API:", error.message);
 	}
@@ -115,21 +131,18 @@ function getFriendlyDate() {
 	return formattedDate;
 }
 
-//fetchAndWriteAllData();
-
-async function downloadImage(url, id) {
+async function downloadImage(url, id, dir) {
 	try {
 		const response = await axios.get(`${url}${id}.png`, {
 			responseType: "arraybuffer",
 		});
 
 		if (response.status === 200) {
-			const folderName = `./pics/`;
-			if (!fs.existsSync(folderName)) {
-				fs.mkdirSync(folderName);
+			if (!fs.existsSync(dir)) {
+				fs.mkdirSync(dir);
 			}
 			const imageData = Buffer.from(response.data, "binary");
-			fs.writeFileSync(`${folderName}${id}.png`, imageData);
+			fs.writeFileSync(`${dir}${id}.png`, imageData);
 			console.log(`Image ${id} downloaded successfully.`);
 		} else {
 			console.error(
@@ -141,7 +154,20 @@ async function downloadImage(url, id) {
 	}
 }
 
+async function downloadAllPlayerPics(playerIDs) {
+	const imageURL = "https://images.fotmob.com/image_resources/playerimages/";
+	try {
+		for (var i = 0; i < playerIDs.length; i++) {
+			const currentID = playerIDs[i];
+			downloadImage(imageURL, currentID, "./assets/player-images/");
+		}
+	} catch (error) {
+		console.error(`Error getting player pics`, error.message);
+	}
+}
+
 // Example usage
-const imageUrl = "https://images.fotmob.com/image_resources/playerimages/";
-const imageId = "688278"; // Replace with the actual image ID
-//downloadImage(imageUrl, imageId);
+// const imageUrl = "https://images.fotmob.com/image_resources/playerimages/";
+// const imageId = "688278"; // Replace with the actual image ID
+
+fetchAndWriteAllData();
