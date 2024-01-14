@@ -13,9 +13,15 @@
 	/* try keep the same s and l */
 
 	--ff-sans: "Plus Jakarta Sans", sans-serif;
+
 	--fw-light: 200;
 	--fw-regular: 400;
 	--fw-bold: 700;
+
+	--fs-smallest: 12px;
+	--fs-regular: 14px;
+	--fs-large: 18px;
+	--fs-larger: 24px;
 }
 
 * {
@@ -33,6 +39,7 @@ html {
 	font-family: var(--ff-sans);
 	font-weight: var(--fw-regular);
 	line-height: 1.5;
+	background-color: #ededed;
 }
 
 #header-wrapper {
@@ -65,11 +72,6 @@ html {
 	background-color: var(--clr-accent);
 }
 
-#myInput {
-	width: 100%;
-	/* padding: 12px 20px; */
-}
-
 .search-form-wrapper {
 	display: flex;
 	align-items: center;
@@ -77,13 +79,21 @@ html {
 
 #career-path-wrapper {
 	display: flex;
-	background-color: DodgerBlue;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 0.625rem 1.25rem; /* row-gap column gap */
 	/* margin: 20px 20px; */
 	padding: 10px 10px;
+
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 20px;
+	background-color: rgba(255, 255, 255, 0.45);
+	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(15px);
+	/* padding: 38px;   */
+	/* filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); */
+	margin: 2rem 0.5rem;
 }
 
 .club-logo {
@@ -94,12 +104,12 @@ html {
 #search-wrapper {
 	display: flex;
 	flex-direction: column;
-	background-color: rebeccapurple;
+	/* background-color: rebeccapurple; */
 }
 
 #search-bar {
 	display: flex;
-	background-color: greenyellow;
+	/* background-color: greenyellow; */
 	justify-content: center;
 	align-items: center;
 }
@@ -109,16 +119,23 @@ html {
 	display: inline-block;
 }
 
+#guesses-remaining {
+	margin-inline: auto;
+}
+
 input {
 	border: 1px solid transparent;
 	background-color: #f1f1f1;
 	padding: 10px;
-	font-size: 16px;
+	/* font-size: 16px; */
 }
 
 input[type="text"] {
 	background-color: #f1f1f1;
 	width: 100%;
+	border-radius: 0.5rem;
+	font-size: var(--fs-large);
+	border: 2px solid var(--clr-label);
 }
 
 input[type="submit"] {

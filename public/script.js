@@ -592,13 +592,13 @@ function handleSubmit() {
 	const myGuesses = window.localStorage.getItem("guesses");
 
 	if (getIdByName(userInput) === globalAnswer) {
-		globalListOfGuesses.push({
+		globalListOfGuesses.unshift({
 			name: userInput,
 			id: getIdByName(userInput),
 			output: "✅",
 		});
 	} else {
-		globalListOfGuesses.push({
+		globalListOfGuesses.unshift({
 			name: userInput,
 			id: getIdByName(userInput),
 			output: "❌",
