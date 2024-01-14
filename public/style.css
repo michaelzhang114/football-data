@@ -53,14 +53,26 @@ html {
 }
 
 #help-modal-open,
-#stats-modal-open {
+#stats-modal-open,
+#mySubmit {
 	background-color: transparent;
 	border: none;
 }
 
 #help-modal-open:hover,
-#stats-modal-open:hover {
+#stats-modal-open:hover,
+#mySubmit:hover {
 	background-color: var(--clr-accent);
+}
+
+#myInput {
+	width: 100%;
+	/* padding: 12px 20px; */
+}
+
+.search-form-wrapper {
+	display: flex;
+	align-items: center;
 }
 
 #career-path-wrapper {
