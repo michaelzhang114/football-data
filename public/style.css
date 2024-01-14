@@ -120,3 +120,11 @@ input[type="submit"] {
 	display: flex;
 	flex-direction: column;
 }
+
+.guess {
+	background: burlywood;
+	padding: 2.75em 2.5em;
+	/* box-shadow: 0 1.5em 2.5em -0.5em; */
+	margin: 1.5rem 1rem;
+	border-radius: 1em;
+}
