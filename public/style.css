@@ -45,6 +45,7 @@ html {
 #header-wrapper {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .modal {
@@ -57,6 +58,12 @@ html {
 
 .modal::backdrop {
 	background: rgb(0 0 0 / 0.5);
+}
+
+#icons-wrapper {
+	display: flex;
+	/* justify-content: right;
+	align-items: baseline; */
 }
 
 #help-modal-open,
