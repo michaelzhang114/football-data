@@ -569,51 +569,7 @@ const ALL_PLAYERS = [
 	"William Osula",
 ];
 
-const fullPlayerData = [
-	{
-		id: 169756,
-		name: "Adrian",
-		ccode: "ESP",
-		cname: "Spain",
-		role: "goalkeepers",
-	},
-	{
-		id: 319784,
-		name: "Alisson Becker",
-		ccode: "BRA",
-		cname: "Brazil",
-		role: "goalkeepers",
-	},
-	{
-		id: 776689,
-		name: "Caoimhin Kelleher",
-		ccode: "IRL",
-		cname: "Ireland",
-		role: "goalkeepers",
-	},
-	{
-		id: 1068920,
-		name: "Vitezslav Jaros",
-		ccode: "CZE",
-		cname: "Czechia",
-		role: "goalkeepers",
-	},
-	{
-		id: 1117148,
-		name: "Marcelo",
-		ccode: "BRA",
-		cname: "Brazil",
-		role: "goalkeepers",
-	},
-	{
-		id: 576165,
-		name: "Gabriel Jesus",
-		ccode: "BRA",
-		cname: "Brazil",
-		isInjured: true,
-		role: "attackers",
-	},
-];
+var fullPlayerData = [];
 // run get on all player data and all players
 
 function getIdByName(playerName) {
@@ -743,18 +699,42 @@ async function initAnswer() {
 	}
 }
 
-autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
+async function initAllPlayerData() {
+	const myUrl = `${BACKEND_DOMAIN}api/all-players-info`;
+	try {
+		const response = await fetch(myUrl);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const responseJSON = await response.json();
+		return responseJSON;
+	} catch (error) {
+		console.error("Error fetching answer-id:", error.message);
+	}
+}
 
-displayLogos([8178, 8455, 9825, 9817]);
+async function main() {
+	try {
+		fullPlayerData = await initAllPlayerData();
 
-displayGuesses();
+		autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
 
-const mySubmitButton = document.getElementById("mySubmit");
-mySubmitButton.addEventListener("click", handleSubmit);
+		displayLogos([8178, 8455, 9825, 9817]);
 
-initLocalStorage();
-//initVarsFromLocalStorage();
+		displayGuesses();
 
-initAnswer().then(() => {
-	console.log(globalAnswer);
-});
+		const mySubmitButton = document.getElementById("mySubmit");
+		mySubmitButton.addEventListener("click", handleSubmit);
+
+		initLocalStorage();
+		//initVarsFromLocalStorage();
+
+		initAnswer().then(() => {
+			console.log(globalAnswer);
+		});
+	} catch (error) {
+		console.error("Error in main function:", error);
+	}
+}
+
+main();
