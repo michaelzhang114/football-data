@@ -4,6 +4,31 @@ const fs = require("fs").promises;
 const app = express(); //Instantiate an express app, the main work horse of this server
 const port = 5050; //Save the port number where your server will be listening
 
+const tmp_answerID = 576165;
+
+const baseUrl = "https://www.fotmob.com/api";
+
+const leaguesUrl = baseUrl + "/leagues?";
+const teamsUrl = baseUrl + "/teams?";
+const playerUrl = baseUrl + "/playerData?";
+
+async function fetchCareerPath(playerID) {
+	try {
+		const myURL = playerUrl + `id=${playerID}`;
+		const response = await fetch(myURL);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const responseData = await response.json();
+		const careerPath =
+			responseData.careerHistory.careerItems.senior.teamEntries;
+		//console.log(careerPath);
+		return careerPath;
+	} catch (error) {
+		console.error("Error fetching data:", error.message);
+	}
+}
+
 app.use(express.static("public"));
 
 //Idiomatic expression in express to route and respond to a client request
@@ -17,9 +42,35 @@ app.get("/api", (req, res) => {
 	res.send({ text: "hi" });
 });
 
-app.get("/api/club-ids", (req, res) => {
-	res.send({ clubIDs: [8178, 8455, 9825, 9817] });
+app.get("/api/club-ids", async (req, res) => {
+	try {
+		const myCareerPath = await fetchCareerPath(tmp_answerID);
+		res.send({
+			clubIDs: myCareerPath.reverse().map((entry) => entry.teamId),
+		});
+	} catch (error) {
+		console.error("Error fetching data:", error.message);
+	}
 });
+
+// async function matchCareerPath(answerIDs, playerID) {
+// 	const myCareerPath = await fetchCareerPath(playerID);
+// 	const myClubsIDs = myCareerPath.map((c) => c.teamId);
+// 	if (arrayEquals(answerIDs, myClubsIDs)) {
+// 		return { verdict: "Correct!", schema: Array(answerIDs.length).fill(1) };
+// 	}
+
+// 	var outArray = [];
+// 	for (var i = 0; i < answerIDs.length; i++) {
+// 		if (myClubsIDs.includes(answerIDs[i])) {
+// 			outArray.push(1);
+// 		} else {
+// 			outArray.push(0);
+// 		}
+// 	}
+// 	return { verdict: "Incorrect", schema: outArray };
+// 	// console.log(myClubs);
+// }
 
 app.get("/api/club-logos/:id", (req, res) => {
 	const logoID = req.params.id;
@@ -46,7 +97,7 @@ app.get("/api/all-players-info", async (req, res) => {
 });
 
 app.get("/api/answer-id", (req, res) => {
-	res.send({ answerID: 576165 });
+	res.send({ answerID: tmp_answerID });
 });
 
 app.listen(port, () => {

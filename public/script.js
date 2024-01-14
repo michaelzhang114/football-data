@@ -685,6 +685,20 @@ async function displayLogos(logos) {
 	}
 }
 
+async function fetchAnswerClubIDs() {
+	const baseUrl = `${BACKEND_DOMAIN}api/club-ids`;
+	try {
+		const response = await fetch(baseUrl);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const responseJSON = await response.json();
+		return responseJSON.clubIDs;
+	} catch (error) {
+		console.error("Error fetching data:", error.message);
+	}
+}
+
 async function initAnswer() {
 	const myUrl = `${BACKEND_DOMAIN}api/answer-id`;
 	try {
@@ -717,9 +731,15 @@ async function main() {
 	try {
 		fullPlayerData = await initAllPlayerData();
 
+		initAnswer().then(() => {
+			console.log(globalAnswer);
+		});
+
 		autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
 
-		displayLogos([8178, 8455, 9825, 9817]);
+		const clubIDs = await fetchAnswerClubIDs();
+		// console.log(clubIDs);
+		displayLogos(clubIDs);
 
 		displayGuesses();
 
@@ -728,10 +748,6 @@ async function main() {
 
 		initLocalStorage();
 		//initVarsFromLocalStorage();
-
-		initAnswer().then(() => {
-			console.log(globalAnswer);
-		});
 	} catch (error) {
 		console.error("Error in main function:", error);
 	}
