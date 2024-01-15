@@ -1,6 +1,7 @@
 import { autocomplete } from "./autocomplete.js";
 
-const BACKEND_DOMAIN = "http://localhost:5050/";
+// const BACKEND_DOMAIN = "http://localhost:5050/";
+const BACKEND_DOMAIN = "/";
 
 var globalGuessesRemaining = 5;
 var globalListOfGuesses = [];
