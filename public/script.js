@@ -3,8 +3,6 @@ import { autocomplete } from "./autocomplete.js";
 // const BACKEND_DOMAIN = "http://localhost:5050/";
 const BACKEND_DOMAIN = "/";
 
-var globalGuessesRemaining = 5;
-var globalListOfGuesses = [];
 var globalAnswer;
 
 const ALL_PLAYERS = [
@@ -586,20 +584,23 @@ function getIdByName(playerName) {
 }
 
 function handleSubmit() {
-	if (globalGuessesRemaining <= 0) {
+	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
+	const myGuesses = JSON.parse(window.localStorage.getItem("guesses"));
+
+	if (myGuessesRemaining <= 0) {
 		return;
 	}
+
 	const userInput = document.getElementById("myInput").value;
-	const myGuesses = window.localStorage.getItem("guesses");
 
 	if (getIdByName(userInput) === globalAnswer) {
-		globalListOfGuesses.unshift({
+		myGuesses.unshift({
 			name: userInput,
 			id: getIdByName(userInput),
 			output: "✅",
 		});
 	} else {
-		globalListOfGuesses.unshift({
+		myGuesses.unshift({
 			name: userInput,
 			id: getIdByName(userInput),
 			output: "❌",
@@ -607,57 +608,45 @@ function handleSubmit() {
 	}
 
 	//update vars
-	globalGuessesRemaining--;
-	// globalListOfGuesses.push({ name: userInput, id: getIdByName(userInput), output });
-	//update storage
-	updateStorage();
+	window.localStorage.setItem("guessesRemaining", myGuessesRemaining - 1);
+	window.localStorage.setItem("guesses", JSON.stringify(myGuesses));
+
+	document.getElementById("myInput").value = "";
 
 	displayGuesses();
-}
-
-function updateStorage() {
-	window.localStorage.setItem("guessesRemaining", globalGuessesRemaining);
-	window.localStorage.setItem("guesses", JSON.stringify(globalListOfGuesses));
 }
 
 function initLocalStorage() {
 	const storedGuessesRemaining =
 		window.localStorage.getItem("guessesRemaining");
 	if (!storedGuessesRemaining) {
-		window.localStorage.setItem("guessesRemaining", globalGuessesRemaining);
-	} else {
-		globalGuessesRemaining = Number(storedGuessesRemaining);
+		window.localStorage.setItem("guessesRemaining", 5);
 	}
 
 	const storedGuesses = window.localStorage.getItem("guesses");
 	if (!storedGuesses) {
-		window.localStorage.setItem("guessesRemaining", globalListOfGuesses);
-	} else {
-		globalListOfGuesses = JSON.parse(storedGuesses);
+		window.localStorage.setItem("guesses", JSON.stringify([]));
 	}
-
-	// const answer = window.localStorage.setItem("answer", "Kai Havertz");
-	// const guesses = window.localStorage.setItem("guesses", "");
 }
 
 function displayGuesses() {
-	const myArr = JSON.parse(window.localStorage.getItem("guesses"));
-	if (!myArr) return;
+	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
+	const myGuesses = JSON.parse(window.localStorage.getItem("guesses"));
 
 	const submissionsWrapper = document.getElementById("submissions-wrapper");
 	submissionsWrapper.replaceChildren();
 
-	for (var i = 0; i < myArr.length; i++) {
+	const guessesRemainingDiv = document.getElementById("guesses-remaining");
+	guessesRemainingDiv.textContent = `${myGuessesRemaining} guesses remaining!`;
+
+	if (!myGuesses) return;
+
+	for (var i = 0; i < myGuesses.length; i++) {
 		const myGuessDiv = document.createElement("div");
 		myGuessDiv.setAttribute("class", "guess");
-		myGuessDiv.textContent = `${myArr[i].name} ${myArr[i].id} ${myArr[i].output}`;
+		myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].id} ${myGuesses[i].output}`;
 		submissionsWrapper.append(myGuessDiv);
 	}
-
-	const guessesRemainingDiv = document.getElementById("guesses-remaining");
-	guessesRemainingDiv.textContent = `${window.localStorage.getItem(
-		"guessesRemaining"
-	)} guesses remaining!`;
 }
 
 async function displayLogos(logos) {
@@ -756,16 +745,27 @@ function initStatsButton() {
 	});
 }
 
+function initRefreshbutton() {
+	const btn = document.getElementById("clear-btn");
+	btn.addEventListener("click", () => {
+		localStorage.removeItem("guesses");
+		localStorage.removeItem("guessesRemaining");
+		initLocalStorage();
+
+		displayGuesses();
+	});
+}
+
 async function main() {
 	try {
 		initHelpButton();
 		initStatsButton();
+		initRefreshbutton();
+		initLocalStorage();
 
 		fullPlayerData = await initAllPlayerData();
 
-		initAnswer().then(() => {
-			console.log(globalAnswer);
-		});
+		await initAnswer();
 
 		autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
 
@@ -778,7 +778,6 @@ async function main() {
 		const mySubmitButton = document.getElementById("mySubmit");
 		mySubmitButton.addEventListener("click", handleSubmit);
 
-		initLocalStorage();
 		//initVarsFromLocalStorage();
 	} catch (error) {
 		console.error("Error in main function:", error);
