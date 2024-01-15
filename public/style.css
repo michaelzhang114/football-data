@@ -78,16 +78,18 @@ body {
 
 #help-modal-open,
 #stats-modal-open,
-#mySubmit {
+#mySubmit,
+#close-help,
+#close-stats {
 	background-color: transparent;
 	border: none;
 }
 
-#help-modal-open:hover,
+/* #help-modal-open:hover,
 #stats-modal-open:hover,
 #mySubmit:hover {
 	background-color: var(--clr-accent);
-}
+} */
 
 .search-form-wrapper {
 	display: flex;
