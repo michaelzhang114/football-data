@@ -4,6 +4,7 @@ import { autocomplete } from "./autocomplete.js";
 const BACKEND_DOMAIN = "/";
 
 var globalAnswer;
+var globalAnswerName;
 
 const ALL_PLAYERS = [
 	"Adrian",
@@ -586,8 +587,9 @@ function getIdByName(playerName) {
 function handleSubmit() {
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
 	const myGuesses = JSON.parse(window.localStorage.getItem("guesses"));
+	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
 
-	if (myGuessesRemaining <= 0) {
+	if (myGuessesRemaining <= 0 || myIsSolved === true) {
 		return;
 	}
 
@@ -599,6 +601,7 @@ function handleSubmit() {
 			id: getIdByName(userInput),
 			output: "✅",
 		});
+		window.localStorage.setItem("isSolved", "true");
 	} else {
 		myGuesses.unshift({
 			name: userInput,
@@ -614,6 +617,7 @@ function handleSubmit() {
 	document.getElementById("myInput").value = "";
 
 	displayGuesses();
+	showRevealedAnswer();
 }
 
 function initLocalStorage() {
@@ -626,6 +630,11 @@ function initLocalStorage() {
 	const storedGuesses = window.localStorage.getItem("guesses");
 	if (!storedGuesses) {
 		window.localStorage.setItem("guesses", JSON.stringify([]));
+	}
+
+	const isSolved = window.localStorage.getItem("isSolved");
+	if (!isSolved) {
+		window.localStorage.setItem("isSolved", "false");
 	}
 }
 
@@ -690,7 +699,7 @@ async function fetchAnswerClubIDs() {
 }
 
 async function initAnswer() {
-	const myUrl = `${BACKEND_DOMAIN}api/answer-id`;
+	const myUrl = `${BACKEND_DOMAIN}api/answer`;
 	try {
 		const response = await fetch(myUrl);
 		if (!response.ok) {
@@ -698,8 +707,9 @@ async function initAnswer() {
 		}
 		const responseJSON = await response.json();
 		globalAnswer = responseJSON.answerID;
+		globalAnswerName = responseJSON.name;
 	} catch (error) {
-		console.error("Error fetching answer-id:", error.message);
+		console.error("Error fetching answer:", error.message);
 	}
 }
 
@@ -750,10 +760,36 @@ function initRefreshbutton() {
 	btn.addEventListener("click", () => {
 		localStorage.removeItem("guesses");
 		localStorage.removeItem("guessesRemaining");
-		initLocalStorage();
+		localStorage.removeItem("isSolved");
 
+		initLocalStorage();
 		displayGuesses();
+		showRevealedAnswer();
 	});
+}
+
+function showRevealedAnswer() {
+	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
+	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
+
+	const revealDiv = document.getElementById("answer-revealed-wrapper");
+
+	//if they solved it
+	if (myIsSolved === true) {
+		revealDiv.style.display = "block";
+		revealDiv.innerText = `Congrats! The answer is ${globalAnswerName}`;
+		return;
+	}
+
+	//if they've made 5 guesses
+	if (myGuessesRemaining == 0) {
+		revealDiv.style.display = "block";
+		revealDiv.innerText = `The answer is ${globalAnswerName}`;
+		return;
+	}
+
+	//otherwise keep it hidden
+	revealDiv.style.display = "none";
 }
 
 async function main() {
@@ -778,7 +814,7 @@ async function main() {
 		const mySubmitButton = document.getElementById("mySubmit");
 		mySubmitButton.addEventListener("click", handleSubmit);
 
-		//initVarsFromLocalStorage();
+		showRevealedAnswer();
 	} catch (error) {
 		console.error("Error in main function:", error);
 	}

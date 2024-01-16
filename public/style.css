@@ -46,6 +46,10 @@ body {
 	margin: 0 0.625rem;
 }
 
+#answer-revealed-wrapper {
+	display: none;
+}
+
 #header-wrapper {
 	display: flex;
 	justify-content: space-between;

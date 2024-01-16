@@ -5,6 +5,7 @@ const app = express(); //Instantiate an express app, the main work horse of this
 const port = 5050; //Save the port number where your server will be listening
 
 const tmp_answerID = 576165;
+const tmp_answerName = "Gabriel Jesus";
 
 const baseUrl = "https://www.fotmob.com/api";
 
@@ -96,8 +97,8 @@ app.get("/api/all-players-info", async (req, res) => {
 	}
 });
 
-app.get("/api/answer-id", (req, res) => {
-	res.send({ answerID: tmp_answerID });
+app.get("/api/answer", (req, res) => {
+	res.send({ answerID: tmp_answerID, name: tmp_answerName });
 });
 
 app.listen(port, () => {
