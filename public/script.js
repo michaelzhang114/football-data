@@ -756,17 +756,32 @@ function initStatsButton() {
 	});
 }
 
-function initRefreshbutton() {
+function initClearButton() {
 	const btn = document.getElementById("clear-btn");
-	btn.addEventListener("click", () => {
-		localStorage.removeItem("guesses");
-		localStorage.removeItem("guessesRemaining");
-		localStorage.removeItem("isSolved");
+	btn.addEventListener("click", handleClear);
+}
 
-		initLocalStorage();
-		displayGuesses();
-		showRevealedAnswer();
-	});
+function handleClear() {
+	localStorage.removeItem("guesses");
+	localStorage.removeItem("guessesRemaining");
+	localStorage.removeItem("isSolved");
+
+	initLocalStorage();
+	displayGuesses();
+	showRevealedAnswer();
+}
+
+function initRefreshButton() {
+	const btn = document.getElementById("refresh-btn");
+	btn.addEventListener("click", handleRefresh);
+}
+
+async function handleRefresh() {
+	handleClear();
+	const myUrl = `${BACKEND_DOMAIN}api/refresh`;
+	// TODO call endpoint to change the answer id & refresh the page
+	const response = await fetch(myUrl);
+	window.location.reload();
 }
 
 function showRevealedAnswer() {
@@ -797,8 +812,9 @@ async function main() {
 	try {
 		initHelpButton();
 		initStatsButton();
-		initRefreshbutton();
+		initClearButton();
 		initLocalStorage();
+		initRefreshButton();
 
 		fullPlayerData = await initAllPlayerData();
 

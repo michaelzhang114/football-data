@@ -4,14 +4,34 @@ const fs = require("fs").promises;
 const app = express(); //Instantiate an express app, the main work horse of this server
 const port = 5050; //Save the port number where your server will be listening
 
-const tmp_answerID = 576165;
-const tmp_answerName = "Gabriel Jesus";
+let tmp_answerID = 576165;
 
 const baseUrl = "https://www.fotmob.com/api";
 
 const leaguesUrl = baseUrl + "/leagues?";
 const teamsUrl = baseUrl + "/teams?";
 const playerUrl = baseUrl + "/playerData?";
+
+const DIRECTORY = "2024-01/";
+
+const answerIdCandidates = [
+	169756, 319784, 776689, 1068920, 1117148, 171698, 209405, 357880, 568571,
+	671529, 760712, 820140, 1107620, 1113690, 1249634, 1355539, 172949, 202643,
+	831489, 846005, 933768, 956683, 963964, 1310118, 292462, 570461, 806552,
+	860914, 950561, 1211648, 1231075, 1324871, 120569,
+];
+
+function initAnswerID() {
+	if (answerIdCandidates.length === 0) {
+		return null; // or any default value you prefer
+	}
+
+	// Generate a random index within the array's length
+	const randomIndex = Math.floor(Math.random() * answerIdCandidates.length);
+
+	// Return the randomly picked element
+	return answerIdCandidates[randomIndex];
+}
 
 async function fetchCareerPath(playerID) {
 	try {
@@ -29,6 +49,19 @@ async function fetchCareerPath(playerID) {
 		console.error("Error fetching data:", error.message);
 	}
 }
+
+async function getAllLogosForPlayer(playerID) {
+	try {
+		const myCareerPath = await fetchCareerPath(playerID);
+		const logoIDs = myCareerPath.reverse().map((entry) => entry.teamId);
+		console.log(logoIDs);
+	} catch (error) {
+		console.error("Error fetching logo:", error.message);
+	}
+}
+
+tmp_answerID = initAnswerID(answerIdCandidates);
+console.log(tmp_answerID);
 
 app.use(express.static("public"));
 
@@ -54,25 +87,6 @@ app.get("/api/club-ids", async (req, res) => {
 	}
 });
 
-// async function matchCareerPath(answerIDs, playerID) {
-// 	const myCareerPath = await fetchCareerPath(playerID);
-// 	const myClubsIDs = myCareerPath.map((c) => c.teamId);
-// 	if (arrayEquals(answerIDs, myClubsIDs)) {
-// 		return { verdict: "Correct!", schema: Array(answerIDs.length).fill(1) };
-// 	}
-
-// 	var outArray = [];
-// 	for (var i = 0; i < answerIDs.length; i++) {
-// 		if (myClubsIDs.includes(answerIDs[i])) {
-// 			outArray.push(1);
-// 		} else {
-// 			outArray.push(0);
-// 		}
-// 	}
-// 	return { verdict: "Incorrect", schema: outArray };
-// 	// console.log(myClubs);
-// }
-
 app.get("/api/club-logos/:id", (req, res) => {
 	const logoID = req.params.id;
 	const imagePath = `${__dirname}/assets/club-logos/${logoID}.png`; // Assuming images are stored in a folder named "images"
@@ -82,11 +96,16 @@ app.get("/api/club-logos/:id", (req, res) => {
 	//res.send({ text: "logos" });
 });
 
+app.get("/api/refresh", (req, res) => {
+	tmp_answerID = initAnswerID(answerIdCandidates);
+	console.log(tmp_answerID);
+	res.json(tmp_answerID);
+});
+
 app.get("/api/all-players-info", async (req, res) => {
-	const directory = "2024-01/";
 	try {
 		const data = await fs.readFile(
-			`${directory}prem-players.json`,
+			`${DIRECTORY}prem-players.json`,
 			"utf-8"
 		);
 		const jsonData = JSON.parse(data);
@@ -97,26 +116,22 @@ app.get("/api/all-players-info", async (req, res) => {
 	}
 });
 
-app.get("/api/answer", (req, res) => {
-	res.send({ answerID: tmp_answerID, name: tmp_answerName });
+app.get("/api/answer", async (req, res) => {
+	try {
+		const data = await fs.readFile(
+			`${DIRECTORY}prem-players.json`,
+			"utf-8"
+		);
+		const jsonData = JSON.parse(data);
+		const player = jsonData.find((p) => p.id === tmp_answerID);
+		res.send({ answerID: tmp_answerID, name: player.name });
+	} catch (error) {
+		console.error("Error reading the file (/api/answer):", error);
+		res.status(500).send("Internal Server Error");
+	}
 });
 
 app.listen(port, () => {
 	//server starts listening for any attempts from a client to connect at port: {port}
 	console.log(`Now listening on port ${port}`);
 });
-
-// app.get("/api/all-players-names", async (req, res) => {
-// 	const directory = "2024-01/";
-// 	try {
-// 		const data = await fs.readFile(
-// 			`${directory}prem-players-names.json`,
-// 			"utf-8"
-// 		);
-// 		const jsonData = JSON.parse(data);
-// 		res.json(jsonData);
-// 	} catch (error) {
-// 		console.error("Error reading the file:", error);
-// 		res.status(500).send("Internal Server Error");
-// 	}
-// });
