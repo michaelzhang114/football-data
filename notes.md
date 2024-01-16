@@ -11,10 +11,12 @@
    If guess.teamIDs.contains answer's teamID, then green.
    else black.
 
-for 1 & 2, the data structure in all-prem-players.json is good, no need to simplify further
+## features
 
-for 3, need to do somethin
+Possible clues:
 
-4. edge case: if clues are clubs A, B, C, and player has played at A, B, C, D, then I need to figure out how about display this. Because the player has played at all those clubs but it's still not the right answer. Same with A, B, C <> A, C, B
-
-5. edge case: what if multiple players have the same career path
+-   club names under logos 3
+-   dates under logos 4
+-   show country flag 5
+-   positions
+-   player number (x)
