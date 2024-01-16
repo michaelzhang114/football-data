@@ -594,6 +594,7 @@ function handleSubmit() {
 	}
 
 	const userInput = document.getElementById("myInput").value;
+	if (userInput.length == 0) return;
 
 	if (getIdByName(userInput) === globalAnswer) {
 		myGuesses.unshift({
