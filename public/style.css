@@ -39,7 +39,7 @@ html {
 	font-family: var(--ff-sans);
 	font-weight: var(--fw-regular);
 	line-height: 1.5;
-	background-color: #ededed;
+	/* background-color: #ededed; */
 }
 
 body {
@@ -48,6 +48,11 @@ body {
 
 #answer-revealed-wrapper {
 	display: none;
+	border: 2px solid rgb(20, 192, 40);
+	border-radius: 8px;
+	background-color: rgba(20, 192, 40, 0.1);
+	text-align: center;
+	padding: 0.625rem 0;
 }
 
 #header-wrapper {
@@ -121,8 +126,8 @@ body {
 }
 
 .club-logo {
-	width: 75px;
-	height: 75px;
+	width: 3.75rem;
+	height: 3.75rem;
 }
 
 #search-wrapper {
@@ -203,11 +208,13 @@ input[type="submit"] {
 }
 
 .guess {
-	background: burlywood;
+	background: hsla(184, 79%, 82%, 0.931);
 	padding: 0.5rem 1rem;
 	/* box-shadow: 0 1.5em 2.5em -0.5em; */
 	margin: 0.4rem 0.625rem;
 	border-radius: 1em;
+
+	/* border-left: 4px solid #666666;  */
 }
 
 footer {
