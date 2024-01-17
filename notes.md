@@ -20,3 +20,10 @@ Possible clues:
 -   show country flag 5
 -   positions
 -   player number (x)
+
+Footle #123
+❌❌✅⬜⬜
+Test your ball knowledge: footlegame.io
+
+🚫🚫🚫🟢⬜
+🛑🛑🛑✅⬜

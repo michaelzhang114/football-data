@@ -677,7 +677,11 @@ async function displayLogos(logos) {
 			imageElement.src = imgURL;
 			imageElement.setAttribute("class", "club-logo");
 
-			careerPathDiv.append(imageElement);
+			const imageWrapper = document.createElement("div");
+			imageWrapper.classList.add("club-wrapper");
+			imageWrapper.append(imageElement);
+
+			careerPathDiv.append(imageWrapper);
 		}
 
 		//console.log(responseData);
@@ -686,7 +690,7 @@ async function displayLogos(logos) {
 	}
 }
 
-async function fetchAnswerClubIDs() {
+async function fetchAnswerClubsDetails() {
 	const baseUrl = `${BACKEND_DOMAIN}api/club-ids`;
 	try {
 		const response = await fetch(baseUrl);
@@ -694,7 +698,7 @@ async function fetchAnswerClubIDs() {
 			throw new Error(`HTTP error! Status: ${response.status}`);
 		}
 		const responseJSON = await response.json();
-		return responseJSON.clubIDs;
+		return responseJSON;
 	} catch (error) {
 		console.error("Error fetching data:", error.message);
 	}
@@ -809,6 +813,18 @@ function showRevealedAnswer() {
 	revealDiv.style.display = "none";
 }
 
+function displayClubNames(clubNames) {
+	const listItems = document.getElementById("career-path-wrapper").children;
+
+	for (let j = 0; j < listItems.length; j++) {
+		const p = document.createElement("p");
+		const n = document.createTextNode(clubNames[j]);
+		p.appendChild(n);
+		const curr = listItems[j];
+		curr.appendChild(p);
+	}
+}
+
 async function main() {
 	try {
 		initHelpButton();
@@ -823,11 +839,13 @@ async function main() {
 
 		autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
 
-		const clubIDs = await fetchAnswerClubIDs();
-		// console.log(clubIDs);
-		displayLogos(clubIDs);
+		const answerClubsData = await fetchAnswerClubsDetails();
+		const clubIDs = answerClubsData.clubIDs;
+		const clubNames = answerClubsData.clubNames;
+		const period = answerClubsData.period;
 
-		displayGuesses();
+		await displayLogos(clubIDs);
+		displayClubNames(clubNames);
 
 		const mySubmitButton = document.getElementById("mySubmit");
 		mySubmitButton.addEventListener("click", handleSubmit);

@@ -115,7 +115,7 @@ async function fetchCareerPath(playerID) {
 async function getAllLogosForPlayer(playerID) {
 	try {
 		const myCareerPath = await fetchCareerPath(playerID);
-		const logoIDs = myCareerPath.reverse().map((entry) => entry.teamId);
+		const logoIDs = myCareerPath.toReversed().map((entry) => entry.teamId);
 		console.log(logoIDs);
 	} catch (error) {
 		console.error("Error fetching logo:", error.message);
@@ -141,8 +141,42 @@ app.get("/api", (req, res) => {
 app.get("/api/club-ids", async (req, res) => {
 	try {
 		const myCareerPath = await fetchCareerPath(tmp_answerID);
+
+		let startEnd = myCareerPath.toReversed().map((entry) => ({
+			startDate: entry.startDate,
+			endDate: entry.endDate,
+		}));
+
+		const transformedArray = startEnd.map((d) => {
+			let startMonthYear;
+			let endMonthYear;
+			if (d.startDate == null) {
+				startMonthYear = "XXX";
+			} else {
+				startMonthYear = new Date(d.startDate).toLocaleString("en-us", {
+					month: "short",
+					year: "numeric",
+				});
+			}
+
+			if (d.endDate == null) {
+				endMonthYear = "Now";
+			} else {
+				endMonthYear = new Date(d.endDate).toLocaleString("en-us", {
+					month: "short",
+					year: "numeric",
+				});
+			}
+
+			return {
+				period: `${startMonthYear} - ${endMonthYear}`,
+			};
+		});
+
 		res.send({
-			clubIDs: myCareerPath.reverse().map((entry) => entry.teamId),
+			clubIDs: myCareerPath.toReversed().map((entry) => entry.teamId),
+			clubNames: myCareerPath.toReversed().map((entry) => entry.team),
+			period: transformedArray.map((t) => t.period),
 		});
 	} catch (error) {
 		console.error("Error fetching data:", error.message);

@@ -125,6 +125,18 @@ body {
 	margin: 2rem 0.5rem;
 }
 
+.club-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.club-wrapper > p {
+	font-size: var(--fs-smallest);
+}
+
 .club-logo {
 	width: 3.75rem;
 	height: 3.75rem;

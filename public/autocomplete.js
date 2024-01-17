@@ -25,7 +25,6 @@ export function autocomplete(inp, arr) {
 		/*for each item in the array...*/
 		let count = 0;
 		for (i = 0; i < arr.length; i++) {
-			console.log(count);
 			/*check if the item starts with the same letters as the text field value:*/
 			if (
 				//arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
