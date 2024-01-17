@@ -1,3 +1,5 @@
+const MAX_DROPDOWN_ITEMs = 13;
+
 export function autocomplete(inp, arr) {
 	/*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -21,12 +23,16 @@ export function autocomplete(inp, arr) {
 		/*append the DIV element as a child of the autocomplete container:*/
 		this.parentNode.appendChild(a);
 		/*for each item in the array...*/
+		let count = 0;
 		for (i = 0; i < arr.length; i++) {
+			console.log(count);
 			/*check if the item starts with the same letters as the text field value:*/
 			if (
 				//arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
-				arr[i].toUpperCase().includes(val.toUpperCase())
+				arr[i].toUpperCase().includes(val.toUpperCase()) &&
+				count < MAX_DROPDOWN_ITEMs
 			) {
+				count++;
 				b = document.createElement("DIV");
 
 				const startIndex = arr[i]
