@@ -654,7 +654,8 @@ function displayGuesses() {
 	for (var i = 0; i < myGuesses.length; i++) {
 		const myGuessDiv = document.createElement("div");
 		myGuessDiv.setAttribute("class", "guess");
-		myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].id} ${myGuesses[i].output}`;
+		myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].output}`;
+		// console.log(myGuesses[i].id);
 		submissionsWrapper.append(myGuessDiv);
 	}
 }
