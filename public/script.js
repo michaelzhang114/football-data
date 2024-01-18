@@ -799,6 +799,8 @@ function showRevealedAnswer() {
 	if (myIsSolved === true) {
 		revealDiv.style.display = "block";
 		revealDiv.innerText = `Congrats! The answer is ${globalAnswerName}`;
+
+		goBackToTop();
 		return;
 	}
 
@@ -806,11 +808,28 @@ function showRevealedAnswer() {
 	if (myGuessesRemaining == 0) {
 		revealDiv.style.display = "block";
 		revealDiv.innerText = `The answer is ${globalAnswerName}`;
+
+		goBackToTop();
+
 		return;
 	}
 
 	//otherwise keep it hidden
 	revealDiv.style.display = "none";
+}
+
+function goBackToTop() {
+	// window.scrollTo(0, 0);
+
+	const scrollStep = -window.scrollY / (500 / 15); // Adjust the speed here (500 is the duration in milliseconds)
+
+	const scrollInterval = setInterval(() => {
+		if (window.scrollY !== 0) {
+			window.scrollBy(0, scrollStep);
+		} else {
+			clearInterval(scrollInterval);
+		}
+	}, 15);
 }
 
 function displayClubNames(clubNames) {

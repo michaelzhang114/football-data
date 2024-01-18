@@ -185,7 +185,9 @@ async function getAllLogoIDs() {
 	try {
 		for (let i = 0; i < allPlayerIDs.length; i++) {
 			const myCareerPath = await fetchCareerPath(allPlayerIDs[i]);
-			const logoIDs = myCareerPath.reverse().map((entry) => entry.teamId);
+			const logoIDs = myCareerPath
+				.toReversed()
+				.map((entry) => entry.teamId);
 			allLogoIDs = allLogoIDs.concat(logoIDs);
 		}
 		let uniqueAllLogos = [...new Set(allLogoIDs)];
