@@ -637,6 +637,31 @@ function initLocalStorage() {
 	if (!isSolved) {
 		window.localStorage.setItem("isSolved", "false");
 	}
+
+	const storedGamesPlayed = window.localStorage.getItem("gamesPlayed");
+	if (!storedGamesPlayed) {
+		window.localStorage.setItem("gamesPlayed", 0);
+	}
+
+	const storedGamesWon = window.localStorage.getItem("gamesWon");
+	if (!storedGamesWon) {
+		window.localStorage.setItem("gamesWon", 0);
+	}
+
+	const isRevealed = window.localStorage.getItem("isRevealed");
+	if (!isRevealed) {
+		window.localStorage.setItem("isRevealed", "false");
+	}
+
+	const streakCounter = window.localStorage.getItem("streakCounter");
+	if (!streakCounter) {
+		window.localStorage.setItem("streakCounter", 0);
+	}
+
+	// const storedStats = window.localStorage.getItem("stats");
+	// if (!storedStats) {
+	// 	window.localStorage.setItem("stats", JSON.stringify([0, 0, 0, 0, 0]));
+	// }
 }
 
 function displayGuesses() {
@@ -759,6 +784,34 @@ function initStatsButton() {
 	closeModal.addEventListener("click", () => {
 		myStatsModal.close();
 	});
+
+	// const myGraphModal = document.getElementById("graph");
+
+	// const xArray = [0, 4, 1, 0, 8];
+	// const yArray = ["1", "3", "2", "4", "5"];
+
+	// const data = [
+	// 	{
+	// 		x: xArray,
+	// 		y: yArray,
+	// 		type: "bar",
+	// 		orientation: "h",
+	// 		// categoryorder: "array",
+	// 		marker: { color: "rgba(255,0,0,0.6)" },
+	// 	},
+	// ];
+
+	// const layout = {
+	// 	title: "Your Footle Stats",
+	// 	yaxis: {
+	// 		title: "Guesses",
+	// 	},
+	// 	xaxis: {
+	// 		title: "Values",
+	// 	},
+	// };
+
+	// Plotly.newPlot("graph", data, layout, { staticPlot: true });
 }
 
 function initClearButton() {
@@ -770,6 +823,7 @@ function handleClear() {
 	localStorage.removeItem("guesses");
 	localStorage.removeItem("guessesRemaining");
 	localStorage.removeItem("isSolved");
+	localStorage.removeItem("isRevealed");
 
 	initLocalStorage();
 	displayGuesses();
@@ -792,24 +846,44 @@ async function handleRefresh() {
 function showRevealedAnswer() {
 	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
+	const myGamesPlayed = Number(window.localStorage.getItem("gamesPlayed"));
+	const myGamesWon = Number(window.localStorage.getItem("gamesWon"));
+	const myIsRevealed = JSON.parse(window.localStorage.getItem("isRevealed"));
+	const myStreakCounter = Number(
+		window.localStorage.getItem("streakCounter")
+	);
 
 	const revealDiv = document.getElementById("answer-revealed-wrapper");
+	const revealDivText = document.getElementById("answer-reveal");
 
 	//if they solved it
 	if (myIsSolved === true) {
 		revealDiv.style.display = "block";
-		revealDiv.innerText = `Congrats! The answer is ${globalAnswerName}`;
+		revealDivText.innerText = `Congrats! The answer is ${globalAnswerName}`;
 
+		if (myIsRevealed === false) {
+			window.localStorage.setItem("isRevealed", "true");
+			window.localStorage.setItem("gamesPlayed", myGamesPlayed + 1);
+			window.localStorage.setItem("gamesWon", myGamesWon + 1);
+			window.localStorage.setItem("streakCounter", myStreakCounter + 1);
+		}
 		goBackToTop();
+		initStatistics();
+
 		return;
 	}
 
 	//if they've made 5 guesses
 	if (myGuessesRemaining == 0) {
 		revealDiv.style.display = "block";
-		revealDiv.innerText = `The answer is ${globalAnswerName}`;
-
+		revealDivText.innerText = `The answer is ${globalAnswerName}`;
+		if (myIsRevealed === false) {
+			window.localStorage.setItem("isRevealed", "true");
+			window.localStorage.setItem("gamesPlayed", myGamesPlayed + 1);
+			window.localStorage.setItem("streakCounter", 0);
+		}
 		goBackToTop();
+		initStatistics();
 
 		return;
 	}
@@ -844,6 +918,18 @@ function displayClubNames(clubNames) {
 	}
 }
 
+function initStatistics() {
+	const played = document.getElementsByClassName("played-num");
+	const won = document.getElementsByClassName("won-num");
+	const streak = document.getElementsByClassName("streak-num");
+
+	for (let i = 0; i < played.length; i++) {
+		played[i].innerHTML = window.localStorage.getItem("gamesPlayed");
+		won[i].innerHTML = window.localStorage.getItem("gamesWon");
+		streak[i].innerHTML = window.localStorage.getItem("streakCounter");
+	}
+}
+
 async function main() {
 	try {
 		initHelpButton();
@@ -851,6 +937,7 @@ async function main() {
 		initClearButton();
 		initLocalStorage();
 		initRefreshButton();
+		// initStatistics();
 
 		fullPlayerData = await initAllPlayerData();
 
@@ -866,10 +953,13 @@ async function main() {
 		await displayLogos(clubIDs);
 		displayClubNames(clubNames);
 
+		displayGuesses();
+
 		const mySubmitButton = document.getElementById("mySubmit");
 		mySubmitButton.addEventListener("click", handleSubmit);
 
 		showRevealedAnswer();
+		initStatistics();
 	} catch (error) {
 		console.error("Error in main function:", error);
 	}
