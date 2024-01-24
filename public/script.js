@@ -843,6 +843,46 @@ async function handleRefresh() {
 	window.location.reload();
 }
 
+function initCopyButton() {
+	const btn = document.getElementById("copy-button");
+	btn.addEventListener("click", () => {
+		var textarea = document.getElementById("share-text-area");
+		textarea.select();
+		textarea.setSelectionRange(0, 99999); // For mobile devices
+		navigator.clipboard.writeText(textarea.value);
+
+		// Change the button text and style to indicate copying
+		var copyButton = document.getElementById("copy-button");
+		copyButton.innerText = "Copied!";
+		copyButton.classList.add("copied");
+
+		// Reset the button text and style after a short delay
+		setTimeout(function () {
+			copyButton.innerText = "Copy";
+			copyButton.classList.remove("copied");
+		}, 2000);
+	});
+}
+
+function showCopyText(tmp) {
+	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
+	let outString = "";
+	const numCross = 5 - myGuessesRemaining - 1;
+	for (let i = 0; i < numCross; i++) {
+		outString += "❌";
+	}
+	outString += tmp;
+	for (let i = 0; i < myGuessesRemaining; i++) {
+		outString += "⬜";
+	}
+
+	const myTextArea = document.getElementById("share-text-area");
+	myTextArea.value = `Footle #123\n${outString}\nMyurl.com`;
+	initCopyButton();
+
+	console.log(outString);
+}
+
 function showRevealedAnswer() {
 	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
@@ -870,6 +910,8 @@ function showRevealedAnswer() {
 		goBackToTop();
 		initStatistics();
 
+		showCopyText("✅");
+
 		return;
 	}
 
@@ -884,6 +926,7 @@ function showRevealedAnswer() {
 		}
 		goBackToTop();
 		initStatistics();
+		showCopyText("❌");
 
 		return;
 	}
