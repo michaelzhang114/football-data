@@ -879,8 +879,6 @@ function showCopyText(tmp) {
 	const myTextArea = document.getElementById("share-text-area");
 	myTextArea.value = `Footle #123\n${outString}\nMyurl.com`;
 	initCopyButton();
-
-	console.log(outString);
 }
 
 function showRevealedAnswer() {
@@ -979,8 +977,34 @@ function initStatistics() {
 	}
 }
 
+function runAtSpecificTimeOfDay(hour, minutes, func) {
+	const twentyFourHours = 86400000;
+	const now = new Date();
+	let eta_ms =
+		new Date(
+			now.getFullYear(),
+			now.getMonth(),
+			now.getDate(),
+			hour,
+			minutes,
+			0,
+			0
+		).getTime() - now;
+	if (eta_ms < 0) {
+		eta_ms += twentyFourHours;
+	}
+	setTimeout(function () {
+		//run once
+		func();
+		// run every 24 hours from now on
+		setInterval(func, twentyFourHours);
+	}, eta_ms);
+}
+
 async function main() {
 	try {
+		// runs every day at 23:09
+		runAtSpecificTimeOfDay(23, 9, handleRefresh);
 		initHelpButton();
 		initStatsButton();
 		initClearButton();
