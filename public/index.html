@@ -6,6 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="normalize.css" type="text/css" />
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- This link will always fetch the latest version of Balloon.css -->
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/balloon-css/balloon.min.css"
+		/>
 
 		<link rel="stylesheet" href="style.css" type="text/css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,8 +29,8 @@
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="icon icon-tabler icon-tabler-info-circle"
-						width="36"
-						height="36"
+						width="32"
+						height="32"
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="#000000"
@@ -53,8 +58,8 @@
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="icon icon-tabler icon-tabler-chart-bar"
-						width="36"
-						height="36"
+						width="32"
+						height="32"
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="#000000"
@@ -83,8 +88,8 @@
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="icon icon-tabler icon-tabler-x"
-						width="36"
-						height="36"
+						width="32"
+						height="32"
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="#2c3e50"
@@ -133,8 +138,8 @@
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="icon icon-tabler icon-tabler-x"
-						width="36"
-						height="36"
+						width="32"
+						height="32"
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="#2c3e50"
@@ -245,6 +250,9 @@
 		<p>admin</p>
 		<div id="clear">
 			<button id="clear-btn">Clear</button>
+			<button aria-label="Whats up!" data-balloon-pos="up">
+				test tooltip
+			</button>
 		</div>
 		<div id="refresh">
 			<button id="refresh-btn">Refresh</button>

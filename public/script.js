@@ -951,13 +951,19 @@ function goBackToTop() {
 
 function displayClubNames(clubNames) {
 	const listItems = document.getElementById("career-path-wrapper").children;
+	const myLogos = document.getElementsByClassName("club-wrapper");
 
 	for (let j = 0; j < listItems.length; j++) {
-		const p = document.createElement("p");
-		const n = document.createTextNode(clubNames[j]);
-		p.appendChild(n);
-		const curr = listItems[j];
-		curr.appendChild(p);
+		const clubName = clubNames[j];
+		const logo = myLogos[j];
+		logo.setAttribute("aria-label", clubName);
+		logo.setAttribute("data-balloon-pos", "up");
+
+		// const p = document.createElement("p");
+		// const n = document.createTextNode();
+		// p.appendChild(n);
+		// const curr = listItems[j];
+		// curr.appendChild(p);
 	}
 }
 
