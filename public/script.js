@@ -1023,7 +1023,7 @@ async function main() {
 		const clubNames = answerClubsData.clubNames;
 		const period = answerClubsData.period;
 
-		await displayLogos(clubIDs);
+		displayLogos(clubIDs);
 		displayClubNames(clubNames);
 
 		displayGuesses();
