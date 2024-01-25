@@ -1009,9 +1009,9 @@ async function main() {
 		runAtSpecificTimeOfDay(21, 2, handleRefresh);
 		initHelpButton();
 		initStatsButton();
-		initClearButton();
+		// initClearButton();
 		initLocalStorage();
-		initRefreshButton();
+		// initRefreshButton();
 		// initStatistics();
 
 		fullPlayerData = await initAllPlayerData();
