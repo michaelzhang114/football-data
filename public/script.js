@@ -685,7 +685,25 @@ function displayGuesses() {
 	}
 }
 
-async function displayLogos(logos) {
+function displayClubNames(clubNames) {
+	const listItems = document.getElementById("career-path-wrapper").children;
+	const myLogos = document.getElementsByClassName("club-wrapper");
+
+	for (let j = 0; j < listItems.length; j++) {
+		const clubName = clubNames[j];
+		const logo = myLogos[j];
+		logo.setAttribute("aria-label", clubName);
+		logo.setAttribute("data-balloon-pos", "up");
+
+		// const p = document.createElement("p");
+		// const n = document.createTextNode();
+		// p.appendChild(n);
+		// const curr = listItems[j];
+		// curr.appendChild(p);
+	}
+}
+
+async function displayLogos(logos, clubNames) {
 	const baseUrl = `${BACKEND_DOMAIN}api/club-logos/`;
 	try {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
@@ -705,6 +723,8 @@ async function displayLogos(logos) {
 			const imageWrapper = document.createElement("div");
 			imageWrapper.classList.add("club-wrapper");
 			imageWrapper.append(imageElement);
+			imageWrapper.setAttribute("aria-label", clubNames[i]);
+			imageWrapper.setAttribute("data-balloon-pos", "up");
 
 			careerPathDiv.append(imageWrapper);
 		}
@@ -947,24 +967,6 @@ function goBackToTop() {
 	}, 15);
 }
 
-function displayClubNames(clubNames) {
-	const listItems = document.getElementById("career-path-wrapper").children;
-	const myLogos = document.getElementsByClassName("club-wrapper");
-
-	for (let j = 0; j < listItems.length; j++) {
-		const clubName = clubNames[j];
-		const logo = myLogos[j];
-		logo.setAttribute("aria-label", clubName);
-		logo.setAttribute("data-balloon-pos", "up");
-
-		// const p = document.createElement("p");
-		// const n = document.createTextNode();
-		// p.appendChild(n);
-		// const curr = listItems[j];
-		// curr.appendChild(p);
-	}
-}
-
 function initStatistics() {
 	const played = document.getElementsByClassName("played-num");
 	const won = document.getElementsByClassName("won-num");
@@ -1023,8 +1025,8 @@ async function main() {
 		const clubNames = answerClubsData.clubNames;
 		const period = answerClubsData.period;
 
-		displayLogos(clubIDs);
-		displayClubNames(clubNames);
+		displayLogos(clubIDs, clubNames);
+		// displayClubNames();
 
 		displayGuesses();
 
