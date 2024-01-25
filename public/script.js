@@ -1006,7 +1006,7 @@ function runAtSpecificTimeOfDay(hour, minutes, func) {
 async function main() {
 	try {
 		// runs every day at 23:09
-		runAtSpecificTimeOfDay(23, 9, handleRefresh);
+		runAtSpecificTimeOfDay(21, 2, handleRefresh);
 		initHelpButton();
 		initStatsButton();
 		initClearButton();
