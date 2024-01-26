@@ -18,10 +18,10 @@
 	--fw-regular: 400;
 	--fw-bold: 700;
 
-	--fs-smallest: 12px;
-	--fs-regular: 14px;
-	--fs-large: 18px;
-	--fs-larger: 24px;
+	--fs-smallest: 0.75rem;
+	--fs-regular: 0.875rem;
+	--fs-large: 1.125rem;
+	--fs-larger: 1.5rem;
 
 	--fadein: 0.4s;
 }
@@ -46,6 +46,10 @@ html {
 
 body {
 	margin: 0 0.625rem;
+}
+
+#puzzle-number-wrapper {
+	text-align: center;
 }
 
 #answer-revealed-wrapper {
@@ -193,7 +197,7 @@ body {
 	backdrop-filter: blur(15px);
 	/* padding: 38px;   */
 	/* filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); */
-	margin: 2rem 0.5rem;
+	margin: 0.3rem 0.5rem;
 }
 
 .club-wrapper {

@@ -2,6 +2,7 @@ import { autocomplete } from "./autocomplete.js";
 
 // const BACKEND_DOMAIN = "http://localhost:5050/";
 const BACKEND_DOMAIN = "/";
+const DOMAIN = "www.footlegame.com";
 
 var globalAnswer;
 var globalAnswerName;
@@ -727,6 +728,10 @@ function displayClubNames(clubNames) {
 }
 
 async function displayLogos(logos, clubNames) {
+	const puzzleNumDiv = document.getElementById("puzzle-number-wrapper");
+	const puzzNum = window.localStorage.getItem("puzzleNumber");
+	puzzleNumDiv.innerHTML = `Footle #${puzzNum}`;
+
 	const baseUrl = `${BACKEND_DOMAIN}api/club-logos/`;
 	try {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
@@ -925,8 +930,9 @@ function showCopyText(tmp) {
 		outString += "⬜";
 	}
 
+	const puzzleNumber = window.localStorage.getItem("puzzleNumber");
 	const myTextArea = document.getElementById("share-text-area");
-	myTextArea.value = `Footle #123\n${outString}\nMyurl.com`;
+	myTextArea.value = `Footle #${puzzleNumber}\n${outString}\n${DOMAIN}`;
 	initCopyButton();
 }
 
@@ -1006,30 +1012,6 @@ function initStatistics() {
 		won[i].innerHTML = window.localStorage.getItem("gamesWon");
 		streak[i].innerHTML = window.localStorage.getItem("streakCounter");
 	}
-}
-
-function runAtSpecificTimeOfDay(hour, minutes, func) {
-	const twentyFourHours = 86400000;
-	const now = new Date();
-	let eta_ms =
-		new Date(
-			now.getFullYear(),
-			now.getMonth(),
-			now.getDate(),
-			hour,
-			minutes,
-			0,
-			0
-		).getTime() - now;
-	if (eta_ms < 0) {
-		eta_ms += twentyFourHours;
-	}
-	setTimeout(function () {
-		//run once
-		func();
-		// run every 24 hours from now on
-		setInterval(func, twentyFourHours);
-	}, eta_ms);
 }
 
 function runEveryXmin(min) {
