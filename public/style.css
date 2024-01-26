@@ -22,6 +22,8 @@
 	--fs-regular: 14px;
 	--fs-large: 18px;
 	--fs-larger: 24px;
+
+	--fadein: 0.4s;
 }
 
 * {
@@ -79,6 +81,10 @@ body {
 	box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
 	margin-top: 1rem;
 	margin-inline: auto;
+	animation: fadein var(--fadein);
+	-moz-animation: fadein var(--fadein); /* Firefox */
+	-webkit-animation: fadein var(--fadein); /* Safari and Chrome */
+	-o-animation: fadein var(--fadein); /* Opera */
 }
 
 .modal::backdrop {
@@ -295,4 +301,40 @@ input[type="submit"] {
 
 footer {
 	margin-top: 18.75rem;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-moz-keyframes fadein {
+	/* Firefox */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fadein {
+	/* Safari and Chrome */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-o-keyframes fadein {
+	/* Opera */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

@@ -621,7 +621,7 @@ function handleSubmit() {
 	showRevealedAnswer();
 }
 
-function initLocalStorage() {
+async function initLocalStorage() {
 	const storedGuessesRemaining =
 		window.localStorage.getItem("guessesRemaining");
 	if (!storedGuessesRemaining) {
@@ -658,10 +658,33 @@ function initLocalStorage() {
 		window.localStorage.setItem("streakCounter", 0);
 	}
 
+	const currPuzzleNum = await fetchPuzzleNumber();
+	const puzzleNumber = window.localStorage.getItem("puzzleNumber");
+	if (!puzzleNumber) {
+		console.log("new puzzle num");
+		window.localStorage.setItem("puzzleNumber", currPuzzleNum);
+	}
+	console.log("init");
+
 	// const storedStats = window.localStorage.getItem("stats");
 	// if (!storedStats) {
 	// 	window.localStorage.setItem("stats", JSON.stringify([0, 0, 0, 0, 0]));
 	// }
+}
+
+async function fetchPuzzleNumber() {
+	const baseUrl = `${BACKEND_DOMAIN}api/puzzle-number`;
+	let puzzleNum;
+	try {
+		const response = await fetch(baseUrl);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		puzzleNum = await response.json();
+		return puzzleNum;
+	} catch (error) {
+		console.error("Error fetching puzzle num:", error.message);
+	}
 }
 
 function displayGuesses() {
@@ -749,7 +772,7 @@ async function fetchAnswerClubsDetails() {
 	}
 }
 
-async function initAnswer() {
+async function fetchAnswer() {
 	const myUrl = `${BACKEND_DOMAIN}api/answer`;
 	try {
 		const response = await fetch(myUrl);
@@ -757,11 +780,19 @@ async function initAnswer() {
 			throw new Error(`HTTP error! Status: ${response.status}`);
 		}
 		const responseJSON = await response.json();
-		globalAnswer = responseJSON.answerID;
-		globalAnswerName = responseJSON.name;
+		return {
+			answerID: responseJSON.answerID,
+			answerName: responseJSON.name,
+		};
 	} catch (error) {
 		console.error("Error fetching answer:", error.message);
 	}
+}
+
+async function initAnswer() {
+	const { answerID, answerName } = await fetchAnswer();
+	globalAnswer = answerID;
+	globalAnswerName = answerName;
 }
 
 async function initAllPlayerData() {
@@ -844,6 +875,7 @@ function handleClear() {
 	localStorage.removeItem("guessesRemaining");
 	localStorage.removeItem("isSolved");
 	localStorage.removeItem("isRevealed");
+	localStorage.removeItem("puzzleNumber");
 
 	initLocalStorage();
 	displayGuesses();
@@ -857,9 +889,6 @@ function initRefreshButton() {
 
 async function handleRefresh() {
 	handleClear();
-	const myUrl = `${BACKEND_DOMAIN}api/refresh`;
-	// TODO call endpoint to change the answer id & refresh the page
-	const response = await fetch(myUrl);
 	window.location.reload();
 }
 
@@ -1003,10 +1032,22 @@ function runAtSpecificTimeOfDay(hour, minutes, func) {
 	}, eta_ms);
 }
 
+function runEveryXmin(min) {
+	setInterval(async () => {
+		const currPuzzleNum = await fetchPuzzleNumber();
+		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
+		if (currPuzzleNum != puzzleNumber) {
+			handleRefresh();
+			initAnswer();
+			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
+		}
+	}, min * 60 * 1000); // 10000 milliseconds = 10 seconds
+}
+
 async function main() {
 	try {
-		// runs every day at 23:09
-		runAtSpecificTimeOfDay(21, 2, handleRefresh);
+		await initAnswer();
+
 		initHelpButton();
 		initStatsButton();
 		// initClearButton();
@@ -1015,8 +1056,6 @@ async function main() {
 		// initStatistics();
 
 		fullPlayerData = await initAllPlayerData();
-
-		await initAnswer();
 
 		autocomplete(document.getElementById("myInput"), ALL_PLAYERS);
 
@@ -1040,4 +1079,5 @@ async function main() {
 	}
 }
 
+runEveryXmin(1);
 main();
