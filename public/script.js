@@ -1050,9 +1050,9 @@ async function main() {
 
 		initHelpButton();
 		initStatsButton();
-		initClearButton();
+		// initClearButton();
 		initLocalStorage();
-		initRefreshButton();
+		// initRefreshButton();
 		// initStatistics();
 
 		fullPlayerData = await initAllPlayerData();
