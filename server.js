@@ -63,7 +63,7 @@ const answerIdCandidates = [
 function getDaysPast() {
 	// Set the target date (January is 0-based month in JavaScript)
 	// jan 23 2024 9PM
-	const targetDate = new Date(2024, 0, 23, 21, 0, 0);
+	const targetDate = new Date(2024, 0, 26, 0, 0, 0);
 
 	// Get the current date
 	const currentDate = new Date();
@@ -74,18 +74,23 @@ function getDaysPast() {
 	// Convert milliseconds to days
 	const daysPast = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
+	const oneMinuteIntervals = Math.floor(timeDifference / (1 * 60 * 1000));
+
+	const resultInRange = (oneMinuteIntervals % 400) + 1;
+
+	return resultInRange;
+
 	return daysPast;
 }
 
-function initAnswerID() {
-	if (answerIdCandidates.length === 0) {
+function initAnswerID(candidatesArr) {
+	if (candidatesArr.length === 0) {
 		return null; // or any default value you prefer
 	}
 
 	const currIndex = getDaysPast();
 	console.log(`currentIndex: ${currIndex}`);
-
-	return answerIdCandidates[currIndex];
+	return candidatesArr[currIndex];
 }
 
 async function fetchCareerPath(playerID) {
@@ -193,10 +198,15 @@ app.get("/api/club-logos/:id", async (req, res) => {
 	}
 });
 
-app.get("/api/refresh", (req, res) => {
-	tmp_answerID = initAnswerID(answerIdCandidates);
-	console.log(`Refresh. Answer ID is now: ${tmp_answerID}`);
-	res.json(tmp_answerID);
+// app.get("/api/refresh", (req, res) => {
+// 	tmp_answerID = initAnswerID(answerIdCandidates);
+// 	console.log(`Refresh. Answer ID is now: ${tmp_answerID}`);
+// 	res.json(tmp_answerID);
+// });
+
+app.get("/api/puzzle-number", (req, res) => {
+	const num = getDaysPast();
+	res.json(num);
 });
 
 app.get("/api/all-players-info", async (req, res) => {
@@ -214,6 +224,8 @@ app.get("/api/all-players-info", async (req, res) => {
 });
 
 app.get("/api/answer", async (req, res) => {
+	// Retrieves the latest answer
+	tmp_answerID = initAnswerID(answerIdCandidates);
 	try {
 		const data = await fs.readFile(
 			`${DIRECTORY}prem-players.json`,
