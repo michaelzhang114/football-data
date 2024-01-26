@@ -75,7 +75,7 @@ function getDaysPast() {
 
 	const oneMinuteIntervals = Math.floor(timeDifference / (1 * 60 * 1000));
 
-	const resultInRange = (oneMinuteIntervals % 400) + 1;
+	const resultInRange = (oneMinuteIntervals % 350) + 1;
 
 	return resultInRange;
 
