@@ -703,7 +703,18 @@ function displayGuesses() {
 	for (var i = 0; i < myGuesses.length; i++) {
 		const myGuessDiv = document.createElement("div");
 		myGuessDiv.setAttribute("class", "guess");
-		myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].output}`;
+
+		const outputDiv = document.createElement("div");
+		outputDiv.setAttribute("class", "guess-output");
+		myGuessDiv.append(outputDiv);
+		outputDiv.textContent = `${myGuesses[i].output}`;
+
+		const guessNameDiv = document.createElement("div");
+		guessNameDiv.setAttribute("class", "guess-name");
+		myGuessDiv.append(guessNameDiv);
+		guessNameDiv.textContent = `${myGuesses[i].name}`;
+
+		// myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].output}`;
 		// console.log(myGuesses[i].id);
 		submissionsWrapper.append(myGuessDiv);
 	}
@@ -745,6 +756,7 @@ async function displayLogos(logos, clubNames) {
 				const myUrl = baseUrl + `${logos[i]}`;
 				const response = await fetch(myUrl);
 				if (!response.ok) {
+					imageElement.src = "./img/-1.png";
 					throw new Error(`HTTP error! Status: ${response.status}`);
 				}
 				const responseBlob = await response.blob();

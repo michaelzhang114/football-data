@@ -173,21 +173,6 @@ app.get("/api/club-ids", async (req, res) => {
 
 app.get("/api/club-logos/:id", async (req, res) => {
 	const logoID = req.params.id;
-
-	// if (logoID == -1) {
-	// 	const localImgPath = "./assets/club-logos/-1.jpg";
-	// 	fs.readFile(localImgPath, (err, data) => {
-	// 		if (err) {
-	// 			console.error("Error reading image file:", err);
-	// 			res.status(500).send("Internal Server Error");
-	// 		} else {
-	// 			res.contentType("image/png");
-	// 			res.send(data);
-	// 		}
-	// 	});
-	// 	return;
-	// }
-
 	const imgUrl = `${imagesUrl}${logoID}.png`;
 	console.log(imgUrl);
 	try {
