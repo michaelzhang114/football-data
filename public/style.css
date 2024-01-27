@@ -123,6 +123,10 @@ body {
 	justify-items: center;
 }
 
+.stats-panel p {
+	color: var(--clr-label);
+}
+
 .played {
 	grid-area: 1 / 1 / 2 / 2;
 }
@@ -146,6 +150,8 @@ body {
 .played-num,
 .won-num,
 .streak-num {
+	font-size: var(--fs-larger);
+	font-weight: var(--fw-bold);
 }
 
 #share-text-wrapper {

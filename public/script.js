@@ -737,15 +737,21 @@ async function displayLogos(logos, clubNames) {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
 
 		for (var i = 0; i < logos.length; i++) {
-			const myUrl = baseUrl + `${logos[i]}`;
-			const response = await fetch(myUrl);
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-			const responseBlob = await response.blob();
-			const imgURL = URL.createObjectURL(responseBlob);
 			const imageElement = document.createElement("img");
-			imageElement.src = imgURL;
+
+			if (logos[i] == -1) {
+				imageElement.src = "./img/-1.png";
+			} else {
+				const myUrl = baseUrl + `${logos[i]}`;
+				const response = await fetch(myUrl);
+				if (!response.ok) {
+					throw new Error(`HTTP error! Status: ${response.status}`);
+				}
+				const responseBlob = await response.blob();
+				const imgURL = URL.createObjectURL(responseBlob);
+				imageElement.src = imgURL;
+			}
+
 			imageElement.setAttribute("class", "club-logo");
 
 			const imageWrapper = document.createElement("div");

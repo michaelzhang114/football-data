@@ -110,16 +110,6 @@ async function fetchCareerPath(playerID) {
 	}
 }
 
-async function getAllLogosForPlayer(playerID) {
-	try {
-		const myCareerPath = await fetchCareerPath(playerID);
-		const logoIDs = myCareerPath.toReversed().map((entry) => entry.teamId);
-		console.log(logoIDs);
-	} catch (error) {
-		console.error("Error fetching logo:", error.message);
-	}
-}
-
 tmp_answerID = initAnswerID(answerIdCandidates);
 console.log(`Answer ID is: ${tmp_answerID}`);
 
@@ -184,19 +174,19 @@ app.get("/api/club-ids", async (req, res) => {
 app.get("/api/club-logos/:id", async (req, res) => {
 	const logoID = req.params.id;
 
-	if (logoID == -1) {
-		const localImgPath = "./assets/club-logos/-1.jpg";
-		fs.readFile(localImgPath, (err, data) => {
-			if (err) {
-				console.error("Error reading image file:", err);
-				res.status(500).send("Internal Server Error");
-			} else {
-				res.contentType("image/png");
-				res.send(data);
-			}
-		});
-		return;
-	}
+	// if (logoID == -1) {
+	// 	const localImgPath = "./assets/club-logos/-1.jpg";
+	// 	fs.readFile(localImgPath, (err, data) => {
+	// 		if (err) {
+	// 			console.error("Error reading image file:", err);
+	// 			res.status(500).send("Internal Server Error");
+	// 		} else {
+	// 			res.contentType("image/png");
+	// 			res.send(data);
+	// 		}
+	// 	});
+	// 	return;
+	// }
 
 	const imgUrl = `${imagesUrl}${logoID}.png`;
 	console.log(imgUrl);
