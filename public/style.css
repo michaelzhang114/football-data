@@ -352,38 +352,54 @@ input[type="submit"] {
 	margin-top: 18.75rem;
 } */
 
+.club-wrapper img {
+	/* opacity: 0; */
+}
+
+.fade-in {
+	/* opacity: 0; */
+	animation: fadein 3s ease-in-out;
+	-webkit-animation: fadein 3s;
+	-moz-animation: fadein 3s;
+	-o-animation: fadein 3s;
+	-ms-animation: fadein 3s;
+	/* opacity: 0;
+	transition: opacity 1s ease-in-out; */
+}
+
 @keyframes fadein {
-	from {
+	0% {
 		opacity: 0;
 	}
-	to {
+	100% {
 		opacity: 1;
 	}
 }
+
 @-moz-keyframes fadein {
 	/* Firefox */
-	from {
+	0% {
 		opacity: 0;
 	}
-	to {
+	100% {
 		opacity: 1;
 	}
 }
 @-webkit-keyframes fadein {
 	/* Safari and Chrome */
-	from {
+	0% {
 		opacity: 0;
 	}
-	to {
+	100% {
 		opacity: 1;
 	}
 }
 @-o-keyframes fadein {
 	/* Opera */
-	from {
+	0% {
 		opacity: 0;
 	}
-	to {
+	100% {
 		opacity: 1;
 	}
 }
