@@ -1,6 +1,7 @@
 const axios = require("axios"); // Use require instead of import
 const express = require("express"); //Import the express dependency
 const fs = require("fs").promises;
+const sharp = require("sharp");
 
 const app = express(); //Instantiate an express app, the main work horse of this server
 const port = 5050; //Save the port number where your server will be listening
@@ -179,8 +180,14 @@ app.get("/api/club-logos/:id", async (req, res) => {
 		const imageResponse = await axios.get(imgUrl, {
 			responseType: "arraybuffer",
 		});
+
+		const compressedImageBuffer = await sharp(imageResponse.data)
+			.png({ compressionLevel: 7 }) //0 is least compressed, 9 is most compressed
+			.toBuffer();
+
 		res.setHeader("Content-Type", "image/png"); // Adjust based on the image type
-		res.send(imageResponse.data);
+		res.send(compressedImageBuffer);
+		// res.send(imageResponse.data);
 	} catch (error) {
 		console.error("Error fetching image:", error);
 		res.status(500).json({ error: "Internal Server Error" });
