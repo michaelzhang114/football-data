@@ -46,6 +46,7 @@ html {
 }
 
 body {
+	height: 120vh;
 }
 
 main {
@@ -347,9 +348,9 @@ input[type="submit"] {
 	margin-inline: auto;
 }
 
-footer {
+/* footer {
 	margin-top: 18.75rem;
-}
+} */
 
 @keyframes fadein {
 	from {
