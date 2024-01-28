@@ -925,12 +925,31 @@ function initCopyButton() {
 
 		// Change the button text and style to indicate copying
 		var copyButton = document.getElementById("copy-button");
-		copyButton.innerText = "Copied!";
+		var mySvg = copyButton.children[0];
+
+		const copiedSVG = `
+		<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+			<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+			<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+			<path d="M11 14l2 2l4 -4" />
+		</svg>`;
+
+		mySvg.innerHTML = copiedSVG;
+
+		// copyButton.innerText = "Copied!";
 		copyButton.classList.add("copied");
 
 		// Reset the button text and style after a short delay
 		setTimeout(function () {
-			copyButton.innerText = "Copy";
+			const copySVG = `
+			<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+				<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+				<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+			</svg>
+			`;
+			mySvg.innerHTML = copySVG;
 			copyButton.classList.remove("copied");
 		}, 2000);
 	});
@@ -970,7 +989,7 @@ function showRevealedAnswer() {
 	//if they solved it
 	if (myIsSolved === true) {
 		revealDiv.style.display = "block";
-		revealDivText.innerText = `Congrats! The answer is ${globalAnswerName}`;
+		revealDivText.innerText = `Congrats! The answer was ${globalAnswerName}`;
 
 		if (myIsRevealed === false) {
 			window.localStorage.setItem("isRevealed", "true");
@@ -989,7 +1008,7 @@ function showRevealedAnswer() {
 	//if they've made 5 guesses
 	if (myGuessesRemaining == 0) {
 		revealDiv.style.display = "block";
-		revealDivText.innerText = `The answer is ${globalAnswerName}`;
+		revealDivText.innerText = `The answer was ${globalAnswerName}`;
 		if (myIsRevealed === false) {
 			window.localStorage.setItem("isRevealed", "true");
 			window.localStorage.setItem("gamesPlayed", myGamesPlayed + 1);
