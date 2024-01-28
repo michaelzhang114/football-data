@@ -63,7 +63,7 @@ const answerIdCandidates = [
 function getDaysPast() {
 	// Set the target date (January is 0-based month in JavaScript)
 	// jan 23 2024 9PM
-	const targetDate = new Date(2024, 0, 27, 0, 0, 0);
+	const targetDate = new Date(2024, 0, 27, 1, 0, 0);
 
 	// Get the current date
 	const currentDate = new Date();

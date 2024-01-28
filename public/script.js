@@ -755,7 +755,8 @@ async function displayLogos(logos, clubNames) {
 			const imageWrapper = document.createElement("div");
 			imageWrapper.classList.add("club-wrapper");
 			imageWrapper.append(imageElement);
-			imageWrapper.classList.add("fade-in");
+			imageWrapper.style.opacity = "0";
+			// imageWrapper.classList.add("fade-in");
 
 			if (logos[i] == -1) {
 				imageElement.src = "./img/-1.png";
@@ -779,27 +780,29 @@ async function displayLogos(logos, clubNames) {
 			careerPathDiv.append(imageWrapper);
 		}
 
-		// const clubLogos = document.querySelectorAll(".club-wrapper");
+		const clubLogos = document.querySelectorAll(".club-wrapper");
 
-		// for (var i = 0; i < clubLogos.length; i++) {
-		// 	clubLogos[i].classList.add("fade-in");
-		// }
+		for (var i = 0; i < clubLogos.length; i++) {
+			clubLogos[i].classList.add("fade-in");
+			clubLogos[i].style.opacity = "1";
+		}
 
 		// document.addEventListener("DOMContentLoaded", function () {
 		// 	const clubLogos = document.querySelectorAll(".club-wrapper");
 
 		// 	for (var i = 0; i < clubLogos.length; i++) {
-		// 		clubLogos[i].classList.add("fade-in");
-		// 		// logo.addEventListener("load", () => {
-		// 		// 	logo.classList.add("fade-in");
-		// 		// });
-		// 		// logo.addEventListener("error", function () {
-		// 		// 	alert("error loading image");
-		// 		// });
+		// 		// clubLogos[i].classList.add("fade-in");
+		// 		const logo = clubLogos[i];
+		// 		logo.addEventListener("load", () => {
+		// 			logo.classList.add("fade-in");
+		// 		});
+		// 		logo.addEventListener("error", function () {
+		// 			alert("error loading image");
+		// 		});
 
-		// 		// if (logo.complete) {
-		// 		// 	logo.classList.add("fade-in");
-		// 		// }
+		// 		if (logo.complete) {
+		// 			logo.classList.add("fade-in");
+		// 		}
 		// 	}
 		// });
 
