@@ -746,9 +746,26 @@ async function displayLogos(logos, clubNames) {
 	const baseUrl = `${BACKEND_DOMAIN}api/club-logos/`;
 	try {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
-
 		for (var i = 0; i < logos.length; i++) {
 			const imageElement = document.createElement("img");
+			imageElement.setAttribute("opacity", 0);
+			imageElement.setAttribute("height", "3.75rem");
+			imageElement.setAttribute("width", "3.75rem");
+
+			imageElement.addEventListener("load", () => {
+				imageElement.classList.add("fade-in");
+			});
+			imageElement.addEventListener("error", function () {
+				alert("error loading image");
+			});
+
+			if (imageElement.complete) {
+				imageElement.classList.add("fade-in");
+			}
+
+			const imageWrapper = document.createElement("div");
+			imageWrapper.classList.add("club-wrapper");
+			imageWrapper.append(imageElement);
 
 			if (logos[i] == -1) {
 				imageElement.src = "./img/-1.png";
@@ -766,9 +783,6 @@ async function displayLogos(logos, clubNames) {
 
 			imageElement.setAttribute("class", "club-logo");
 
-			const imageWrapper = document.createElement("div");
-			imageWrapper.classList.add("club-wrapper");
-			imageWrapper.append(imageElement);
 			imageWrapper.setAttribute("aria-label", clubNames[i]);
 			imageWrapper.setAttribute("data-balloon-pos", "up");
 
