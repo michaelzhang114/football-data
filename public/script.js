@@ -1096,6 +1096,14 @@ function runEveryXmin(min) {
 
 async function main() {
 	try {
+		const currPuzzleNum = await fetchPuzzleNumber();
+		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
+		if (!puzzleNumber || currPuzzleNum != puzzleNumber) {
+			handleRefresh();
+			initAnswer();
+			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
+		}
+
 		await initAnswer();
 
 		initHelpButton();
