@@ -1055,7 +1055,7 @@ function runEveryXmin(min) {
 	setInterval(async () => {
 		const currPuzzleNum = await fetchPuzzleNumber();
 		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
-		if (currPuzzleNum != puzzleNumber) {
+		if (!puzzleNumber || currPuzzleNum != puzzleNumber) {
 			handleRefresh();
 			initAnswer();
 			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
