@@ -21,20 +21,6 @@
 		"role": "goalkeepers"
 	},
 	{
-		"id": 1068920,
-		"name": "Vitezslav Jaros",
-		"ccode": "CZE",
-		"cname": "Czechia",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 1117148,
-		"name": "Marcelo",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "goalkeepers"
-	},
-	{
 		"id": 171698,
 		"name": "Joel Matip",
 		"ccode": "CMR",
@@ -77,6 +63,7 @@
 		"name": "Trent Alexander-Arnold",
 		"ccode": "ENG",
 		"cname": "England",
+		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -98,13 +85,6 @@
 		"name": "Conor Bradley",
 		"ccode": "NIR",
 		"cname": "Northern Ireland",
-		"role": "defenders"
-	},
-	{
-		"id": 1249634,
-		"name": "Luke Chambers",
-		"ccode": "ENG",
-		"cname": "England",
 		"role": "defenders"
 	},
 	{
@@ -178,6 +158,7 @@
 		"name": "Mohamed Salah",
 		"ccode": "EGY",
 		"cname": "Egypt",
+		"isInjured": true,
 		"role": "attackers"
 	},
 	{
@@ -228,6 +209,392 @@
 		"ccode": "SCO",
 		"cname": "Scotland",
 		"isInjured": true,
+		"role": "attackers"
+	},
+	{
+		"id": 36373,
+		"name": "Scott Carson",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 276729,
+		"name": "Stefan Ortega",
+		"ccode": "GER",
+		"cname": "Germany",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 363364,
+		"name": "Ederson Moraes",
+		"ccode": "BRA",
+		"cname": "Brazil",
+		"isInjured": true,
+		"role": "goalkeepers"
+	},
+	{
+		"id": 533127,
+		"name": "Zack Steffen",
+		"ccode": "USA",
+		"cname": "USA",
+		"isInjured": true,
+		"role": "goalkeepers"
+	},
+	{
+		"id": 159833,
+		"name": "Kyle Walker",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 417068,
+		"name": "Nathan Aké",
+		"ccode": "NED",
+		"cname": "Netherlands",
+		"role": "defenders"
+	},
+	{
+		"id": 521318,
+		"name": "Manuel Akanji",
+		"ccode": "SUI",
+		"cname": "Switzerland",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 614006,
+		"name": "Ruben Dias",
+		"ccode": "POR",
+		"cname": "Portugal",
+		"role": "defenders"
+	},
+	{
+		"id": 1070712,
+		"name": "Josko Gvardiol",
+		"ccode": "CRO",
+		"cname": "Croatia",
+		"role": "defenders"
+	},
+	{
+		"id": 1414691,
+		"name": "Max Alleyne",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 169200,
+		"name": "Kevin De Bruyne",
+		"ccode": "BEL",
+		"cname": "Belgium",
+		"role": "midfielders"
+	},
+	{
+		"id": 239219,
+		"name": "Mateo Kovacic",
+		"ccode": "CRO",
+		"cname": "Croatia",
+		"role": "midfielders"
+	},
+	{
+		"id": 263653,
+		"name": "John Stones",
+		"ccode": "ENG",
+		"cname": "England",
+		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 488139,
+		"name": "Bernardo Silva",
+		"ccode": "POR",
+		"cname": "Portugal",
+		"role": "midfielders"
+	},
+	{
+		"id": 609755,
+		"name": "Kalvin Phillips",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 675088,
+		"name": "Rodri",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"role": "midfielders"
+	},
+	{
+		"id": 955529,
+		"name": "Matheus Nunes",
+		"ccode": "POR",
+		"cname": "Portugal",
+		"role": "midfielders"
+	},
+	{
+		"id": 974753,
+		"name": "Julián Álvarez",
+		"ccode": "ARG",
+		"cname": "Argentina",
+		"role": "midfielders"
+	},
+	{
+		"id": 1288450,
+		"name": "Rico Lewis",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 1333449,
+		"name": "Mahamadou Susoho",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"role": "midfielders"
+	},
+	{
+		"id": 312765,
+		"name": "Jack Grealish",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 737066,
+		"name": "Erling Haaland",
+		"ccode": "NOR",
+		"cname": "Norway",
+		"isInjured": true,
+		"role": "attackers"
+	},
+	{
+		"id": 815006,
+		"name": "Phil Foden",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 844477,
+		"name": "Sergio Gomez",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"role": "attackers"
+	},
+	{
+		"id": 942368,
+		"name": "Jérémy Doku",
+		"ccode": "BEL",
+		"cname": "Belgium",
+		"role": "attackers"
+	},
+	{
+		"id": 1113790,
+		"name": "Oscar Bobb",
+		"ccode": "NOR",
+		"cname": "Norway",
+		"role": "attackers"
+	},
+	{
+		"id": 1207956,
+		"name": "Micah Hamilton",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 562727,
+		"name": "David Raya",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 746395,
+		"name": "Aaron Ramsdale",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 982692,
+		"name": "Karl Hein",
+		"ccode": "EST",
+		"cname": "Estonia",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 1013046,
+		"name": "James Hillson",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 160627,
+		"name": "Cédric Soares",
+		"ccode": "POR",
+		"cname": "Portugal",
+		"role": "defenders"
+	},
+	{
+		"id": 623621,
+		"name": "Oleksandr Zinchenko",
+		"ccode": "UKR",
+		"cname": "Ukraine",
+		"role": "defenders"
+	},
+	{
+		"id": 664444,
+		"name": "Takehiro Tomiyasu",
+		"ccode": "JPN",
+		"cname": "Japan",
+		"role": "defenders"
+	},
+	{
+		"id": 776151,
+		"name": "Ben White",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 795179,
+		"name": "Gabriel",
+		"ccode": "BRA",
+		"cname": "Brazil",
+		"role": "defenders"
+	},
+	{
+		"id": 942381,
+		"name": "Jurrien Timber",
+		"ccode": "NED",
+		"cname": "Netherlands",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 955406,
+		"name": "William Saliba",
+		"ccode": "FRA",
+		"cname": "France",
+		"role": "defenders"
+	},
+	{
+		"id": 1021834,
+		"name": "Jakub Kiwior",
+		"ccode": "POL",
+		"cname": "Poland",
+		"role": "defenders"
+	},
+	{
+		"id": 1199709,
+		"name": "Lino Sousa",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 282775,
+		"name": "Jorginho",
+		"ccode": "ITA",
+		"cname": "Italy",
+		"role": "midfielders"
+	},
+	{
+		"id": 339992,
+		"name": "Mohamed Elneny",
+		"ccode": "EGY",
+		"cname": "Egypt",
+		"role": "midfielders"
+	},
+	{
+		"id": 434325,
+		"name": "Thomas Partey",
+		"ccode": "GHA",
+		"cname": "Ghana",
+		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 534670,
+		"name": "Martin Ødegaard",
+		"ccode": "NOR",
+		"cname": "Norway",
+		"role": "midfielders"
+	},
+	{
+		"id": 654096,
+		"name": "Declan Rice",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 749736,
+		"name": "Kai Havertz",
+		"ccode": "GER",
+		"cname": "Germany",
+		"role": "midfielders"
+	},
+	{
+		"id": 889534,
+		"name": "Emile Smith Rowe",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 1025462,
+		"name": "Fabio Vieira",
+		"ccode": "POR",
+		"cname": "Portugal",
+		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 318615,
+		"name": "Leandro Trossard",
+		"ccode": "BEL",
+		"cname": "Belgium",
+		"role": "attackers"
+	},
+	{
+		"id": 576165,
+		"name": "Gabriel Jesus",
+		"ccode": "BRA",
+		"cname": "Brazil",
+		"role": "attackers"
+	},
+	{
+		"id": 748382,
+		"name": "Reiss Nelson",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 860920,
+		"name": "Edward Nketiah",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 961995,
+		"name": "Bukayo Saka",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 1021586,
+		"name": "Gabriel Martinelli",
+		"ccode": "BRA",
+		"cname": "Brazil",
 		"role": "attackers"
 	},
 	{
@@ -336,7 +703,6 @@
 		"name": "Youri Tielemans",
 		"ccode": "BEL",
 		"cname": "Belgium",
-		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -404,392 +770,6 @@
 		"role": "attackers"
 	},
 	{
-		"id": 36373,
-		"name": "Scott Carson",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 276729,
-		"name": "Stefan Ortega",
-		"ccode": "GER",
-		"cname": "Germany",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 363364,
-		"name": "Ederson Moraes",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 533127,
-		"name": "Zack Steffen",
-		"ccode": "USA",
-		"cname": "USA",
-		"isInjured": true,
-		"role": "goalkeepers"
-	},
-	{
-		"id": 159833,
-		"name": "Kyle Walker",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 263653,
-		"name": "John Stones",
-		"ccode": "ENG",
-		"cname": "England",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 417068,
-		"name": "Nathan Aké",
-		"ccode": "NED",
-		"cname": "Netherlands",
-		"role": "defenders"
-	},
-	{
-		"id": 521318,
-		"name": "Manuel Akanji",
-		"ccode": "SUI",
-		"cname": "Switzerland",
-		"role": "defenders"
-	},
-	{
-		"id": 614006,
-		"name": "Ruben Dias",
-		"ccode": "POR",
-		"cname": "Portugal",
-		"role": "defenders"
-	},
-	{
-		"id": 844477,
-		"name": "Sergio Gomez",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"role": "defenders"
-	},
-	{
-		"id": 1070712,
-		"name": "Josko Gvardiol",
-		"ccode": "CRO",
-		"cname": "Croatia",
-		"role": "defenders"
-	},
-	{
-		"id": 1414691,
-		"name": "Max Alleyne",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 169200,
-		"name": "Kevin De Bruyne",
-		"ccode": "BEL",
-		"cname": "Belgium",
-		"role": "midfielders"
-	},
-	{
-		"id": 239219,
-		"name": "Mateo Kovacic",
-		"ccode": "CRO",
-		"cname": "Croatia",
-		"role": "midfielders"
-	},
-	{
-		"id": 488139,
-		"name": "Bernardo Silva",
-		"ccode": "POR",
-		"cname": "Portugal",
-		"role": "midfielders"
-	},
-	{
-		"id": 609755,
-		"name": "Kalvin Phillips",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 675088,
-		"name": "Rodri",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"role": "midfielders"
-	},
-	{
-		"id": 955529,
-		"name": "Matheus Nunes",
-		"ccode": "POR",
-		"cname": "Portugal",
-		"role": "midfielders"
-	},
-	{
-		"id": 974753,
-		"name": "Julián Álvarez",
-		"ccode": "ARG",
-		"cname": "Argentina",
-		"role": "midfielders"
-	},
-	{
-		"id": 1288450,
-		"name": "Rico Lewis",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 1333449,
-		"name": "Mahamadou Susoho",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"role": "midfielders"
-	},
-	{
-		"id": 312765,
-		"name": "Jack Grealish",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 737066,
-		"name": "Erling Haaland",
-		"ccode": "NOR",
-		"cname": "Norway",
-		"isInjured": true,
-		"role": "attackers"
-	},
-	{
-		"id": 815006,
-		"name": "Phil Foden",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 942368,
-		"name": "Jérémy Doku",
-		"ccode": "BEL",
-		"cname": "Belgium",
-		"role": "attackers"
-	},
-	{
-		"id": 1113790,
-		"name": "Oscar Bobb",
-		"ccode": "NOR",
-		"cname": "Norway",
-		"role": "attackers"
-	},
-	{
-		"id": 1207956,
-		"name": "Micah Hamilton",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 562727,
-		"name": "David Raya",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 746395,
-		"name": "Aaron Ramsdale",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 982692,
-		"name": "Karl Hein",
-		"ccode": "EST",
-		"cname": "Estonia",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 1013046,
-		"name": "James Hillson",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 160627,
-		"name": "Cédric Soares",
-		"ccode": "POR",
-		"cname": "Portugal",
-		"role": "defenders"
-	},
-	{
-		"id": 623621,
-		"name": "Oleksandr Zinchenko",
-		"ccode": "UKR",
-		"cname": "Ukraine",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 664444,
-		"name": "Takehiro Tomiyasu",
-		"ccode": "JPN",
-		"cname": "Japan",
-		"role": "defenders"
-	},
-	{
-		"id": 776151,
-		"name": "Ben White",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 795179,
-		"name": "Gabriel",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "defenders"
-	},
-	{
-		"id": 942381,
-		"name": "Jurrien Timber",
-		"ccode": "NED",
-		"cname": "Netherlands",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 955406,
-		"name": "William Saliba",
-		"ccode": "FRA",
-		"cname": "France",
-		"role": "defenders"
-	},
-	{
-		"id": 1021834,
-		"name": "Jakub Kiwior",
-		"ccode": "POL",
-		"cname": "Poland",
-		"role": "defenders"
-	},
-	{
-		"id": 1199709,
-		"name": "Lino Sousa",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 282775,
-		"name": "Jorginho",
-		"ccode": "ITA",
-		"cname": "Italy",
-		"role": "midfielders"
-	},
-	{
-		"id": 339992,
-		"name": "Mohamed Elneny",
-		"ccode": "EGY",
-		"cname": "Egypt",
-		"role": "midfielders"
-	},
-	{
-		"id": 434325,
-		"name": "Thomas Partey",
-		"ccode": "GHA",
-		"cname": "Ghana",
-		"isInjured": true,
-		"role": "midfielders"
-	},
-	{
-		"id": 534670,
-		"name": "Martin Ødegaard",
-		"ccode": "NOR",
-		"cname": "Norway",
-		"role": "midfielders"
-	},
-	{
-		"id": 654096,
-		"name": "Declan Rice",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 889534,
-		"name": "Emile Smith Rowe",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 1025462,
-		"name": "Fabio Vieira",
-		"ccode": "POR",
-		"cname": "Portugal",
-		"isInjured": true,
-		"role": "midfielders"
-	},
-	{
-		"id": 318615,
-		"name": "Leandro Trossard",
-		"ccode": "BEL",
-		"cname": "Belgium",
-		"role": "attackers"
-	},
-	{
-		"id": 576165,
-		"name": "Gabriel Jesus",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"isInjured": true,
-		"role": "attackers"
-	},
-	{
-		"id": 748382,
-		"name": "Reiss Nelson",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 749736,
-		"name": "Kai Havertz",
-		"ccode": "GER",
-		"cname": "Germany",
-		"role": "attackers"
-	},
-	{
-		"id": 860920,
-		"name": "Edward Nketiah",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 961995,
-		"name": "Bukayo Saka",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 1021586,
-		"name": "Gabriel Martinelli",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "attackers"
-	},
-	{
 		"id": 95336,
 		"name": "Fraser Forster",
 		"ccode": "ENG",
@@ -819,23 +799,16 @@
 		"role": "goalkeepers"
 	},
 	{
-		"id": 163670,
-		"name": "Ivan Perisic",
-		"ccode": "CRO",
-		"cname": "Croatia",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
 		"id": 276121,
 		"name": "Ben Davies",
 		"ccode": "WAL",
 		"cname": "Wales",
+		"isInjured": true,
 		"role": "defenders"
 	},
 	{
-		"id": 361315,
-		"name": "Eric Dier",
+		"id": 773991,
+		"name": "Ryan Sessegnon",
 		"ccode": "ENG",
 		"cname": "England",
 		"role": "defenders"
@@ -845,7 +818,6 @@
 		"name": "Cristian Romero",
 		"ccode": "ARG",
 		"cname": "Argentina",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -877,6 +849,13 @@
 		"role": "defenders"
 	},
 	{
+		"id": 1203661,
+		"name": "Radu Dragusin",
+		"ccode": "ROU",
+		"cname": "Romania",
+		"role": "defenders"
+	},
+	{
 		"id": 266523,
 		"name": "Pierre-Emile Højbjerg",
 		"ccode": "DEN",
@@ -896,6 +875,7 @@
 		"name": "Giovani Lo Celso",
 		"ccode": "ARG",
 		"cname": "Argentina",
+		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -910,13 +890,6 @@
 		"name": "Yves Bissouma",
 		"ccode": "MLI",
 		"cname": "Mali",
-		"role": "midfielders"
-	},
-	{
-		"id": 773991,
-		"name": "Ryan Sessegnon",
-		"ccode": "ENG",
-		"cname": "England",
 		"role": "midfielders"
 	},
 	{
@@ -938,6 +911,13 @@
 		"name": "Heung-Min Son",
 		"ccode": "KOR",
 		"cname": "South Korea",
+		"role": "attackers"
+	},
+	{
+		"id": 450980,
+		"name": "Timo Werner",
+		"ccode": "GER",
+		"cname": "Germany",
 		"role": "attackers"
 	},
 	{
@@ -981,6 +961,7 @@
 		"name": "Alejo Veliz",
 		"ccode": "ARG",
 		"cname": "Argentina",
+		"isInjured": true,
 		"role": "attackers"
 	},
 	{
@@ -1075,17 +1056,18 @@
 		"role": "midfielders"
 	},
 	{
+		"id": 683450,
+		"name": "Pablo Fornals",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"role": "midfielders"
+	},
+	{
 		"id": 766435,
 		"name": "Lucas Paquetá",
 		"ccode": "BRA",
 		"cname": "Brazil",
-		"role": "midfielders"
-	},
-	{
-		"id": 770256,
-		"name": "Conor Coventry",
-		"ccode": "IRL",
-		"cname": "Ireland",
+		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -1136,13 +1118,6 @@
 		"name": "Jarrod Bowen",
 		"ccode": "ENG",
 		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 683450,
-		"name": "Pablo Fornals",
-		"ccode": "ESP",
-		"cname": "Spain",
 		"role": "attackers"
 	},
 	{
@@ -1250,7 +1225,6 @@
 		"name": "Tariq Lamptey",
 		"ccode": "GHA",
 		"cname": "Ghana",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -1301,6 +1275,13 @@
 		"ccode": "PAR",
 		"cname": "Paraguay",
 		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 1272440,
+		"name": "Valentin Barco",
+		"ccode": "ARG",
+		"cname": "Argentina",
 		"role": "midfielders"
 	},
 	{
@@ -1371,13 +1352,6 @@
 		"role": "attackers"
 	},
 	{
-		"id": 1386101,
-		"name": "Adrian Mazilu",
-		"ccode": "ROU",
-		"cname": "Romania",
-		"role": "attackers"
-	},
-	{
 		"id": 24155,
 		"name": "Tom Heaton",
 		"ccode": "ENG",
@@ -1437,13 +1411,6 @@
 		"role": "defenders"
 	},
 	{
-		"id": 724436,
-		"name": "Sergio Reguilon",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"role": "defenders"
-	},
-	{
 		"id": 751550,
 		"name": "Diogo Dalot",
 		"ccode": "POR",
@@ -1462,7 +1429,6 @@
 		"name": "Lisandro Martinez",
 		"ccode": "ARG",
 		"cname": "Argentina",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -1485,7 +1451,6 @@
 		"name": "Casemiro",
 		"ccode": "BRA",
 		"cname": "Brazil",
-		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -1518,13 +1483,6 @@
 		"role": "midfielders"
 	},
 	{
-		"id": 1113785,
-		"name": "Hannibal Mejbri",
-		"ccode": "TUN",
-		"cname": "Tunisia",
-		"role": "midfielders"
-	},
-	{
 		"id": 1292810,
 		"name": "Kobbie Mainoo",
 		"ccode": "ENG",
@@ -1542,13 +1500,6 @@
 	{
 		"id": 696365,
 		"name": "Marcus Rashford",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 846381,
-		"name": "Jadon Sancho",
 		"ccode": "ENG",
 		"cname": "England",
 		"role": "attackers"
@@ -1572,7 +1523,6 @@
 		"name": "Rasmus Højlund",
 		"ccode": "DEN",
 		"cname": "Denmark",
-		"isInjured": true,
 		"role": "attackers"
 	},
 	{
@@ -1580,6 +1530,217 @@
 		"name": "Alejandro Garnacho",
 		"ccode": "ARG",
 		"cname": "Argentina",
+		"role": "attackers"
+	},
+	{
+		"id": 363357,
+		"name": "Marcus Bettinelli",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 789571,
+		"name": "Robert Sánchez",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"isInjured": true,
+		"role": "goalkeepers"
+	},
+	{
+		"id": 1067256,
+		"name": "Djordje Petrovic",
+		"ccode": "SRB",
+		"cname": "Serbia",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 80562,
+		"name": "Thiago Silva",
+		"ccode": "BRA",
+		"cname": "Brazil",
+		"role": "defenders"
+	},
+	{
+		"id": 672469,
+		"name": "Ben Chilwell",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 696646,
+		"name": "Axel Disasi",
+		"ccode": "FRA",
+		"cname": "France",
+		"role": "defenders"
+	},
+	{
+		"id": 782502,
+		"name": "Malang Sarr",
+		"ccode": "FRA",
+		"cname": "France",
+		"role": "defenders"
+	},
+	{
+		"id": 793907,
+		"name": "Trevoh Chalobah",
+		"ccode": "ENG",
+		"cname": "England",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 807729,
+		"name": "Reece James",
+		"ccode": "ENG",
+		"cname": "England",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 873289,
+		"name": "Marc Cucurella",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 917802,
+		"name": "Wesley Fofana",
+		"ccode": "FRA",
+		"cname": "France",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 955376,
+		"name": "Benoit Badiashile",
+		"ccode": "FRA",
+		"cname": "France",
+		"role": "defenders"
+	},
+	{
+		"id": 1096400,
+		"name": "Levi Colwill",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 1197250,
+		"name": "Malo Gusto",
+		"ccode": "FRA",
+		"cname": "France",
+		"role": "defenders"
+	},
+	{
+		"id": 966027,
+		"name": "Conor Gallagher",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 1089685,
+		"name": "Carney Chukwuemeka",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 1096353,
+		"name": "Cole Palmer",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 1137668,
+		"name": "Moisés Caicedo",
+		"ccode": "ECU",
+		"cname": "Ecuador",
+		"role": "midfielders"
+	},
+	{
+		"id": 1137705,
+		"name": "Enzo Fernández",
+		"ccode": "ARG",
+		"cname": "Argentina",
+		"role": "midfielders"
+	},
+	{
+		"id": 1190867,
+		"name": "Romeo Lavia",
+		"ccode": "BEL",
+		"cname": "Belgium",
+		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 1200631,
+		"name": "Lesley Ugochukwu",
+		"ccode": "FRA",
+		"cname": "France",
+		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 1372921,
+		"name": "Andrey Santos",
+		"ccode": "BRA",
+		"cname": "Brazil",
+		"role": "midfielders"
+	},
+	{
+		"id": 246575,
+		"name": "Raheem Sterling",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 704523,
+		"name": "Christopher Nkunku",
+		"ccode": "FRA",
+		"cname": "France",
+		"isInjured": true,
+		"role": "attackers"
+	},
+	{
+		"id": 976506,
+		"name": "Mykhaylo Mudryk",
+		"ccode": "UKR",
+		"cname": "Ukraine",
+		"role": "attackers"
+	},
+	{
+		"id": 1077975,
+		"name": "Armando Broja",
+		"ccode": "ALB",
+		"cname": "Albania",
+		"role": "attackers"
+	},
+	{
+		"id": 1084981,
+		"name": "Noni Madueke",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 1197347,
+		"name": "Nicolas Jackson",
+		"ccode": "SEN",
+		"cname": "Senegal",
+		"role": "attackers"
+	},
+	{
+		"id": 1458868,
+		"name": "Deivid de Souza",
+		"ccode": "BRA",
+		"cname": "Brazil",
 		"role": "attackers"
 	},
 	{
@@ -1647,14 +1808,6 @@
 		"role": "defenders"
 	},
 	{
-		"id": 299984,
-		"name": "Javier Manquillo",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
 		"id": 308932,
 		"name": "Paul Dummett",
 		"ccode": "WAL",
@@ -1695,6 +1848,7 @@
 		"name": "Joelinton",
 		"ccode": "BRA",
 		"cname": "Brazil",
+		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -1794,226 +1948,6 @@
 		"role": "attackers"
 	},
 	{
-		"id": 363357,
-		"name": "Marcus Bettinelli",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 789571,
-		"name": "Robert Sánchez",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"isInjured": true,
-		"role": "goalkeepers"
-	},
-	{
-		"id": 1067256,
-		"name": "Djordje Petrovic",
-		"ccode": "SRB",
-		"cname": "Serbia",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 80562,
-		"name": "Thiago Silva",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "defenders"
-	},
-	{
-		"id": 672469,
-		"name": "Ben Chilwell",
-		"ccode": "ENG",
-		"cname": "England",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 696646,
-		"name": "Axel Disasi",
-		"ccode": "FRA",
-		"cname": "France",
-		"role": "defenders"
-	},
-	{
-		"id": 782502,
-		"name": "Malang Sarr",
-		"ccode": "FRA",
-		"cname": "France",
-		"role": "defenders"
-	},
-	{
-		"id": 793907,
-		"name": "Trevoh Chalobah",
-		"ccode": "ENG",
-		"cname": "England",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 807729,
-		"name": "Reece James",
-		"ccode": "ENG",
-		"cname": "England",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 873289,
-		"name": "Marc Cucurella",
-		"ccode": "ESP",
-		"cname": "Spain",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 917802,
-		"name": "Wesley Fofana",
-		"ccode": "FRA",
-		"cname": "France",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 955376,
-		"name": "Benoit Badiashile",
-		"ccode": "FRA",
-		"cname": "France",
-		"role": "defenders"
-	},
-	{
-		"id": 966026,
-		"name": "Ian Maatsen",
-		"ccode": "NED",
-		"cname": "Netherlands",
-		"role": "defenders"
-	},
-	{
-		"id": 1096400,
-		"name": "Levi Colwill",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 1197250,
-		"name": "Malo Gusto",
-		"ccode": "FRA",
-		"cname": "France",
-		"role": "defenders"
-	},
-	{
-		"id": 966027,
-		"name": "Conor Gallagher",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 1089685,
-		"name": "Carney Chukwuemeka",
-		"ccode": "ENG",
-		"cname": "England",
-		"isInjured": true,
-		"role": "midfielders"
-	},
-	{
-		"id": 1096353,
-		"name": "Cole Palmer",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 1137668,
-		"name": "Moisés Caicedo",
-		"ccode": "ECU",
-		"cname": "Ecuador",
-		"role": "midfielders"
-	},
-	{
-		"id": 1137705,
-		"name": "Enzo Fernández",
-		"ccode": "ARG",
-		"cname": "Argentina",
-		"role": "midfielders"
-	},
-	{
-		"id": 1190867,
-		"name": "Romeo Lavia",
-		"ccode": "BEL",
-		"cname": "Belgium",
-		"isInjured": true,
-		"role": "midfielders"
-	},
-	{
-		"id": 1200631,
-		"name": "Lesley Ugochukwu",
-		"ccode": "FRA",
-		"cname": "France",
-		"isInjured": true,
-		"role": "midfielders"
-	},
-	{
-		"id": 1372921,
-		"name": "Andrey Santos",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "midfielders"
-	},
-	{
-		"id": 246575,
-		"name": "Raheem Sterling",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 704523,
-		"name": "Christopher Nkunku",
-		"ccode": "FRA",
-		"cname": "France",
-		"isInjured": true,
-		"role": "attackers"
-	},
-	{
-		"id": 976506,
-		"name": "Mykhaylo Mudryk",
-		"ccode": "UKR",
-		"cname": "Ukraine",
-		"role": "attackers"
-	},
-	{
-		"id": 1077975,
-		"name": "Armando Broja",
-		"ccode": "ALB",
-		"cname": "Albania",
-		"role": "attackers"
-	},
-	{
-		"id": 1084981,
-		"name": "Noni Madueke",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 1197347,
-		"name": "Nicolas Jackson",
-		"ccode": "SEN",
-		"cname": "Senegal",
-		"role": "attackers"
-	},
-	{
-		"id": 1458868,
-		"name": "Deivid de Souza",
-		"ccode": "BRA",
-		"cname": "Brazil",
-		"role": "attackers"
-	},
-	{
 		"id": 189103,
 		"name": "Daniel Bentley",
 		"ccode": "ENG",
@@ -2077,6 +2011,13 @@
 		"role": "defenders"
 	},
 	{
+		"id": 933845,
+		"name": "Rayan Ait Nouri",
+		"ccode": "ALG",
+		"cname": "Algeria",
+		"role": "defenders"
+	},
+	{
 		"id": 1013277,
 		"name": "Toti Gomes",
 		"ccode": "POR",
@@ -2088,13 +2029,6 @@
 		"name": "Hugo Bueno",
 		"ccode": "ESP",
 		"cname": "Spain",
-		"role": "defenders"
-	},
-	{
-		"id": 1200657,
-		"name": "Yerson Mosquera",
-		"ccode": "COL",
-		"cname": "Colombia",
 		"role": "defenders"
 	},
 	{
@@ -2116,13 +2050,6 @@
 		"name": "Bruno Jordao",
 		"ccode": "POR",
 		"cname": "Portugal",
-		"role": "midfielders"
-	},
-	{
-		"id": 933845,
-		"name": "Rayan Ait Nouri",
-		"ccode": "ALG",
-		"cname": "Algeria",
 		"role": "midfielders"
 	},
 	{
@@ -2222,6 +2149,7 @@
 		"name": "Adam Smith",
 		"ccode": "ENG",
 		"cname": "England",
+		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -2244,7 +2172,6 @@
 		"name": "Lloyd Kelly",
 		"ccode": "ENG",
 		"cname": "England",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -2257,6 +2184,13 @@
 	{
 		"id": 956621,
 		"name": "Max Aarons",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 959407,
+		"name": "James Hill",
 		"ccode": "ENG",
 		"cname": "England",
 		"role": "defenders"
@@ -2298,25 +2232,10 @@
 		"role": "midfielders"
 	},
 	{
-		"id": 613182,
-		"name": "Joe Rothwell",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
 		"id": 729769,
 		"name": "Tyler Adams",
 		"ccode": "USA",
 		"cname": "USA",
-		"isInjured": true,
-		"role": "midfielders"
-	},
-	{
-		"id": 875672,
-		"name": "Hamed Traorè",
-		"ccode": "CIV",
-		"cname": "Ivory Coast",
 		"isInjured": true,
 		"role": "midfielders"
 	},
@@ -2333,13 +2252,6 @@
 		"ccode": "ENG",
 		"cname": "England",
 		"role": "midfielders"
-	},
-	{
-		"id": 343316,
-		"name": "Emiliano Marcondes",
-		"ccode": "DEN",
-		"cname": "Denmark",
-		"role": "attackers"
 	},
 	{
 		"id": 469202,
@@ -2416,6 +2328,7 @@
 		"name": "Steven-Andreas Benda",
 		"ccode": "GER",
 		"cname": "Germany",
+		"isInjured": true,
 		"role": "goalkeepers"
 	},
 	{
@@ -2423,7 +2336,6 @@
 		"name": "Tim Ream",
 		"ccode": "USA",
 		"cname": "USA",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -2575,11 +2487,211 @@
 		"role": "attackers"
 	},
 	{
+		"id": 330643,
+		"name": "Mark Flekken",
+		"ccode": "NED",
+		"cname": "Netherlands",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 403049,
+		"name": "Thomas Strakosha",
+		"ccode": "ALB",
+		"cname": "Albania",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 806579,
+		"name": "Ellery Balcombe",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "goalkeepers"
+	},
+	{
+		"id": 71908,
+		"name": "Mathias Jørgensen",
+		"ccode": "DEN",
+		"cname": "Denmark",
+		"role": "defenders"
+	},
+	{
+		"id": 240538,
+		"name": "Ben Mee",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "defenders"
+	},
+	{
+		"id": 552718,
+		"name": "Kristoffer Ajer",
+		"ccode": "NOR",
+		"cname": "Norway",
+		"role": "defenders"
+	},
+	{
+		"id": 562892,
+		"name": "Rico Henry",
+		"ccode": "ENG",
+		"cname": "England",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 711357,
+		"name": "Ethan Pinnock",
+		"ccode": "JAM",
+		"cname": "Jamaica",
+		"role": "defenders"
+	},
+	{
+		"id": 724436,
+		"name": "Sergio Reguilon",
+		"ccode": "ESP",
+		"cname": "Spain",
+		"role": "defenders"
+	},
+	{
+		"id": 803343,
+		"name": "Mads Roerslev",
+		"ccode": "DEN",
+		"cname": "Denmark",
+		"role": "defenders"
+	},
+	{
+		"id": 961306,
+		"name": "Nathan Collins",
+		"ccode": "IRL",
+		"cname": "Ireland",
+		"role": "defenders"
+	},
+	{
+		"id": 1002039,
+		"name": "Aaron Hickey",
+		"ccode": "SCO",
+		"cname": "Scotland",
+		"isInjured": true,
+		"role": "defenders"
+	},
+	{
+		"id": 266520,
+		"name": "Christian Nørgaard",
+		"ccode": "DEN",
+		"cname": "Denmark",
+		"isInjured": true,
+		"role": "midfielders"
+	},
+	{
+		"id": 532220,
+		"name": "Saman Ghoddos",
+		"ccode": "IRN",
+		"cname": "Iran",
+		"role": "midfielders"
+	},
+	{
+		"id": 650616,
+		"name": "Mathias Jensen",
+		"ccode": "DEN",
+		"cname": "Denmark",
+		"role": "midfielders"
+	},
+	{
+		"id": 688273,
+		"name": "Vitaly Janelt",
+		"ccode": "GER",
+		"cname": "Germany",
+		"role": "midfielders"
+	},
+	{
+		"id": 759566,
+		"name": "Joshua Dasilva",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "midfielders"
+	},
+	{
+		"id": 856685,
+		"name": "Frank Onyeka",
+		"ccode": "NGA",
+		"cname": "Nigeria",
+		"role": "midfielders"
+	},
+	{
+		"id": 865131,
+		"name": "Shandon Baptiste",
+		"ccode": "GRN",
+		"cname": "Grenada",
+		"role": "midfielders"
+	},
+	{
+		"id": 888912,
+		"name": "Mikkel Damsgaard",
+		"ccode": "DEN",
+		"cname": "Denmark",
+		"role": "midfielders"
+	},
+	{
+		"id": 1157236,
+		"name": "Yegor Yarmolyuk",
+		"ccode": "UKR",
+		"cname": "Ukraine",
+		"role": "midfielders"
+	},
+	{
+		"id": 1524063,
+		"name": "Yunus Emre Konak",
+		"ccode": "TUR",
+		"cname": "Turkiye",
+		"role": "midfielders"
+	},
+	{
+		"id": 391064,
+		"name": "Neal Maupay",
+		"ccode": "FRA",
+		"cname": "France",
+		"role": "attackers"
+	},
+	{
+		"id": 408987,
+		"name": "Ivan Toney",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 666857,
+		"name": "Yoane Wissa",
+		"ccode": "COD",
+		"cname": "DR Congo",
+		"role": "attackers"
+	},
+	{
+		"id": 923312,
+		"name": "Bryan Mbeumo",
+		"ccode": "CMR",
+		"cname": "Cameroon",
+		"isInjured": true,
+		"role": "attackers"
+	},
+	{
+		"id": 1010426,
+		"name": "Keane Lewis-Potter",
+		"ccode": "ENG",
+		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 1083796,
+		"name": "Kevin Schade",
+		"ccode": "GER",
+		"cname": "Germany",
+		"isInjured": true,
+		"role": "attackers"
+	},
+	{
 		"id": 280287,
 		"name": "Sam Johnstone",
 		"ccode": "ENG",
 		"cname": "England",
-		"isInjured": true,
 		"role": "goalkeepers"
 	},
 	{
@@ -2663,13 +2775,6 @@
 		"role": "defenders"
 	},
 	{
-		"id": 214570,
-		"name": "Jeffrey Schlupp",
-		"ccode": "GHA",
-		"cname": "Ghana",
-		"role": "midfielders"
-	},
-	{
 		"id": 295067,
 		"name": "Will Hughes",
 		"ccode": "ENG",
@@ -2727,6 +2832,13 @@
 		"role": "attackers"
 	},
 	{
+		"id": 214570,
+		"name": "Jeffrey Schlupp",
+		"ccode": "GHA",
+		"cname": "Ghana",
+		"role": "attackers"
+	},
+	{
 		"id": 637746,
 		"name": "Odsonne Edouard",
 		"ccode": "FRA",
@@ -2745,6 +2857,7 @@
 		"name": "Michael Olise",
 		"ccode": "FRA",
 		"cname": "France",
+		"isInjured": true,
 		"role": "attackers"
 	},
 	{
@@ -2809,6 +2922,7 @@
 		"name": "Felipe",
 		"ccode": "BRA",
 		"cname": "Brazil",
+		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -2963,6 +3077,7 @@
 		"name": "Divock Origi",
 		"ccode": "BEL",
 		"cname": "Belgium",
+		"isInjured": true,
 		"role": "attackers"
 	},
 	{
@@ -2985,199 +3100,6 @@
 		"name": "Anthony Elanga",
 		"ccode": "SWE",
 		"cname": "Sweden",
-		"role": "attackers"
-	},
-	{
-		"id": 330643,
-		"name": "Mark Flekken",
-		"ccode": "NED",
-		"cname": "Netherlands",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 403049,
-		"name": "Thomas Strakosha",
-		"ccode": "ALB",
-		"cname": "Albania",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 806579,
-		"name": "Ellery Balcombe",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "goalkeepers"
-	},
-	{
-		"id": 71908,
-		"name": "Mathias Jørgensen",
-		"ccode": "DEN",
-		"cname": "Denmark",
-		"role": "defenders"
-	},
-	{
-		"id": 240538,
-		"name": "Ben Mee",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 552718,
-		"name": "Kristoffer Ajer",
-		"ccode": "NOR",
-		"cname": "Norway",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 562892,
-		"name": "Rico Henry",
-		"ccode": "ENG",
-		"cname": "England",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 650647,
-		"name": "Charlie Goode",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "defenders"
-	},
-	{
-		"id": 711357,
-		"name": "Ethan Pinnock",
-		"ccode": "JAM",
-		"cname": "Jamaica",
-		"role": "defenders"
-	},
-	{
-		"id": 803343,
-		"name": "Mads Roerslev",
-		"ccode": "DEN",
-		"cname": "Denmark",
-		"role": "defenders"
-	},
-	{
-		"id": 961306,
-		"name": "Nathan Collins",
-		"ccode": "IRL",
-		"cname": "Ireland",
-		"role": "defenders"
-	},
-	{
-		"id": 1002039,
-		"name": "Aaron Hickey",
-		"ccode": "SCO",
-		"cname": "Scotland",
-		"isInjured": true,
-		"role": "defenders"
-	},
-	{
-		"id": 266520,
-		"name": "Christian Nørgaard",
-		"ccode": "DEN",
-		"cname": "Denmark",
-		"role": "midfielders"
-	},
-	{
-		"id": 532220,
-		"name": "Saman Ghoddos",
-		"ccode": "IRN",
-		"cname": "Iran",
-		"role": "midfielders"
-	},
-	{
-		"id": 650616,
-		"name": "Mathias Jensen",
-		"ccode": "DEN",
-		"cname": "Denmark",
-		"role": "midfielders"
-	},
-	{
-		"id": 688273,
-		"name": "Vitaly Janelt",
-		"ccode": "GER",
-		"cname": "Germany",
-		"role": "midfielders"
-	},
-	{
-		"id": 759566,
-		"name": "Joshua Dasilva",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 856685,
-		"name": "Frank Onyeka",
-		"ccode": "NGA",
-		"cname": "Nigeria",
-		"role": "midfielders"
-	},
-	{
-		"id": 865131,
-		"name": "Shandon Baptiste",
-		"ccode": "GRN",
-		"cname": "Grenada",
-		"role": "midfielders"
-	},
-	{
-		"id": 888912,
-		"name": "Mikkel Damsgaard",
-		"ccode": "DEN",
-		"cname": "Denmark",
-		"role": "midfielders"
-	},
-	{
-		"id": 1157236,
-		"name": "Yegor Yarmolyuk",
-		"ccode": "UKR",
-		"cname": "Ukraine",
-		"role": "midfielders"
-	},
-	{
-		"id": 391064,
-		"name": "Neal Maupay",
-		"ccode": "FRA",
-		"cname": "France",
-		"role": "attackers"
-	},
-	{
-		"id": 408987,
-		"name": "Ivan Toney",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 666857,
-		"name": "Yoane Wissa",
-		"ccode": "COD",
-		"cname": "DR Congo",
-		"role": "attackers"
-	},
-	{
-		"id": 923312,
-		"name": "Bryan Mbeumo",
-		"ccode": "CMR",
-		"cname": "Cameroon",
-		"isInjured": true,
-		"role": "attackers"
-	},
-	{
-		"id": 1010426,
-		"name": "Keane Lewis-Potter",
-		"ccode": "ENG",
-		"cname": "England",
-		"role": "attackers"
-	},
-	{
-		"id": 1083796,
-		"name": "Kevin Schade",
-		"ccode": "GER",
-		"cname": "Germany",
 		"isInjured": true,
 		"role": "attackers"
 	},
@@ -3271,7 +3193,6 @@
 		"name": "Abdoulaye Doucouré",
 		"ccode": "MLI",
 		"cname": "Mali",
-		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -3378,7 +3299,6 @@
 		"name": "Daniel Potts",
 		"ccode": "ENG",
 		"cname": "England",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -3401,7 +3321,6 @@
 		"name": "Reece Burke",
 		"ccode": "ENG",
 		"cname": "England",
-		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -3493,6 +3412,7 @@
 		"name": "Marvelous Nakamba",
 		"ccode": "ZIM",
 		"cname": "Zimbabwe",
+		"isInjured": true,
 		"role": "midfielders"
 	},
 	{
@@ -3507,13 +3427,6 @@
 		"name": "Albert Sambi Lokonga",
 		"ccode": "BEL",
 		"cname": "Belgium",
-		"role": "midfielders"
-	},
-	{
-		"id": 1557926,
-		"name": "Jake Burger",
-		"ccode": "ENG",
-		"cname": "England",
 		"role": "midfielders"
 	},
 	{
@@ -3552,13 +3465,6 @@
 		"role": "attackers"
 	},
 	{
-		"id": 1557925,
-		"name": "Sam Anderson",
-		"ccode": "NIR",
-		"cname": "Northern Ireland",
-		"role": "attackers"
-	},
-	{
 		"id": 501380,
 		"name": "Lawrence Vigouroux",
 		"ccode": "CHI",
@@ -3584,6 +3490,7 @@
 		"name": "Charlie Taylor",
 		"ccode": "ENG",
 		"cname": "England",
+		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -3619,6 +3526,7 @@
 		"name": "Jordan Beyer",
 		"ccode": "GER",
 		"cname": "Germany",
+		"isInjured": true,
 		"role": "defenders"
 	},
 	{
@@ -3678,13 +3586,6 @@
 		"role": "midfielders"
 	},
 	{
-		"id": 817720,
-		"name": "Michael Obafemi",
-		"ccode": "IRL",
-		"cname": "Ireland",
-		"role": "midfielders"
-	},
-	{
 		"id": 978680,
 		"name": "Han-Noah Massengo",
 		"ccode": "FRA",
@@ -3725,14 +3626,6 @@
 		"name": "Manuel Benson",
 		"ccode": "BEL",
 		"cname": "Belgium",
-		"isInjured": true,
-		"role": "attackers"
-	},
-	{
-		"id": 833697,
-		"name": "Darko Churlinov",
-		"ccode": "MKD",
-		"cname": "North Macedonia",
 		"role": "attackers"
 	},
 	{
@@ -3768,6 +3661,13 @@
 		"name": "Aaron Ramsey",
 		"ccode": "ENG",
 		"cname": "England",
+		"role": "attackers"
+	},
+	{
+		"id": 1207581,
+		"name": "David Datro Fofana",
+		"ccode": "CIV",
+		"cname": "Ivory Coast",
 		"role": "attackers"
 	},
 	{
@@ -3946,13 +3846,6 @@
 		"name": "Andre Brooks",
 		"ccode": "ENG",
 		"cname": "England",
-		"role": "midfielders"
-	},
-	{
-		"id": 1601905,
-		"name": "Evan Easton",
-		"ccode": "SCO",
-		"cname": "Scotland",
 		"role": "midfielders"
 	},
 	{

@@ -62,7 +62,7 @@ const answerIdCandidates = [
 function getDaysPast() {
 	// Set the target date (January is 0-based month in JavaScript)
 	// jan 23 2024 9PM
-	const targetDate = new Date(2024, 0, 26, 0, 0, 0);
+	const targetDate = new Date(2024, 0, 27, 0, 0, 0);
 
 	// Get the current date
 	const currentDate = new Date();
@@ -107,16 +107,6 @@ async function fetchCareerPath(playerID) {
 		return careerPath;
 	} catch (error) {
 		console.error("Error fetching data:", error.message);
-	}
-}
-
-async function getAllLogosForPlayer(playerID) {
-	try {
-		const myCareerPath = await fetchCareerPath(playerID);
-		const logoIDs = myCareerPath.toReversed().map((entry) => entry.teamId);
-		console.log(logoIDs);
-	} catch (error) {
-		console.error("Error fetching logo:", error.message);
 	}
 }
 
@@ -183,21 +173,6 @@ app.get("/api/club-ids", async (req, res) => {
 
 app.get("/api/club-logos/:id", async (req, res) => {
 	const logoID = req.params.id;
-
-	if (logoID == -1) {
-		const localImgPath = "./assets/club-logos/-1.jpg";
-		fs.readFile(localImgPath, (err, data) => {
-			if (err) {
-				console.error("Error reading image file:", err);
-				res.status(500).send("Internal Server Error");
-			} else {
-				res.contentType("image/png");
-				res.send(data);
-			}
-		});
-		return;
-	}
-
 	const imgUrl = `${imagesUrl}${logoID}.png`;
 	console.log(imgUrl);
 	try {

@@ -2,6 +2,7 @@ import { autocomplete } from "./autocomplete.js";
 
 // const BACKEND_DOMAIN = "http://localhost:5050/";
 const BACKEND_DOMAIN = "/";
+const DOMAIN = "www.footlegame.com";
 
 var globalAnswer;
 var globalAnswerName;
@@ -702,7 +703,18 @@ function displayGuesses() {
 	for (var i = 0; i < myGuesses.length; i++) {
 		const myGuessDiv = document.createElement("div");
 		myGuessDiv.setAttribute("class", "guess");
-		myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].output}`;
+
+		const outputDiv = document.createElement("div");
+		outputDiv.setAttribute("class", "guess-output");
+		myGuessDiv.append(outputDiv);
+		outputDiv.textContent = `${myGuesses[i].output}`;
+
+		const guessNameDiv = document.createElement("div");
+		guessNameDiv.setAttribute("class", "guess-name");
+		myGuessDiv.append(guessNameDiv);
+		guessNameDiv.textContent = `${myGuesses[i].name}`;
+
+		// myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].output}`;
 		// console.log(myGuesses[i].id);
 		submissionsWrapper.append(myGuessDiv);
 	}
@@ -727,20 +739,31 @@ function displayClubNames(clubNames) {
 }
 
 async function displayLogos(logos, clubNames) {
+	const puzzleNumDiv = document.getElementById("puzzle-number-wrapper");
+	const puzzNum = window.localStorage.getItem("puzzleNumber");
+	puzzleNumDiv.innerHTML = `Footle #${puzzNum}`;
+
 	const baseUrl = `${BACKEND_DOMAIN}api/club-logos/`;
 	try {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
 
 		for (var i = 0; i < logos.length; i++) {
-			const myUrl = baseUrl + `${logos[i]}`;
-			const response = await fetch(myUrl);
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-			const responseBlob = await response.blob();
-			const imgURL = URL.createObjectURL(responseBlob);
 			const imageElement = document.createElement("img");
-			imageElement.src = imgURL;
+
+			if (logos[i] == -1) {
+				imageElement.src = "./img/-1.png";
+			} else {
+				const myUrl = baseUrl + `${logos[i]}`;
+				const response = await fetch(myUrl);
+				if (!response.ok) {
+					imageElement.src = "./img/-1.png";
+					throw new Error(`HTTP error! Status: ${response.status}`);
+				}
+				const responseBlob = await response.blob();
+				const imgURL = URL.createObjectURL(responseBlob);
+				imageElement.src = imgURL;
+			}
+
 			imageElement.setAttribute("class", "club-logo");
 
 			const imageWrapper = document.createElement("div");
@@ -902,12 +925,31 @@ function initCopyButton() {
 
 		// Change the button text and style to indicate copying
 		var copyButton = document.getElementById("copy-button");
-		copyButton.innerText = "Copied!";
+		var mySvg = copyButton.children[0];
+
+		const copiedSVG = `
+		<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+			<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+			<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+			<path d="M11 14l2 2l4 -4" />
+		</svg>`;
+
+		mySvg.innerHTML = copiedSVG;
+
+		// copyButton.innerText = "Copied!";
 		copyButton.classList.add("copied");
 
 		// Reset the button text and style after a short delay
 		setTimeout(function () {
-			copyButton.innerText = "Copy";
+			const copySVG = `
+			<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+				<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+				<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+			</svg>
+			`;
+			mySvg.innerHTML = copySVG;
 			copyButton.classList.remove("copied");
 		}, 2000);
 	});
@@ -925,8 +967,9 @@ function showCopyText(tmp) {
 		outString += "⬜";
 	}
 
+	const puzzleNumber = window.localStorage.getItem("puzzleNumber");
 	const myTextArea = document.getElementById("share-text-area");
-	myTextArea.value = `Footle #123\n${outString}\nMyurl.com`;
+	myTextArea.value = `Footle #${puzzleNumber}\n${outString}\n${DOMAIN}`;
 	initCopyButton();
 }
 
@@ -946,7 +989,7 @@ function showRevealedAnswer() {
 	//if they solved it
 	if (myIsSolved === true) {
 		revealDiv.style.display = "block";
-		revealDivText.innerText = `Congrats! The answer is ${globalAnswerName}`;
+		revealDivText.innerText = `Congrats! The answer was ${globalAnswerName}`;
 
 		if (myIsRevealed === false) {
 			window.localStorage.setItem("isRevealed", "true");
@@ -965,7 +1008,7 @@ function showRevealedAnswer() {
 	//if they've made 5 guesses
 	if (myGuessesRemaining == 0) {
 		revealDiv.style.display = "block";
-		revealDivText.innerText = `The answer is ${globalAnswerName}`;
+		revealDivText.innerText = `The answer was ${globalAnswerName}`;
 		if (myIsRevealed === false) {
 			window.localStorage.setItem("isRevealed", "true");
 			window.localStorage.setItem("gamesPlayed", myGamesPlayed + 1);
@@ -1006,30 +1049,6 @@ function initStatistics() {
 		won[i].innerHTML = window.localStorage.getItem("gamesWon");
 		streak[i].innerHTML = window.localStorage.getItem("streakCounter");
 	}
-}
-
-function runAtSpecificTimeOfDay(hour, minutes, func) {
-	const twentyFourHours = 86400000;
-	const now = new Date();
-	let eta_ms =
-		new Date(
-			now.getFullYear(),
-			now.getMonth(),
-			now.getDate(),
-			hour,
-			minutes,
-			0,
-			0
-		).getTime() - now;
-	if (eta_ms < 0) {
-		eta_ms += twentyFourHours;
-	}
-	setTimeout(function () {
-		//run once
-		func();
-		// run every 24 hours from now on
-		setInterval(func, twentyFourHours);
-	}, eta_ms);
 }
 
 function runEveryXmin(min) {

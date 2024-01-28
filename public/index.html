@@ -19,8 +19,13 @@
 			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap"
 			rel="stylesheet"
 		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+			rel="stylesheet"
+		/>
 
 		<title>Footle</title>
+		<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
 	</head>
 	<body>
 		<header>
@@ -103,34 +108,34 @@
 					</svg>
 				</button>
 				<h2>How to play ⚽🌟</h2>
+				<ul>
+					<li>
+						The footballer currently plays in the Premier League
+					</li>
+					<li>Read from left to right, top to bottom</li>
+					<li>You have five attempts</li>
+					<li>New Footle daily</li>
+				</ul>
+
 				<br />
 
-				<p>
-					<b>Guess the Footballer:</b> You'll be shown a series of
-					club logos representing a footballer's career path.
-				</p>
-				<br />
-				<p>
-					<b>Observe logos carefully!</b> Some players have played for
-					many clubs, read from left to right, top to bottom
-				</p>
-				<br />
-				<p>
-					<b>Use your footie intuition:</b> You might surprise
-					yourself with a legendary guess!
-				</p>
-				<br />
 				<h2>Credits</h2>
-				<a
-					href="https://www.flaticon.com/free-icons/soccer"
-					title="soccer icons"
-					>Soccer icons created by Smashicons - Flaticon</a
-				>
-				<a
-					href="https://www.flaticon.com/free-icons/error"
-					title="error icons"
-					>Error icons created by mim_studio - Flaticon</a
-				>
+				<ul>
+					<li>
+						<a
+							href="https://www.flaticon.com/free-icons/soccer"
+							title="soccer icons"
+							>Soccer icons created by Smashicons - Flaticon</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://www.flaticon.com/free-icons/error"
+							title="error icons"
+							>Error icons created by mim_studio - Flaticon</a
+						>
+					</li>
+				</ul>
 			</dialog>
 
 			<dialog id="stats-modal" class="modal">
@@ -174,7 +179,28 @@
 				<div id="answer-reveal">The answer is</div>
 				<div id="share-text-wrapper">
 					<textarea id="share-text-area" readonly></textarea>
-					<button id="copy-button">Copy</button>
+					<button id="copy-button">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="icon icon-tabler icon-tabler-copy"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="#2c3e50"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<path
+								d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z"
+							/>
+							<path
+								d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
+							/>
+						</svg>
+					</button>
 				</div>
 				<div id="tweet-wrapper"></div>
 				<div class="stats-panel">
@@ -193,11 +219,12 @@
 				</div>
 			</div>
 
+			<div id="puzzle-number-wrapper"></div>
 			<div id="career-path-wrapper"></div>
 			<div id="search-wrapper">
-				<!-- <div id="guide-text">
+				<div id="guide-text">
 					I currently play in the Premier League...
-				</div> -->
+				</div>
 				<div id="search-bar">
 					<form autocomplete="off" class="search-form-wrapper">
 						<div class="autocomplete">
