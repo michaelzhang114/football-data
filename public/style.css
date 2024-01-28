@@ -386,3 +386,7 @@ footer {
 		opacity: 1;
 	}
 }
+
+ul {
+	padding-left: 1.5rem;
+}
