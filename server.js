@@ -194,12 +194,6 @@ app.get("/api/club-logos/:id", async (req, res) => {
 	}
 });
 
-// app.get("/api/refresh", (req, res) => {
-// 	tmp_answerID = initAnswerID(answerIdCandidates);
-// 	console.log(`Refresh. Answer ID is now: ${tmp_answerID}`);
-// 	res.json(tmp_answerID);
-// });
-
 app.get("/api/puzzle-number", (req, res) => {
 	const num = getDaysPast();
 	res.json(num);
