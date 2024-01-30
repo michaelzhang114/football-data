@@ -69,6 +69,11 @@ main {
 	margin-bottom: 1rem;
 }
 
+#answer-reveal {
+	font-size: var(--fs-large);
+	margin-bottom: 1rem;
+}
+
 header {
 	margin-bottom: 1rem;
 	border-bottom: 1px solid rgba(158, 158, 159, 0.786);
@@ -143,6 +148,7 @@ header {
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
 	justify-items: center;
+	margin-top: 1rem;
 }
 
 .stats-panel p {

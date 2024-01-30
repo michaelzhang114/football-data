@@ -41,9 +41,13 @@ export const answerIdCandidates = [
 	889534, 422685, 1069536, 488412, 654908, 682548, 710159, 339992, 1047671,
 ];
 
+// TODO - set up environment vars for this maybe
+const daysInterval = 1000 * 60 * 60 * 24;
+const minInterval = 1000 * 60 * 1;
+
 export function getCurrentIndex() {
 	// Set the target date (January is 0-based month in JavaScript)
-	const targetDate = new Date(2024, 0, 27, 0, 30, 0);
+	const targetDate = new Date(2024, 0, 28, 0, 0, 0);
 
 	// Get the current date
 	const currentDate = new Date();
@@ -51,11 +55,10 @@ export function getCurrentIndex() {
 	// Calculate the time difference in milliseconds
 	const timeDifference = currentDate - targetDate;
 
-	// Convert milliseconds to days
-	const daysPast = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-	const oneMinuteIntervals = Math.floor(timeDifference / (1 * 60 * 1000));
+	//const interval = Math.floor(timeDifference / daysInterval);
+	const interval = Math.floor(timeDifference / daysInterval);
 
-	const resultInRange = (oneMinuteIntervals % answerIdCandidates.length) + 1;
+	const resultInRange = (interval % answerIdCandidates.length) + 1;
 
 	return resultInRange;
 }
