@@ -1,23 +1,8 @@
 // const BACKEND_DOMAIN = "http://localhost:5050/";
 const BACKEND_DOMAIN = "/";
 
-export async function fetchPuzzleNumber() {
-	const baseUrl = `${BACKEND_DOMAIN}api/puzzle-number`;
-	let puzzleNum;
-	try {
-		const response = await fetch(baseUrl);
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-		puzzleNum = await response.json();
-		return puzzleNum;
-	} catch (error) {
-		console.error("Error fetching puzzle num:", error.message);
-	}
-}
-
-export async function fetchAnswerClubsDetails() {
-	const baseUrl = `${BACKEND_DOMAIN}api/club-ids`;
+export async function fetchAnswerClubsDetails(playerId) {
+	const baseUrl = `${BACKEND_DOMAIN}api/get-clubs-info/${playerId}`;
 	try {
 		const response = await fetch(baseUrl);
 		if (!response.ok) {
@@ -27,23 +12,6 @@ export async function fetchAnswerClubsDetails() {
 		return responseJSON;
 	} catch (error) {
 		console.error("Error fetching data:", error.message);
-	}
-}
-
-export async function fetchAnswer() {
-	const myUrl = `${BACKEND_DOMAIN}api/answer`;
-	try {
-		const response = await fetch(myUrl);
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-		const responseJSON = await response.json();
-		return {
-			answerID: responseJSON.answerID,
-			answerName: responseJSON.name,
-		};
-	} catch (error) {
-		console.error("Error fetching answer:", error.message);
 	}
 }
 
@@ -113,3 +81,35 @@ export async function displayLogos(logos, clubNames) {
 		console.error("Error fetching data:", error.message);
 	}
 }
+
+// async function fetchPuzzleNumber() {
+// 	const baseUrl = `${BACKEND_DOMAIN}api/puzzle-number`;
+// 	let puzzleNum;
+// 	try {
+// 		const response = await fetch(baseUrl);
+// 		if (!response.ok) {
+// 			throw new Error(`HTTP error! Status: ${response.status}`);
+// 		}
+// 		puzzleNum = await response.json();
+// 		return puzzleNum;
+// 	} catch (error) {
+// 		console.error("Error fetching puzzle num:", error.message);
+// 	}
+// }
+
+// async function fetchAnswer() {
+// 	const myUrl = `${BACKEND_DOMAIN}api/answer`;
+// 	try {
+// 		const response = await fetch(myUrl);
+// 		if (!response.ok) {
+// 			throw new Error(`HTTP error! Status: ${response.status}`);
+// 		}
+// 		const responseJSON = await response.json();
+// 		return {
+// 			answerID: responseJSON.answerID,
+// 			answerName: responseJSON.name,
+// 		};
+// 	} catch (error) {
+// 		console.error("Error fetching answer:", error.message);
+// 	}
+// }

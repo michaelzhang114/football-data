@@ -1,4 +1,19 @@
+import { getCurrentIndex } from "./answer.js";
+
 export async function initLocalStorage() {
+	// Most important, get the currentIndex, which is the
+	// puzzle number and this is used as the index
+	// of the answerCandidates array
+
+	const currPuzzleNum = getCurrentIndex();
+	const puzzleNumber = window.localStorage.getItem("puzzleNumber");
+	if (!puzzleNumber) {
+		console.log("new puzzle num");
+		window.localStorage.setItem("puzzleNumber", currPuzzleNum);
+	}
+
+	// Game play stuff
+
 	const storedGuessesRemaining =
 		window.localStorage.getItem("guessesRemaining");
 	if (!storedGuessesRemaining) {
@@ -15,6 +30,13 @@ export async function initLocalStorage() {
 		window.localStorage.setItem("isSolved", "false");
 	}
 
+	const isRevealed = window.localStorage.getItem("isRevealed");
+	if (!isRevealed) {
+		window.localStorage.setItem("isRevealed", "false");
+	}
+
+	// Statistics
+
 	const storedGamesPlayed = window.localStorage.getItem("gamesPlayed");
 	if (!storedGamesPlayed) {
 		window.localStorage.setItem("gamesPlayed", 0);
@@ -25,26 +47,8 @@ export async function initLocalStorage() {
 		window.localStorage.setItem("gamesWon", 0);
 	}
 
-	const isRevealed = window.localStorage.getItem("isRevealed");
-	if (!isRevealed) {
-		window.localStorage.setItem("isRevealed", "false");
-	}
-
 	const streakCounter = window.localStorage.getItem("streakCounter");
 	if (!streakCounter) {
 		window.localStorage.setItem("streakCounter", 0);
 	}
-
-	const currPuzzleNum = await fetchPuzzleNumber();
-	const puzzleNumber = window.localStorage.getItem("puzzleNumber");
-	if (!puzzleNumber) {
-		console.log("new puzzle num");
-		window.localStorage.setItem("puzzleNumber", currPuzzleNum);
-	}
-	console.log("init");
-
-	// const storedStats = window.localStorage.getItem("stats");
-	// if (!storedStats) {
-	// 	window.localStorage.setItem("stats", JSON.stringify([0, 0, 0, 0, 0]));
-	// }
 }

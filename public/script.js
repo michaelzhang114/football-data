@@ -2,11 +2,13 @@ import { autocomplete } from "./autocomplete.js";
 import { displayGuesses, showCopyText, goBackToTop } from "./helpers.js";
 import { initLocalStorage } from "./storage.js";
 import { initStatistics } from "./stats.js";
-import { initHelpButton, initStatsButton } from "./nav.js";
+import { initBasicCssStuff } from "./nav.js";
 import {
-	fetchPuzzleNumber,
+	getCurrentIndex,
+	answerIdCandidates as answerIdCandidatesArr,
+} from "./answer.js";
+import {
 	fetchAnswerClubsDetails,
-	fetchAnswer,
 	fetchAllPlayerData,
 	displayLogos,
 } from "./api-calls.js";
@@ -66,11 +68,11 @@ function handleSubmit() {
 	showRevealedAnswer();
 }
 
-async function initAnswer() {
-	const { answerID, answerName } = await fetchAnswer();
-	globalAnswer = answerID;
-	globalAnswerName = answerName;
-}
+// async function initAnswer() {
+// 	const { answerID, answerName } = await fetchAnswer();
+// 	globalAnswer = answerID;
+// 	globalAnswerName = answerName;
+// }
 
 function handleClear() {
 	localStorage.removeItem("guesses");
@@ -90,6 +92,7 @@ async function handleRefresh() {
 }
 
 function showRevealedAnswer() {
+	// Get all the local storage vars
 	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
 	const myGamesPlayed = Number(window.localStorage.getItem("gamesPlayed"));
@@ -141,55 +144,72 @@ function showRevealedAnswer() {
 	revealDiv.style.display = "none";
 }
 
-function runEveryXmin(min) {
-	setInterval(async () => {
-		const currPuzzleNum = await fetchPuzzleNumber();
-		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
-		if (!puzzleNumber || currPuzzleNum != puzzleNumber) {
-			handleRefresh();
-			initAnswer();
-			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
-		}
-	}, min * 60 * 1000); // 10000 milliseconds = 10 seconds
+// function runEveryXmin(min) {
+// 	setInterval(async () => {
+// 		const currPuzzleNum = await fetchPuzzleNumber();
+// 		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
+// 		if (!puzzleNumber || currPuzzleNum != puzzleNumber) {
+// 			handleRefresh();
+// 			initAnswer();
+// 			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
+// 		}
+// 	}, min * 60 * 1000); // 10000 milliseconds = 10 seconds
+// }
+
+function initAnswerIdFromPuzzleNum(puzzleNum) {
+	globalAnswer = answerIdCandidatesArr[puzzleNum];
 }
 
 async function main() {
 	try {
-		const currPuzzleNum = await fetchPuzzleNumber();
+		// First, make sure they have default values in local storage
+		initLocalStorage();
+
+		// These can happen whenever
+		initBasicCssStuff();
+		initStatistics();
+
+		const currPuzzleNum = getCurrentIndex();
 		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
-		if (!puzzleNumber || currPuzzleNum != puzzleNumber) {
+		if (currPuzzleNum != puzzleNumber) {
 			handleRefresh();
-			initAnswer();
+			// initAnswer();
 			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
 		}
+		console.log(`puzzle num is: ${currPuzzleNum}`);
+		initAnswerIdFromPuzzleNum(currPuzzleNum);
+		console.log(`answer id: ${globalAnswer}`);
 
-		await initAnswer();
-
-		initHelpButton();
-		initStatsButton();
-
-		fullPlayerData = await fetchAllPlayerData();
-
-		autocomplete(document.getElementById("myInput"), []);
-
-		const answerClubsData = await fetchAnswerClubsDetails();
+		// Destructuring the data of the player
+		const answerClubsData = await fetchAnswerClubsDetails(globalAnswer);
+		const playerName = answerClubsData.name;
 		const clubIDs = answerClubsData.clubIDs;
 		const clubNames = answerClubsData.clubNames;
 		const period = answerClubsData.period;
 
+		// init answer name
+		globalAnswerName = playerName;
+		console.log(`answer name: ${globalAnswerName}`);
+
+		// init logos
 		displayLogos(clubIDs, clubNames);
 
-		displayGuesses();
+		// set up autocomplete
+		autocomplete(document.getElementById("myInput"), []);
 
+		// set up submit button
+		fullPlayerData = await fetchAllPlayerData(); // need this by handleSubmit
 		const mySubmitButton = document.getElementById("mySubmit");
 		mySubmitButton.addEventListener("click", handleSubmit);
 
+		// need these here to show them their guesses and answer reveal
+		// in case they refresh
+		displayGuesses();
 		showRevealedAnswer();
-		initStatistics();
 	} catch (error) {
 		console.error("Error in main function:", error);
 	}
 }
 
-runEveryXmin(1);
+//runEveryXmin(1);
 main();

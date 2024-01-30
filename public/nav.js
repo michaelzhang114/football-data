@@ -1,4 +1,4 @@
-export function initHelpButton() {
+function initHelpButton() {
 	const openModal = document.getElementById("help-modal-open");
 	const myHelpModal = document.getElementById("help-modal");
 	const closeModal = document.getElementById("close-help");
@@ -12,7 +12,7 @@ export function initHelpButton() {
 	});
 }
 
-export function initStatsButton() {
+function initStatsButton() {
 	const openModal = document.getElementById("stats-modal-open");
 	const myStatsModal = document.getElementById("stats-modal");
 	const closeModal = document.getElementById("close-stats");
@@ -24,4 +24,9 @@ export function initStatsButton() {
 	closeModal.addEventListener("click", () => {
 		myStatsModal.close();
 	});
+}
+
+export function initBasicCssStuff() {
+	initHelpButton();
+	initStatsButton();
 }

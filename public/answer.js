@@ -41,7 +41,7 @@ export const answerIdCandidates = [
 	889534, 422685, 1069536, 488412, 654908, 682548, 710159, 339992, 1047671,
 ];
 
-function getDaysPast() {
+export function getCurrentIndex() {
 	// Set the target date (January is 0-based month in JavaScript)
 	const targetDate = new Date(2024, 0, 27, 0, 30, 0);
 
@@ -53,10 +53,9 @@ function getDaysPast() {
 
 	// Convert milliseconds to days
 	const daysPast = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+	const oneMinuteIntervals = Math.floor(timeDifference / (1 * 60 * 1000));
 
-	const resultInRange = (daysPast % answerIdCandidates.length) + 1;
+	const resultInRange = (oneMinuteIntervals % answerIdCandidates.length) + 1;
 
 	return resultInRange;
-
-	return daysPast;
 }
