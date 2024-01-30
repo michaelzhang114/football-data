@@ -1,5 +1,10 @@
 import { autocomplete } from "./autocomplete.js";
-import { displayGuesses, showCopyText, goBackToTop } from "./helpers.js";
+import {
+	displayGuesses,
+	showCopyText,
+	goBackToTop,
+	isNameInArray,
+} from "./helpers.js";
 import { initLocalStorage } from "./storage.js";
 import { initStatistics } from "./stats.js";
 import { initBasicCssStuff } from "./nav.js";
@@ -13,11 +18,12 @@ import {
 	displayLogos,
 } from "./api-calls.js";
 
+// use global vars for these to avoid putting them in local storage
 var globalAnswer;
 var globalAnswerName;
 
+// run get on all player data. Only need player names and IDs but getting all for now
 var fullPlayerData = [];
-// run get on all player data and all players
 
 function getIdByName(playerName) {
 	const player = fullPlayerData.find((player) => player.name === playerName);
@@ -41,7 +47,12 @@ function handleSubmit() {
 	}
 
 	const userInput = document.getElementById("myInput").value;
+
+	// If their guess was 0 length, leave it - TODO
 	if (userInput.length == 0) return;
+
+	// If they already guessed this, leave it - TODO
+	if (isNameInArray(myGuesses, userInput)) return;
 
 	if (getIdByName(userInput) === globalAnswer) {
 		myGuesses.unshift({
@@ -67,12 +78,6 @@ function handleSubmit() {
 	displayGuesses();
 	showRevealedAnswer();
 }
-
-// async function initAnswer() {
-// 	const { answerID, answerName } = await fetchAnswer();
-// 	globalAnswer = answerID;
-// 	globalAnswerName = answerName;
-// }
 
 function handleClear() {
 	localStorage.removeItem("guesses");
@@ -144,18 +149,6 @@ function showRevealedAnswer() {
 	revealDiv.style.display = "none";
 }
 
-// function runEveryXmin(min) {
-// 	setInterval(async () => {
-// 		const currPuzzleNum = await fetchPuzzleNumber();
-// 		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
-// 		if (!puzzleNumber || currPuzzleNum != puzzleNumber) {
-// 			handleRefresh();
-// 			initAnswer();
-// 			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
-// 		}
-// 	}, min * 60 * 1000); // 10000 milliseconds = 10 seconds
-// }
-
 function initAnswerIdFromPuzzleNum(puzzleNum) {
 	globalAnswer = answerIdCandidatesArr[puzzleNum];
 }
@@ -211,5 +204,4 @@ async function main() {
 	}
 }
 
-//runEveryXmin(1);
 main();

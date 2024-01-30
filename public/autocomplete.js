@@ -1,4 +1,7 @@
 const MAX_DROPDOWN_ITEMs = 13;
+
+// TODO - get ALL_PLAYER names programmatically
+
 const ALL_PLAYERS = [
 	"Adrian",
 	"Alisson Becker",

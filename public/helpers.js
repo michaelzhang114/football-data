@@ -103,3 +103,8 @@ function initCopyButton() {
 		}, 2000);
 	});
 }
+
+export function isNameInArray(array, targetName) {
+	//check if any object in the array has a "name" property equal to a given string
+	return array.some((player) => player.name === targetName);
+}
