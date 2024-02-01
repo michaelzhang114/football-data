@@ -66,12 +66,12 @@ export function showCopyText(tmp) {
 
 function initCopyButton() {
 	const btn = document.getElementById("copy-button");
-	btn.addEventListener("touchstart", handleCopy);
+	// btn.addEventListener("touchstart", handleCopy);
 	btn.addEventListener("click", handleCopy);
 }
 
 function handleCopy(evt) {
-	evt.preventDefault();
+	// evt.preventDefault();
 	var textarea = document.getElementById("share-text-area");
 	textarea.select();
 	textarea.setSelectionRange(0, 99999); // For mobile devices
