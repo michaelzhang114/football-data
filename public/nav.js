@@ -31,7 +31,17 @@ function initStatsButton() {
 		myStatsModal.showModal();
 	});
 
+	openModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
+		myStatsModal.showModal();
+	});
+
 	closeModal.addEventListener("click", () => {
+		myStatsModal.close();
+	});
+
+	closeModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
 		myStatsModal.close();
 	});
 }
