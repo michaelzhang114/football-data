@@ -8,10 +8,7 @@ import {
 import { initLocalStorage } from "./storage.js";
 import { initStatistics } from "./stats.js";
 import { initBasicCssStuff } from "./nav.js";
-import {
-	getCurrentIndex,
-	answerIdCandidates as answerIdCandidatesArr,
-} from "./answer.js";
+import { getCurrentIndex, getAnswerIdFromPuzzleNumber } from "./answer.js";
 import {
 	fetchAnswerClubsDetails,
 	fetchAllPlayerData,
@@ -37,7 +34,8 @@ function getIdByName(playerName) {
 	}
 }
 
-function handleSubmit() {
+function handleSubmit(evt) {
+	evt.preventDefault();
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
 	const myGuesses = JSON.parse(window.localStorage.getItem("guesses"));
 	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
@@ -149,10 +147,6 @@ function showRevealedAnswer() {
 	revealDiv.style.display = "none";
 }
 
-function initAnswerIdFromPuzzleNum(puzzleNum) {
-	globalAnswer = answerIdCandidatesArr[puzzleNum];
-}
-
 async function main() {
 	try {
 		// First, make sure they have default values in local storage
@@ -169,9 +163,12 @@ async function main() {
 			// initAnswer();
 			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
 		}
-		console.log(`puzzle num is: ${currPuzzleNum}`);
-		initAnswerIdFromPuzzleNum(currPuzzleNum);
-		console.log(`answer id: ${globalAnswer}`);
+		// console.log(`puzzle num is: ${currPuzzleNum}`);
+
+		// get and save the answer id in a variable (not local storage)
+		globalAnswer = getAnswerIdFromPuzzleNumber(currPuzzleNum);
+
+		// console.log(`answer id: ${globalAnswer}`);
 
 		// Destructuring the data of the player
 		const answerClubsData = await fetchAnswerClubsDetails(globalAnswer);
@@ -182,7 +179,7 @@ async function main() {
 
 		// init answer name
 		globalAnswerName = playerName;
-		console.log(`answer name: ${globalAnswerName}`);
+		// console.log(`answer name: ${globalAnswerName}`);
 
 		// init logos
 		displayLogos(clubIDs, clubNames);
@@ -193,6 +190,7 @@ async function main() {
 		// set up submit button
 		fullPlayerData = await fetchAllPlayerData(); // need this by handleSubmit
 		const mySubmitButton = document.getElementById("mySubmit");
+		mySubmitButton.addEventListener("touchstart", handleSubmit);
 		mySubmitButton.addEventListener("click", handleSubmit);
 
 		// need these here to show them their guesses and answer reveal

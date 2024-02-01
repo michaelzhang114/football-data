@@ -7,7 +7,17 @@ function initHelpButton() {
 		myHelpModal.showModal();
 	});
 
+	openModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
+		myHelpModal.showModal();
+	});
+
 	closeModal.addEventListener("click", () => {
+		myHelpModal.close();
+	});
+
+	closeModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
 		myHelpModal.close();
 	});
 }
