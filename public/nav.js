@@ -7,7 +7,17 @@ function initHelpButton() {
 		myHelpModal.showModal();
 	});
 
+	openModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
+		myHelpModal.showModal();
+	});
+
 	closeModal.addEventListener("click", () => {
+		myHelpModal.close();
+	});
+
+	closeModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
 		myHelpModal.close();
 	});
 }
@@ -21,7 +31,17 @@ function initStatsButton() {
 		myStatsModal.showModal();
 	});
 
+	openModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
+		myStatsModal.showModal();
+	});
+
 	closeModal.addEventListener("click", () => {
+		myStatsModal.close();
+	});
+
+	closeModal.addEventListener("touchstart", (evt) => {
+		evt.preventDefault();
 		myStatsModal.close();
 	});
 }

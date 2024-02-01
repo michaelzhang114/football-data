@@ -61,9 +61,13 @@ main {
 
 #answer-revealed-wrapper {
 	display: none;
-	border: 2px solid rgb(20, 192, 40);
+	/* border: 2px solid rgb(20, 192, 40); */
+	border: 2px solid #00abfb;
+
 	border-radius: 8px;
-	background-color: rgba(20, 192, 40, 0.1);
+	/* background-color: rgba(20, 192, 40, 0.1); */
+	background-color: #d8e9f0bd;
+
 	text-align: center;
 	padding: 0.625rem 0;
 	margin-bottom: 1rem;
@@ -149,6 +153,7 @@ header {
 	grid-row-gap: 0px;
 	justify-items: center;
 	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .stats-panel p {
@@ -285,6 +290,7 @@ input {
 	border: 1px solid transparent;
 	background-color: #f1f1f1;
 	padding: 0.8rem;
+	width: 20rem;
 }
 
 input[type="text"] {

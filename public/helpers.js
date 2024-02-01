@@ -66,42 +66,46 @@ export function showCopyText(tmp) {
 
 function initCopyButton() {
 	const btn = document.getElementById("copy-button");
-	btn.addEventListener("click", () => {
-		var textarea = document.getElementById("share-text-area");
-		textarea.select();
-		textarea.setSelectionRange(0, 99999); // For mobile devices
-		navigator.clipboard.writeText(textarea.value);
+	btn.addEventListener("touchstart", handleCopy);
+	btn.addEventListener("click", handleCopy);
+}
 
-		// Change the button text and style to indicate copying
-		var copyButton = document.getElementById("copy-button");
-		var mySvg = copyButton.children[0];
+function handleCopy(evt) {
+	evt.preventDefault();
+	var textarea = document.getElementById("share-text-area");
+	textarea.select();
+	textarea.setSelectionRange(0, 99999); // For mobile devices
+	navigator.clipboard.writeText(textarea.value);
 
-		const copiedSVG = `
-		<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+	// Change the button text and style to indicate copying
+	var copyButton = document.getElementById("copy-button");
+	var mySvg = copyButton.children[0];
+
+	const copiedSVG = `
+	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+		<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+		<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+		<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+		<path d="M11 14l2 2l4 -4" />
+	</svg>`;
+
+	mySvg.innerHTML = copiedSVG;
+
+	// copyButton.innerText = "Copied!";
+	copyButton.classList.add("copied");
+
+	// Reset the button text and style after a short delay
+	setTimeout(function () {
+		const copySVG = `
+		<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
 			<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 			<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
 			<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-			<path d="M11 14l2 2l4 -4" />
-		</svg>`;
-
-		mySvg.innerHTML = copiedSVG;
-
-		// copyButton.innerText = "Copied!";
-		copyButton.classList.add("copied");
-
-		// Reset the button text and style after a short delay
-		setTimeout(function () {
-			const copySVG = `
-			<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-				<path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-				<path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-			</svg>
-			`;
-			mySvg.innerHTML = copySVG;
-			copyButton.classList.remove("copied");
-		}, 2000);
-	});
+		</svg>
+		`;
+		mySvg.innerHTML = copySVG;
+		copyButton.classList.remove("copied");
+	}, 2000);
 }
 
 export function isNameInArray(array, targetName) {
