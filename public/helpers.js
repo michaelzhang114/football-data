@@ -67,11 +67,15 @@ export function showCopyText(tmp) {
 function initCopyButton() {
 	const btn = document.getElementById("copy-button");
 	// btn.addEventListener("touchstart", handleCopy);
-	btn.addEventListener("click", handleCopy);
+	// btn.addEventListener("click", handleCopy);
+	btn.addEventListener("pointerdown", handleCopy);
 }
 
 function handleCopy(evt) {
-	// evt.preventDefault();
+	if (evt.pointerTyper === "touch") {
+		evt.preventDefault();
+	}
+
 	var textarea = document.getElementById("share-text-area");
 	textarea.select();
 	textarea.setSelectionRange(0, 99999); // For mobile devices

@@ -3,22 +3,36 @@ function initHelpButton() {
 	const myHelpModal = document.getElementById("help-modal");
 	const closeModal = document.getElementById("close-help");
 
-	openModal.addEventListener("click", () => {
+	// openModal.addEventListener("click", () => {
+	// 	myHelpModal.showModal();
+	// });
+
+	// openModal.addEventListener("touchstart", (evt) => {
+	// 	evt.preventDefault();
+	// 	myHelpModal.showModal();
+	// });
+
+	openModal.addEventListener("pointerdown", (evt) => {
 		myHelpModal.showModal();
+		if (evt.pointerType === "touch") {
+			evt.preventDefault();
+		}
 	});
 
-	openModal.addEventListener("touchstart", (evt) => {
-		evt.preventDefault();
-		myHelpModal.showModal();
-	});
+	// closeModal.addEventListener("click", () => {
+	// 	myHelpModal.close();
+	// });
 
-	closeModal.addEventListener("click", () => {
+	// closeModal.addEventListener("touchstart", (evt) => {
+	// 	evt.preventDefault();
+	// 	myHelpModal.close();
+	// });
+
+	closeModal.addEventListener("pointerdown", (evt) => {
 		myHelpModal.close();
-	});
-
-	closeModal.addEventListener("touchstart", (evt) => {
-		evt.preventDefault();
-		myHelpModal.close();
+		if (evt.pointerType === "touch") {
+			evt.preventDefault();
+		}
 	});
 }
 
@@ -27,22 +41,36 @@ function initStatsButton() {
 	const myStatsModal = document.getElementById("stats-modal");
 	const closeModal = document.getElementById("close-stats");
 
-	openModal.addEventListener("click", () => {
+	// openModal.addEventListener("click", () => {
+	// 	myStatsModal.showModal();
+	// });
+
+	// openModal.addEventListener("touchstart", (evt) => {
+	// 	evt.preventDefault();
+	// 	myStatsModal.showModal();
+	// });
+
+	openModal.addEventListener("pointerdown", (evt) => {
 		myStatsModal.showModal();
+		if (evt.pointerType === "touch") {
+			evt.preventDefault();
+		}
 	});
 
-	openModal.addEventListener("touchstart", (evt) => {
-		evt.preventDefault();
-		myStatsModal.showModal();
-	});
+	// closeModal.addEventListener("click", () => {
+	// 	myStatsModal.close();
+	// });
 
-	closeModal.addEventListener("click", () => {
+	// closeModal.addEventListener("touchstart", (evt) => {
+	// 	evt.preventDefault();
+	// 	myStatsModal.close();
+	// });
+
+	closeModal.addEventListener("pointerdown", (evt) => {
 		myStatsModal.close();
-	});
-
-	closeModal.addEventListener("touchstart", (evt) => {
-		evt.preventDefault();
-		myStatsModal.close();
+		if (evt.pointerType === "touch") {
+			evt.preventDefault();
+		}
 	});
 }
 

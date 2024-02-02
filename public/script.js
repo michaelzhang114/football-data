@@ -35,7 +35,8 @@ function getIdByName(playerName) {
 }
 
 function handleSubmit(evt) {
-	evt.preventDefault();
+	// evt.preventDefault();
+
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
 	const myGuesses = JSON.parse(window.localStorage.getItem("guesses"));
 	const myIsSolved = JSON.parse(window.localStorage.getItem("isSolved"));
@@ -75,6 +76,10 @@ function handleSubmit(evt) {
 
 	displayGuesses();
 	showRevealedAnswer();
+
+	if (evt.pointerType === "touch") {
+		evt.preventDefault();
+	}
 }
 
 function handleClear() {
@@ -192,8 +197,9 @@ async function main() {
 		// set up submit button
 		fullPlayerData = await fetchAllPlayerData(); // need this by handleSubmit
 		const mySubmitButton = document.getElementById("mySubmit");
-		mySubmitButton.addEventListener("touchstart", handleSubmit);
-		mySubmitButton.addEventListener("click", handleSubmit);
+		mySubmitButton.addEventListener("pointerdown", handleSubmit);
+		// mySubmitButton.addEventListener("touchstart", handleSubmit);
+		// mySubmitButton.addEventListener("click", handleSubmit);
 
 		// need these here to show them their guesses and answer reveal
 		// in case they refresh
