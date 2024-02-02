@@ -60,8 +60,8 @@ export function getCurrentIndex() {
 	// Calculate the time difference in milliseconds
 	const timeDifference = currentDate - targetDate;
 
-	//const interval = Math.floor(timeDifference / daysInterval);
-	const interval = Math.floor(timeDifference / daysInterval);
+	const interval = Math.floor(timeDifference / minInterval);
+	// const interval = Math.floor(timeDifference / daysInterval);
 
 	const resultInRange = (interval % answerIdCandidates.length) + 1;
 

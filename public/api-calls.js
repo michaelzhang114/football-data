@@ -29,7 +29,7 @@ export async function fetchAllPlayerData() {
 	}
 }
 
-export async function displayLogos(logos, clubNames) {
+export async function displayLogos(logos, clubNames, transferType) {
 	const puzzleNumDiv = document.getElementById("puzzle-number-wrapper");
 	const puzzNum = window.localStorage.getItem("puzzleNumber");
 	puzzleNumDiv.innerHTML = `Footle #${puzzNum}`;
@@ -65,7 +65,15 @@ export async function displayLogos(logos, clubNames) {
 
 			imageElement.setAttribute("class", "club-logo");
 
-			imageWrapper.setAttribute("aria-label", clubNames[i]);
+			if (transferType[i] == "on loan") {
+				imageWrapper.setAttribute(
+					"aria-label",
+					`${clubNames[i]} (on loan)`
+				);
+			} else {
+				imageWrapper.setAttribute("aria-label", clubNames[i]);
+			}
+
 			imageWrapper.setAttribute("data-balloon-pos", "up");
 
 			careerPathDiv.append(imageWrapper);

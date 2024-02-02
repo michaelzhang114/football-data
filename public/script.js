@@ -176,13 +176,15 @@ async function main() {
 		const clubIDs = answerClubsData.clubIDs;
 		const clubNames = answerClubsData.clubNames;
 		const period = answerClubsData.period;
+		const transferType = answerClubsData.transferType;
+		console.log(transferType);
 
 		// init answer name
 		globalAnswerName = playerName;
 		// console.log(`answer name: ${globalAnswerName}`);
 
 		// init logos
-		displayLogos(clubIDs, clubNames);
+		displayLogos(clubIDs, clubNames, transferType);
 
 		// set up autocomplete
 		autocomplete(document.getElementById("myInput"), []);

@@ -682,4 +682,9 @@ export function autocomplete(inp, arr) {
 	document.addEventListener("click", function (e) {
 		closeAllLists(e.target);
 	});
+
+	document.addEventListener("touchstart", function (e) {
+		e.preventDefault();
+		closeAllLists(e.target);
+	});
 }
