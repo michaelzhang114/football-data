@@ -90,6 +90,11 @@ app.get("/api/get-clubs-info/:id", async (req, res) => {
 			clubIDs: career.toReversed().map((entry) => entry.teamId),
 			clubNames: career.toReversed().map((entry) => entry.team),
 			period: transformedArray.map((t) => t.period),
+			transferType: career
+				.toReversed()
+				.map((entry) =>
+					entry.transferType ? entry.transferType.text : null
+				),
 		});
 	} catch (error) {
 		console.error("Error fetching data:", error.message);
