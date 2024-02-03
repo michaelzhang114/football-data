@@ -182,7 +182,6 @@ async function main() {
 		const clubNames = answerClubsData.clubNames;
 		const period = answerClubsData.period;
 		const transferType = answerClubsData.transferType;
-		console.log(transferType);
 
 		// init answer name
 		globalAnswerName = playerName;
