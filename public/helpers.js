@@ -67,15 +67,11 @@ export function showCopyText(tmp) {
 function initCopyButton() {
 	const btn = document.getElementById("copy-button");
 	// btn.addEventListener("touchstart", handleCopy);
-	// btn.addEventListener("click", handleCopy);
-	btn.addEventListener("pointerdown", handleCopy);
+	btn.addEventListener("click", handleCopy);
+	// btn.addEventListener("pointerdown", handleCopy);
 }
 
 function handleCopy(evt) {
-	if (evt.pointerTyper === "touch") {
-		evt.preventDefault();
-	}
-
 	var textarea = document.getElementById("share-text-area");
 	textarea.select();
 	textarea.setSelectionRange(0, 99999); // For mobile devices
@@ -110,6 +106,10 @@ function handleCopy(evt) {
 		mySvg.innerHTML = copySVG;
 		copyButton.classList.remove("copied");
 	}, 2000);
+
+	// if (evt.pointerType === "touch") {
+	// 	evt.preventDefault();
+	// }
 }
 
 export function isNameInArray(array, targetName) {
