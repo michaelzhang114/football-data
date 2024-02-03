@@ -82,6 +82,11 @@ main {
 	margin-bottom: 1rem;
 }
 
+#next-puzzle-time-wrapper p {
+	color: var(--clr-label);
+	font-size: var(--fs-regular);
+}
+
 header {
 	margin-bottom: 1rem;
 	border-bottom: 1px solid rgba(158, 158, 159, 0.786);
