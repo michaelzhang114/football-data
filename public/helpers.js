@@ -72,7 +72,7 @@ function initCopyButton() {
 }
 
 function handleCopy(evt) {
-	if (evt.pointerTyper === "touch") {
+	if (evt.pointerType === "touch") {
 		evt.preventDefault();
 	}
 
