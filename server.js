@@ -50,7 +50,7 @@ app.get("/api", (req, res) => {
 
 app.get("/api/get-clubs-info/:id", async (req, res) => {
 	try {
-		console.log("hit");
+		// console.log("hit");
 		const answerID = req.params.id;
 		const { name, career } = await fetchPlayerInfo(answerID);
 
