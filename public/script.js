@@ -146,6 +146,7 @@ function showRevealedAnswer() {
 		goBackToTop();
 		initStatistics();
 		showCopyText("❌");
+		startCountdown();
 
 		return;
 	}

@@ -79,12 +79,13 @@ main {
 
 #answer-reveal {
 	font-size: var(--fs-large);
-	margin-bottom: 1rem;
+	margin-bottom: 0.45rem;
 }
 
 #next-puzzle-time-wrapper p {
 	color: var(--clr-label);
-	font-size: var(--fs-regular);
+	/* font-size: var(--fs-regular); */
+	margin-bottom: 1rem;
 }
 
 header {
