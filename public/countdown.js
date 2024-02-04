@@ -4,6 +4,7 @@ export function startCountdown() {
 	// Update the countdown every second
 	const countdownInterval = setInterval(() => {
 		const timeRemaining = calculateTimeRemaining();
+		console.log(timeRemaining);
 		countdownElement.textContent = formatTime(timeRemaining);
 
 		if (timeRemaining <= 0) {
@@ -20,7 +21,7 @@ export function startCountdown() {
 function calculateTimeRemaining() {
 	const now = new Date().getTime();
 	const targetMidnight = new Date();
-	targetMidnight.setHours(24, 0, 0, 0);
+	targetMidnight.setHours(23, 59, 59, 900);
 	return targetMidnight - now;
 }
 
