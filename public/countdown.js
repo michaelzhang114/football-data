@@ -7,7 +7,7 @@ export function startCountdown() {
 		console.log(timeRemaining);
 		countdownElement.textContent = formatTime(timeRemaining);
 
-		if (timeRemaining <= 0) {
+		if (timeRemaining <= 999) {
 			clearInterval(countdownInterval);
 			countdownElement.textContent = "00:00:00 - Refresh now!";
 		}
