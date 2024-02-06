@@ -4,7 +4,7 @@ export function startCountdown() {
 	// Update the countdown every second
 	const countdownInterval = setInterval(() => {
 		const timeRemaining = calculateTimeRemaining();
-		console.log(timeRemaining);
+		// console.log(timeRemaining);
 		countdownElement.textContent = formatTime(timeRemaining);
 
 		if (timeRemaining <= 999) {
