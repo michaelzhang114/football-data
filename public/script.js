@@ -41,7 +41,7 @@ function getIdByName(playerName) {
 
 function deaccentAndLowerCase(myString) {
 	var string_norm = myString.normalize("NFD").replace(/\p{Diacritic}/gu, ""); // Old method: .replace(/[\u0300-\u036f]/g, "");
-	return string_norm.toLowerCase();
+	return string_norm.toLowerCase().trim();
 }
 
 function handleSubmit(evt) {
