@@ -142,36 +142,41 @@
 						<path d="M6 6l12 12" />
 					</svg>
 				</button>
-				<h2>How to play ⚽🌟</h2>
+				<h2>🔍 How to play</h2>
 				<ul>
 					<li>
 						The footballer is currently signed to a Premier League
 						club
 					</li>
 					<li>Read the logos from left to right, top to bottom</li>
+					<li>Tap or hover over the logos to get the club name</li>
 					<li>You have five attempts</li>
 					<li>New Footle daily at midnight</li>
 				</ul>
 
 				<br />
 
-				<h2>Credits</h2>
-				<ul>
-					<li>
-						<a
-							href="https://www.flaticon.com/free-icons/soccer"
-							title="soccer icons"
-							>Soccer icons created by Smashicons - Flaticon</a
-						>
-					</li>
-					<li>
-						<a
-							href="https://www.flaticon.com/free-icons/error"
-							title="error icons"
-							>Error icons created by mim_studio - Flaticon</a
-						>
-					</li>
-				</ul>
+				<a href="https://forms.gle/1wU1SgKwn9azKdb2A" target="_blank"
+					>📝 Leave some feedback</a
+				>
+
+				<br />
+				<br />
+
+				<p>
+					Graphics sourced from Flaticon:
+					<a
+						href="https://www.flaticon.com/free-icons/soccer"
+						title="soccer icons"
+						>Smashicons</a
+					>,
+					<a
+						href="https://www.flaticon.com/free-icons/error"
+						title="error icons"
+					>
+						mim_studio</a
+					>
+				</p>
 			</dialog>
 
 			<dialog id="stats-modal" class="modal">
@@ -213,6 +218,12 @@
 
 			<div id="answer-revealed-wrapper">
 				<div id="answer-reveal">The answer is</div>
+				<div id="next-puzzle-time-wrapper">
+					<p>
+						New footballer in
+						<span id="countdown-timer"></span>
+					</p>
+				</div>
 				<div id="share-text-wrapper">
 					<textarea id="share-text-area" readonly></textarea>
 					<button id="copy-button">
@@ -252,9 +263,6 @@
 						<div class="streak-num"></div>
 						<p>Streak</p>
 					</div>
-				</div>
-				<div id="next-puzzle-time-wrapper">
-					<!-- <p>New Footle at Midnight</p> -->
 				</div>
 			</div>
 
@@ -309,13 +317,14 @@
 			<div id="submissions-wrapper"></div>
 		</main>
 		<script type="module" src="script.js"></script>
-		<script type="module" src="autocomplete.js"></script>
+		<!-- <script type="module" src="autocomplete.js"></script>
 		<script type="module" src="helpers.js"></script>
 		<script type="module" src="storage.js"></script>
 		<script type="module" src="stats.js"></script>
 		<script type="module" src="nav.js"></script>
 		<script type="module" src="api-calls.js"></script>
 		<script type="module" src="answer.js"></script>
+		<script type="module" src="countdown.js"></script> -->
 	</body>
 	<footer></footer>
 </html>

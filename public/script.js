@@ -14,6 +14,7 @@ import {
 	fetchAllPlayerData,
 	displayLogos,
 } from "./api-calls.js";
+import { startCountdown } from "./countdown.js";
 
 // use global vars for these to avoid putting them in local storage
 var globalAnswer;
@@ -124,10 +125,11 @@ function showRevealedAnswer() {
 			window.localStorage.setItem("gamesWon", myGamesWon + 1);
 			window.localStorage.setItem("streakCounter", myStreakCounter + 1);
 		}
+
 		goBackToTop();
 		initStatistics();
-
 		showCopyText("✅");
+		startCountdown();
 
 		return;
 	}
@@ -144,6 +146,7 @@ function showRevealedAnswer() {
 		goBackToTop();
 		initStatistics();
 		showCopyText("❌");
+		startCountdown();
 
 		return;
 	}
@@ -182,7 +185,6 @@ async function main() {
 		const clubNames = answerClubsData.clubNames;
 		const period = answerClubsData.period;
 		const transferType = answerClubsData.transferType;
-		console.log(transferType);
 
 		// init answer name
 		globalAnswerName = playerName;
