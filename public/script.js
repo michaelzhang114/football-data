@@ -24,7 +24,11 @@ var globalAnswerName;
 var fullPlayerData = [];
 
 function getIdByName(playerName) {
-	const player = fullPlayerData.find((player) => player.name === playerName);
+	const player = fullPlayerData.find(
+		(player) =>
+			deaccentAndLowerCase(player.name) ===
+			deaccentAndLowerCase(playerName)
+	);
 
 	// Check if the player with the given name is found
 	if (player) {
@@ -33,6 +37,11 @@ function getIdByName(playerName) {
 		// Return a specific value (or handle the absence of the player as needed)
 		return null;
 	}
+}
+
+function deaccentAndLowerCase(myString) {
+	var string_norm = myString.normalize("NFD").replace(/\p{Diacritic}/gu, ""); // Old method: .replace(/[\u0300-\u036f]/g, "");
+	return string_norm.toLowerCase().trim();
 }
 
 function handleSubmit(evt) {
