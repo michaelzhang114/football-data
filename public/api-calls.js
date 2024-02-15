@@ -29,7 +29,7 @@ export async function fetchAllPlayerData() {
 	}
 }
 
-export async function displayLogos(logos, clubNames, transferType) {
+export async function displayLogos(logos, clubNames, transferType, period) {
 	const puzzleNumDiv = document.getElementById("puzzle-number-wrapper");
 	const puzzNum = window.localStorage.getItem("puzzleNumber");
 	puzzleNumDiv.innerHTML = `Footle #${puzzNum}`;
@@ -38,6 +38,41 @@ export async function displayLogos(logos, clubNames, transferType) {
 	try {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
 		for (var i = 0; i < logos.length; i++) {
+			console.log(period[i]);
+			const dateString = period[i];
+			const parts = dateString.split(" - "); // Split the string based on the '-' character
+			const datePortion = parts[0]; // Extract the date portion (before the '-')
+			// Parse the date string
+			const dateArray = datePortion.split(" ");
+			const monthIndex = [
+				"Jan",
+				"Feb",
+				"Mar",
+				"Apr",
+				"May",
+				"Jun",
+				"Jul",
+				"Aug",
+				"Sep",
+				"Oct",
+				"Nov",
+				"Dec",
+			].indexOf(dateArray[0]);
+			const year = parseInt(dateArray[1], 10);
+
+			const parsedDate = new Date(year, monthIndex, 1);
+
+			// const parsedDate = new Date(Date.parse(datePortion + " 01"));
+			// Get today's date
+			const today = new Date();
+			// Check if the parsed date is later than today's date
+			const isLaterDate = parsedDate > today;
+			console.log(parsedDate);
+			console.log(isLaterDate);
+			if (isLaterDate) {
+				continue;
+			}
+
 			const imageElement = document.createElement("img");
 			// imageElement.style.opacity = "0";
 			imageElement.setAttribute("height", "3.75rem");

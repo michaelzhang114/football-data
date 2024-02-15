@@ -200,7 +200,7 @@ async function main() {
 		// console.log(`answer name: ${globalAnswerName}`);
 
 		// init logos
-		displayLogos(clubIDs, clubNames, transferType);
+		displayLogos(clubIDs, clubNames, transferType, period);
 
 		// set up autocomplete
 		autocomplete(document.getElementById("myInput"), []);
