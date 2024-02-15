@@ -43,7 +43,26 @@ export async function displayLogos(logos, clubNames, transferType, period) {
 			const parts = dateString.split(" - "); // Split the string based on the '-' character
 			const datePortion = parts[0]; // Extract the date portion (before the '-')
 			// Parse the date string
-			const parsedDate = new Date(datePortion + " 01"); // '01' is added to make it a valid date string (day part)
+			const dateArray = datePortion.split(" ");
+			const monthIndex = [
+				"Jan",
+				"Feb",
+				"Mar",
+				"Apr",
+				"May",
+				"Jun",
+				"Jul",
+				"Aug",
+				"Sep",
+				"Oct",
+				"Nov",
+				"Dec",
+			].indexOf(dateArray[0]);
+			const year = parseInt(dateArray[1], 10);
+
+			const parsedDate = new Date(year, monthIndex, 1);
+
+			// const parsedDate = new Date(Date.parse(datePortion + " 01"));
 			// Get today's date
 			const today = new Date();
 			// Check if the parsed date is later than today's date
