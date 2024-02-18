@@ -231,6 +231,7 @@ header {
 .search-form-wrapper {
 	display: flex;
 	align-items: center;
+	width: 100%;
 }
 
 #career-path-wrapper {
@@ -284,14 +285,36 @@ header {
 	align-items: center;
 }
 
+#myInput {
+	width: 100%;
+}
+
 .autocomplete {
 	position: relative;
 	display: inline-block;
+	width: 100%;
+	flex-grow: 8;
+}
+
+#mySubmit {
+	flex-grow: 1;
+}
+
+@media (max-width: 21.875rem) {
+	/* .form-inline input {
+	  margin: 10px 0;
+	} */
+
+	.search-form-wrapper {
+		flex-direction: column;
+		/* align-items: stretch; */
+	}
 }
 
 #guesses-remaining,
 #guide-text {
 	margin-inline: auto;
+	text-align: center;
 	color: var(--clr-label);
 	font-size: var(--fs-regular);
 }
@@ -300,7 +323,7 @@ input {
 	border: 1px solid transparent;
 	background-color: #f1f1f1;
 	padding: 0.8rem;
-	width: 20rem;
+	/* width: 20rem; */
 }
 
 input[type="text"] {
