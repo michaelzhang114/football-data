@@ -121,6 +121,9 @@ header {
 }
 
 .modal {
+	width: 85%;
+	max-width: 25rem;
+
 	padding: 1rem;
 	border: 0;
 	box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
@@ -241,7 +244,7 @@ header {
 	flex-wrap: wrap;
 	gap: 0.625rem 1.25rem; /* row-gap column gap */
 	/* margin: 20px 20px; */
-	padding: 10px 10px;
+	padding: 0.625rem 0.625rem;
 
 	/* https://devdevout.com/css/css-cards */
 	border: 1px solid rgba(255, 255, 255, 0.25);
@@ -252,6 +255,7 @@ header {
 	/* padding: 38px;   */
 	/* filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); */
 	margin: 0.3rem 0;
+	width: 100%;
 }
 
 .club-wrapper {
@@ -276,6 +280,7 @@ header {
 	flex-direction: column;
 	/* background-color: rebeccapurple; */
 	margin-top: 1.5rem;
+	padding: 0 0.625rem;
 }
 
 #search-bar {
