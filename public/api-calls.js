@@ -113,6 +113,7 @@ export async function displayLogos(logos, clubNames, transferType, period) {
 			}
 
 			imageWrapper.setAttribute("data-balloon-pos", "up");
+			imageWrapper.classList.add("tooltip-small-text");
 			// imageWrapper.setAttribute("data-balloon-length", "small");
 
 			careerPathDiv.append(imageWrapper);

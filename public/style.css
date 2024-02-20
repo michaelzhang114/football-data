@@ -243,7 +243,7 @@ header {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 0.625rem 1.25rem; /* row-gap column gap */
+	gap: 0.625rem 1.2rem; /* row-gap column gap */
 	/* margin: 20px 20px; */
 	padding: 0.625rem 0.625rem;
 
@@ -443,4 +443,8 @@ input[type="submit"] {
 
 ul {
 	padding-left: 1.5rem;
+}
+
+.tooltip-small-text {
+	--balloon-font-size: 0.6rem;
 }
