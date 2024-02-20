@@ -43,6 +43,7 @@ html {
 	font-weight: var(--fw-regular);
 	line-height: 1.5;
 	/* background-color: #ededed; */
+	width: 100%;
 }
 
 body {
@@ -121,6 +122,9 @@ header {
 }
 
 .modal {
+	width: 85%;
+	max-width: 25rem;
+
 	padding: 1rem;
 	border: 0;
 	box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
@@ -231,6 +235,7 @@ header {
 .search-form-wrapper {
 	display: flex;
 	align-items: center;
+	width: 100%;
 }
 
 #career-path-wrapper {
@@ -238,9 +243,9 @@ header {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 0.625rem 1.25rem; /* row-gap column gap */
+	gap: 0.625rem 1.2rem; /* row-gap column gap */
 	/* margin: 20px 20px; */
-	padding: 10px 10px;
+	padding: 0.625rem 0.625rem;
 
 	/* https://devdevout.com/css/css-cards */
 	border: 1px solid rgba(255, 255, 255, 0.25);
@@ -248,21 +253,12 @@ header {
 	background-color: rgba(255, 255, 255, 0.45);
 	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 	backdrop-filter: blur(15px);
-	/* padding: 38px;   */
-	/* filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125)); */
+
 	margin: 0.3rem 0;
+	/* width: 100%; */
 }
 
 .club-wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	flex-direction: column;
-}
-
-.club-wrapper > p {
-	font-size: var(--fs-smallest);
 }
 
 .club-logo {
@@ -275,6 +271,7 @@ header {
 	flex-direction: column;
 	/* background-color: rebeccapurple; */
 	margin-top: 1.5rem;
+	padding: 0 0.625rem;
 }
 
 #search-bar {
@@ -284,14 +281,36 @@ header {
 	align-items: center;
 }
 
+#myInput {
+	width: 100%;
+}
+
 .autocomplete {
 	position: relative;
 	display: inline-block;
+	width: 100%;
+	flex-grow: 8;
+}
+
+#mySubmit {
+	flex-grow: 1;
+}
+
+@media (max-width: 21.875rem) {
+	/* .form-inline input {
+	  margin: 10px 0;
+	} */
+
+	.search-form-wrapper {
+		flex-direction: column;
+		/* align-items: stretch; */
+	}
 }
 
 #guesses-remaining,
 #guide-text {
 	margin-inline: auto;
+	text-align: center;
 	color: var(--clr-label);
 	font-size: var(--fs-regular);
 }
@@ -300,7 +319,7 @@ input {
 	border: 1px solid transparent;
 	background-color: #f1f1f1;
 	padding: 0.8rem;
-	width: 20rem;
+	/* width: 20rem; */
 }
 
 input[type="text"] {
@@ -374,10 +393,6 @@ input[type="submit"] {
 	margin-top: 18.75rem;
 } */
 
-.club-wrapper img {
-	/* opacity: 0; */
-}
-
 .fade-in {
 	/* opacity: 0; */
 	animation: fadein 3s ease-in-out;
@@ -428,4 +443,8 @@ input[type="submit"] {
 
 ul {
 	padding-left: 1.5rem;
+}
+
+.tooltip-small-text {
+	--balloon-font-size: 0.6rem;
 }

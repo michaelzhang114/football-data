@@ -74,9 +74,12 @@ export async function displayLogos(logos, clubNames, transferType, period) {
 			}
 
 			const imageElement = document.createElement("img");
-			// imageElement.style.opacity = "0";
-			imageElement.setAttribute("height", "3.75rem");
-			imageElement.setAttribute("width", "3.75rem");
+
+			//Instead of manually setting image height and width. Make width fill the parent container. then height auto to keep the proportions
+			// imageElement.setAttribute("height", "3.75rem");
+			// imageElement.setAttribute("width", "3.75rem");
+			// imageElement.setAttribute("width", "100%");
+			// imageElement.setAttribute("height", "auto");
 
 			const imageWrapper = document.createElement("div");
 			imageWrapper.classList.add("club-wrapper");
@@ -110,6 +113,8 @@ export async function displayLogos(logos, clubNames, transferType, period) {
 			}
 
 			imageWrapper.setAttribute("data-balloon-pos", "up");
+			imageWrapper.classList.add("tooltip-small-text");
+			// imageWrapper.setAttribute("data-balloon-length", "small");
 
 			careerPathDiv.append(imageWrapper);
 		}
