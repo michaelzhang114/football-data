@@ -115,22 +115,46 @@ app.get("/api/all-players-info", async (req, res) => {
 	}
 });
 
+// Function to download the PNG image from the API
+async function downloadImage(url) {
+	const response = await axios.get(url, { responseType: "arraybuffer" });
+	return response.data;
+}
+
+// Function to convert PNG to WebP
+async function convertToWebP(inputBuffer) {
+	const outputBuffer = await sharp(inputBuffer)
+		.webp({ quality: 5 }) // Convert to WebP format, 0 is lowest quality, 100 is highest
+		.toBuffer();
+
+	return outputBuffer;
+}
+
 app.get("/api/club-logos/:id", async (req, res) => {
 	const logoID = req.params.id;
 	const imgUrl = `${imagesUrl}${logoID}.png`;
 	console.log(imgUrl);
 	try {
-		const imageResponse = await axios.get(imgUrl, {
-			responseType: "arraybuffer",
-		});
+		// Download the PNG image from the API
+		const pngBuffer = await downloadImage(imgUrl);
 
-		const compressedImageBuffer = await sharp(imageResponse.data)
-			.png({ compressionLevel: 7 }) //0 is least compressed, 9 is most compressed
-			.toBuffer();
+		// Convert the PNG image buffer to WebP format
+		const webPBuffer = await convertToWebP(pngBuffer);
 
-		res.setHeader("Content-Type", "image/png"); // Adjust based on the image type
-		res.send(compressedImageBuffer);
-		// res.send(imageResponse.data);
+		// Set response headers for the WebP image
+		res.contentType("image/webp");
+		res.send(webPBuffer);
+
+		// const imageResponse = await axios.get(imgUrl, {
+		// 	responseType: "arraybuffer",
+		// });
+
+		// const compressedImageBuffer = await sharp(imageResponse.data)
+		// 	.png({ compressionLevel: 7 }) //0 is least compressed, 9 is most compressed
+		// 	.toBuffer();
+
+		// res.setHeader("Content-Type", "image/png"); // Adjust based on the image type
+		// res.send(compressedImageBuffer);
 	} catch (error) {
 		console.error("Error fetching image:", error);
 		res.status(500).json({ error: "Internal Server Error" });
