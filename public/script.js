@@ -84,7 +84,8 @@ function handleSubmit(evt) {
 
 	document.getElementById("myInput").value = "";
 
-	displayGuesses();
+	//passing the name of function
+	displayGuesses("handleSubmit");
 	showRevealedAnswer();
 
 	if (evt.pointerType === "touch") {
@@ -121,6 +122,7 @@ function showRevealedAnswer() {
 	);
 
 	const revealDiv = document.getElementById("answer-revealed-wrapper");
+	revealDiv.classList.add("fade-in");
 	const revealDivText = document.getElementById("answer-reveal");
 
 	//if they solved it
