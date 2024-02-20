@@ -3,7 +3,7 @@ const DOMAIN = "www.footlegame.com";
 export function goBackToTop() {
 	// window.scrollTo(0, 0);
 
-	const scrollStep = -window.scrollY / (500 / 15); // Adjust the speed here (500 is the duration in milliseconds)
+	const scrollStep = -window.scrollY / (750 / 15); // Adjust the speed here (500 is the duration in milliseconds)
 
 	const scrollInterval = setInterval(() => {
 		if (window.scrollY !== 0) {
@@ -14,7 +14,7 @@ export function goBackToTop() {
 	}, 15);
 }
 
-export function displayGuesses() {
+export function displayGuesses(callingFunctionName) {
 	const myGuessesRemaining = window.localStorage.getItem("guessesRemaining");
 	const myGuesses = JSON.parse(window.localStorage.getItem("guesses"));
 
@@ -43,6 +43,9 @@ export function displayGuesses() {
 		// myGuessDiv.textContent = `${myGuesses[i].name} ${myGuesses[i].output}`;
 		// console.log(myGuesses[i].id);
 		submissionsWrapper.append(myGuessDiv);
+		if (callingFunctionName && i === 0) {
+			myGuessDiv.classList.add("fade-in");
+		}
 	}
 }
 
