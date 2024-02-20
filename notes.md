@@ -29,3 +29,8 @@ Test your ball knowledge: footlegame.io
 🛑🛑🛑✅⬜
 
 This is problematic: 471271
+
+## CSS stuff I learnt along the way
+
+-   Outline all divs/blocks in the console: https://stackoverflow.com/questions/15086908/how-to-avoid-horizontal-scroll-on-mobile-web-with-responsive-web-design
+-   Add `overflow: hidden;` to each element see which one is giving the overflow
