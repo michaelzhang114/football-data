@@ -51,11 +51,7 @@ export function getAnswerIdFromPuzzleNumber(index) {
 const daysInterval = 1000 * 60 * 60 * 24;
 const minInterval = 1000 * 60 * 1;
 
-export function getCurrentIndex(debugIndex) {
-	if (debugIndex !== undefined) {
-		console.log(`hii ${debugIndex}`);
-		return debugIndex;
-	}
+export function getCurrentIndex() {
 	// Set the target date (January is 0-based month in JavaScript)
 	const targetDate = new Date(2024, 0, 28, 0, 0, 0);
 
