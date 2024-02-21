@@ -1,6 +1,21 @@
 // const BACKEND_DOMAIN = "http://localhost:5050/";
 const BACKEND_DOMAIN = "/";
 
+export async function getEnvConfigs() {
+	// Fetch configuration from the server
+	fetch(`${BACKEND_DOMAIN}config`)
+		.then((response) => response.json())
+		.then((config) => {
+			console.log("Curr env:", config);
+
+			// Now you can use the configuration in your client-side code
+			// ...
+		})
+		.catch((error) =>
+			console.error("Error fetching configuration:", error)
+		);
+}
+
 export async function fetchAnswerClubsDetails(playerId) {
 	const baseUrl = `${BACKEND_DOMAIN}api/get-clubs-info/${playerId}`;
 	try {

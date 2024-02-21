@@ -13,6 +13,7 @@ import {
 	fetchAnswerClubsDetails,
 	fetchAllPlayerData,
 	displayLogos,
+	getEnvConfigs,
 } from "./api-calls.js";
 import { startCountdown } from "./countdown.js";
 
@@ -168,6 +169,7 @@ function showRevealedAnswer() {
 
 async function main() {
 	try {
+		getEnvConfigs();
 		// First, make sure they have default values in local storage
 		initLocalStorage();
 
