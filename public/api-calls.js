@@ -6,7 +6,7 @@ export async function getEnvConfigs() {
 	try {
 		const resp = await fetch(`${BACKEND_DOMAIN}config`);
 		const config = await resp.json();
-		console.log("Curr env:", config);
+		return config;
 	} catch (error) {
 		console.error("Error fetching configuration:", error);
 	}

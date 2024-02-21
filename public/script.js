@@ -21,6 +21,9 @@ import { startCountdown } from "./countdown.js";
 var globalAnswer;
 var globalAnswerName;
 
+// global for tracking debug
+var globalCurrPuzzNumDebug = 0;
+
 // run get on all player data. Only need player names and IDs but getting all for now
 var fullPlayerData = [];
 
@@ -167,9 +170,43 @@ function showRevealedAnswer() {
 	revealDiv.style.display = "none";
 }
 
+function initDebugFooter() {
+	const f = document.querySelector("footer");
+	const btnPrev = document.createElement("button");
+	btnPrev.addEventListener("pointerdown", (evt) => {
+		// console.log("prev");
+		// globalCurrPuzzNumDebug--;
+		globalCurrPuzzNumDebug =
+			globalCurrPuzzNumDebug >= 1 ? globalCurrPuzzNumDebug - 1 : 0;
+		console.log(globalCurrPuzzNumDebug);
+		if (evt.pointerType === "touch") {
+			evt.preventDefault();
+		}
+	});
+	btnPrev.innerText = "prev";
+
+	const btnNext = document.createElement("button");
+	btnNext.addEventListener("pointerdown", (evt) => {
+		// console.log("next");
+		globalCurrPuzzNumDebug++;
+		console.log(globalCurrPuzzNumDebug);
+		if (evt.pointerType === "touch") {
+			evt.preventDefault();
+		}
+	});
+	btnNext.innerText = "next";
+
+	f.appendChild(btnPrev);
+	f.appendChild(btnNext);
+}
+
 async function main() {
 	try {
-		getEnvConfigs();
+		const myEnvConfig = await getEnvConfigs();
+		console.log(myEnvConfig);
+		if (myEnvConfig == "development") {
+			initDebugFooter();
+		}
 		// First, make sure they have default values in local storage
 		initLocalStorage();
 
@@ -177,8 +214,10 @@ async function main() {
 		initBasicCssStuff();
 		initStatistics();
 
-		const currPuzzleNum = getCurrentIndex();
 		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
+		const currPuzzleNum = getCurrentIndex();
+		// const currPuzzleNum = globalCurrPuzzNumDebug; need to set this in localstorage
+
 		if (currPuzzleNum != puzzleNumber) {
 			handleRefresh();
 			// initAnswer();
