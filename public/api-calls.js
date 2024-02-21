@@ -1,6 +1,17 @@
 // const BACKEND_DOMAIN = "http://localhost:5050/";
 const BACKEND_DOMAIN = "/";
 
+export async function getEnvConfigs() {
+	// Fetch configuration from the server
+	try {
+		const resp = await fetch(`${BACKEND_DOMAIN}config`);
+		const config = await resp.json();
+		return config;
+	} catch (error) {
+		console.error("Error fetching configuration:", error);
+	}
+}
+
 export async function fetchAnswerClubsDetails(playerId) {
 	const baseUrl = `${BACKEND_DOMAIN}api/get-clubs-info/${playerId}`;
 	try {

@@ -35,6 +35,21 @@ async function fetchPlayerInfo(playerID) {
 	}
 }
 
+// Function to download the PNG image from the API
+async function downloadImage(url) {
+	const response = await axios.get(url, { responseType: "arraybuffer" });
+	return response.data;
+}
+
+// Function to convert PNG to WebP
+async function convertToWebP(inputBuffer) {
+	const outputBuffer = await sharp(inputBuffer)
+		.webp({ quality: 5 }) // Convert to WebP format, 0 is lowest quality, 100 is highest
+		.toBuffer();
+
+	return outputBuffer;
+}
+
 app.use(express.static("public"));
 
 //Idiomatic expression in express to route and respond to a client request
@@ -115,21 +130,6 @@ app.get("/api/all-players-info", async (req, res) => {
 	}
 });
 
-// Function to download the PNG image from the API
-async function downloadImage(url) {
-	const response = await axios.get(url, { responseType: "arraybuffer" });
-	return response.data;
-}
-
-// Function to convert PNG to WebP
-async function convertToWebP(inputBuffer) {
-	const outputBuffer = await sharp(inputBuffer)
-		.webp({ quality: 5 }) // Convert to WebP format, 0 is lowest quality, 100 is highest
-		.toBuffer();
-
-	return outputBuffer;
-}
-
 app.get("/api/club-logos/:id", async (req, res) => {
 	const logoID = req.params.id;
 	const imgUrl = `${imagesUrl}${logoID}.png`;
@@ -159,6 +159,11 @@ app.get("/api/club-logos/:id", async (req, res) => {
 		console.error("Error fetching image:", error);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
+});
+
+app.get("/config", (req, res) => {
+	const environment = process.env.NODE_ENV || "development";
+	res.json(environment);
 });
 
 app.listen(port, () => {
