@@ -174,11 +174,12 @@ function initDebugFooter() {
 	const f = document.querySelector("footer");
 	const btnPrev = document.createElement("button");
 	btnPrev.addEventListener("pointerdown", (evt) => {
-		// console.log("prev");
-		// globalCurrPuzzNumDebug--;
-		globalCurrPuzzNumDebug =
-			globalCurrPuzzNumDebug >= 1 ? globalCurrPuzzNumDebug - 1 : 0;
-		console.log(globalCurrPuzzNumDebug);
+		globalCurrPuzzNumDebug--;
+
+		let currPuzzleNum = Number(window.localStorage.getItem("puzzleNumber"));
+		currPuzzleNum += globalCurrPuzzNumDebug;
+		syncPuzzleNumTo(currPuzzleNum);
+
 		if (evt.pointerType === "touch") {
 			evt.preventDefault();
 		}
@@ -187,9 +188,12 @@ function initDebugFooter() {
 
 	const btnNext = document.createElement("button");
 	btnNext.addEventListener("pointerdown", (evt) => {
-		// console.log("next");
 		globalCurrPuzzNumDebug++;
-		console.log(globalCurrPuzzNumDebug);
+
+		let currPuzzleNum = Number(window.localStorage.getItem("puzzleNumber"));
+		currPuzzleNum += globalCurrPuzzNumDebug;
+		syncPuzzleNumTo(currPuzzleNum);
+
 		if (evt.pointerType === "touch") {
 			evt.preventDefault();
 		}
@@ -200,6 +204,18 @@ function initDebugFooter() {
 	f.appendChild(btnNext);
 }
 
+function syncPuzzleNumTo(currPuzzleNum) {
+	// when the puzzle num (index) changes, change the local storage to that.
+	// safety: set local storage to at least 0
+	if (currPuzzleNum != window.localStorage.getItem("puzzleNumber")) {
+		handleRefresh();
+		window.localStorage.setItem(
+			"puzzleNumber",
+			currPuzzleNum < 0 ? 0 : currPuzzleNum
+		);
+	}
+}
+
 async function main() {
 	try {
 		const myEnvConfig = await getEnvConfigs();
@@ -208,25 +224,21 @@ async function main() {
 			initDebugFooter();
 		}
 		// First, make sure they have default values in local storage
-		initLocalStorage();
+		initLocalStorage(myEnvConfig);
 
 		// These can happen whenever
 		initBasicCssStuff();
 		initStatistics();
 
-		const puzzleNumber = window.localStorage.getItem("puzzleNumber");
-		const currPuzzleNum = getCurrentIndex();
-		// const currPuzzleNum = globalCurrPuzzNumDebug; need to set this in localstorage
-
-		if (currPuzzleNum != puzzleNumber) {
-			handleRefresh();
-			// initAnswer();
-			window.localStorage.setItem("puzzleNumber", currPuzzleNum);
+		if (myEnvConfig === "production") {
+			const currPuzzleNum = getCurrentIndex();
+			syncPuzzleNumTo(currPuzzleNum);
 		}
-		// console.log(`puzzle num is: ${currPuzzleNum}`);
 
 		// get and save the answer id in a variable (not local storage)
-		globalAnswer = getAnswerIdFromPuzzleNumber(currPuzzleNum);
+		globalAnswer = getAnswerIdFromPuzzleNumber(
+			window.localStorage.getItem("puzzleNumber")
+		);
 
 		// console.log(`answer id: ${globalAnswer}`);
 
