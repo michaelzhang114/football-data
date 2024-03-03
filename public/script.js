@@ -220,7 +220,7 @@ async function main() {
 	try {
 		const myEnvConfig = await getEnvConfigs();
 		console.log(myEnvConfig);
-		if (myEnvConfig == "development") {
+		if (myEnvConfig !== "production") {
 			initDebugFooter();
 		}
 		// First, make sure they have default values in local storage
