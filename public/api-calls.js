@@ -49,7 +49,7 @@ export async function displayLogos(logos, clubNames, transferType, period) {
 	try {
 		const careerPathDiv = document.getElementById("career-path-wrapper");
 		for (var i = 0; i < logos.length; i++) {
-			console.log(period[i]);
+			// console.log(period[i]);
 			const dateString = period[i];
 			const parts = dateString.split(" - "); // Split the string based on the '-' character
 			const datePortion = parts[0]; // Extract the date portion (before the '-')
@@ -78,8 +78,8 @@ export async function displayLogos(logos, clubNames, transferType, period) {
 			const today = new Date();
 			// Check if the parsed date is later than today's date
 			const isLaterDate = parsedDate > today;
-			console.log(parsedDate);
-			console.log(isLaterDate);
+			// console.log(parsedDate);
+			// console.log(isLaterDate);
 			if (isLaterDate) {
 				continue;
 			}
